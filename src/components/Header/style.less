@@ -1,0 +1,162 @@
+@import '../../styles/theme.less';
+
+.app-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: #fff;
+  padding: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  
+  .header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    
+    .logo {
+      margin-right: 48px;
+      
+      .logo-mark {
+        width: 36px;
+        height: 36px;
+        margin-right: 12px;
+        position: relative;
+        
+        // 简单的科技感logo设计
+        &::before,
+        &::after {
+          content: '';
+          position: absolute;
+          background: @primary-blue;
+          transition: all 0.3s ease;
+        }
+        
+        // 外圈
+        &::before {
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          border: 3px solid @primary-blue;
+          border-radius: 8px;
+          transform: rotate(45deg);
+        }
+        
+        // 内部图形
+        &::after {
+          top: 50%;
+          left: 50%;
+          width: 20px;
+          height: 20px;
+          border-radius: 4px;
+          background: @gold;
+          transform: translate(-50%, -50%) rotate(45deg);
+        }
+      }
+      
+      h3 {
+        margin: 0;
+        color: @dark-blue;
+        font-size: 24px;
+        font-weight: bold;
+        letter-spacing: 1px;
+        
+        // 科技感字体效果
+        background: linear-gradient(120deg, @primary-blue, @dark-blue);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      
+      &:hover {
+        .logo-mark {
+          &::before {
+            transform: rotate(225deg);
+          }
+          
+          &::after {
+            transform: translate(-50%, -50%) rotate(225deg);
+          }
+        }
+      }
+    }
+    
+    .header-menu {
+      flex: 1;
+      border-bottom: none;
+      background: transparent;
+      
+      .ant-menu-item {
+        padding: 0 20px;
+        margin: 0 4px;
+        
+        a {
+          color: @gray-6;
+          font-size: 16px;
+          transition: all 0.3s ease;
+        }
+        
+        &:hover {
+          a {
+            color: @gold;
+          }
+          
+          &::after {
+            border-bottom-color: @gold !important;
+          }
+        }
+        
+        &.ant-menu-item-selected {
+          a {
+            color: @gold;
+          }
+          
+          &::after {
+            border-bottom-color: @gold !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+// 响应式调整
+@media (max-width: 768px) {
+  .app-header {
+    .header-content {
+      .logo {
+        margin-right: 24px;
+        
+        .logo-mark {
+          width: 24px;
+          height: 24px;
+          
+          &::before,
+          &::after {
+            width: 12px;
+            height: 12px;
+          }
+        }
+        
+        h3 {
+          font-size: 20px;
+        }
+      }
+      
+      .header-menu {
+        .ant-menu-item {
+          padding: 0 12px;
+          margin: 0 2px;
+          
+          a {
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+} 

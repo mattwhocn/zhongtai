@@ -1,0 +1,129 @@
+@import '../../styles/theme.less';
+
+.app-footer {
+  background: @tech-gradient;
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: @tech-grid;
+    background-size: 20px 20px;
+    pointer-events: none;
+  }
+  
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+      circle at 50% 0%,
+      rgba(250, 173, 20, 0.05) 0%,    // 使用金色作为光晕
+      rgba(250, 173, 20, 0.02) 25%,
+      transparent 50%
+    );
+    pointer-events: none;
+  }
+  
+  color: @gray-4;
+  padding: 48px 0 24px;
+  
+  .footer-content {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    
+    .footer-section {
+      h3 {
+        color: @gold;
+        margin-bottom: 24px;
+        font-size: 18px;
+        text-shadow: 0 0 10px rgba(250, 173, 20, 0.3);
+      }
+      
+      p {
+        margin-bottom: 12px;
+        color: @gray-3;
+      }
+      
+      a {
+        color: @light-blue;
+        transition: all 0.3s ease;
+        
+        &:hover {
+          color: @light-gold;
+          text-shadow: 0 0 8px rgba(250, 173, 20, 0.4);
+        }
+      }
+      
+      .qr-code {
+        text-align: center;
+        
+        img {
+          width: 120px;
+          height: 120px;
+          margin-bottom: 8px;
+          border: 1px solid rgba(250, 173, 20, 0.2);
+          padding: 4px;
+          background: rgba(0, 21, 41, 0.5);
+        }
+        
+        p {
+          margin: 0;
+          color: @gray-4;
+        }
+      }
+      
+      .company-logo {
+        margin-bottom: 16px;
+        max-width: 100%;
+      }
+      
+      .company-desc {
+        color: @gray-5;
+      }
+    }
+    
+    .footer-divider {
+      background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(250, 173, 20, 0.1) 50%,
+        transparent 100%
+      );
+      margin: 24px 0;
+    }
+    
+    .footer-bottom {
+      text-align: center;
+      
+      .footer-nav {
+        margin-bottom: 16px;
+        
+        a {
+          color: @gray-4;
+          transition: all 0.3s ease;
+          
+          &:hover {
+            color: @light-gold;
+            text-shadow: 0 0 8px rgba(250, 173, 20, 0.4);
+          }
+        }
+      }
+      
+      .copyright {
+        margin: 0;
+        color: @gray-5;
+      }
+    }
+  }
+} 
