@@ -6,11 +6,15 @@
   left: 0;
   right: 0;
   z-index: 1000;
-  background: #fff;
+  background: rgba(255, 255, 255, 0.6) !important;
   padding: 0;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 1px 20px rgba(0, 0, 0, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
   
   .header-content {
+    position: relative;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 24px;
@@ -19,6 +23,8 @@
     height: 100%;
     
     .logo {
+      display: flex;
+      align-items: center;
       margin-right: 48px;
       
       .logo-mark {
@@ -69,18 +75,17 @@
         // 科技感字体效果
         background: linear-gradient(120deg, @primary-blue, @dark-blue);
         -webkit-background-clip: text;
+        background-clip: text;
         -webkit-text-fill-color: transparent;
       }
       
-      &:hover {
-        .logo-mark {
-          &::before {
-            transform: rotate(225deg);
-          }
-          
-          &::after {
-            transform: translate(-50%, -50%) rotate(225deg);
-          }
+      &:hover .logo-mark {
+        &::before {
+          transform: rotate(225deg);
+        }
+        
+        &::after {
+          transform: translate(-50%, -50%) rotate(225deg);
         }
       }
     }
@@ -122,6 +127,19 @@
       }
     }
   }
+
+  // 添加一个伪元素来增强毛玻璃效果
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: -1;
+  }
 }
 
 // 响应式调整
@@ -129,13 +147,10 @@
   .app-header {
     .header-content {
       .logo {
-        margin-right: 24px;
-        
         .logo-mark {
           width: 24px;
           height: 24px;
           
-          &::before,
           &::after {
             width: 12px;
             height: 12px;

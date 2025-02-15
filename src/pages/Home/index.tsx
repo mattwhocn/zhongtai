@@ -13,26 +13,26 @@ const { Title, Paragraph } = Typography;
 const carouselData = [
   {
     id: 1,
-    title: '智能制造解决方案',
-    desc: '为制造业提供全方位的智能化升级服务',
+    title: '这是第一页',
+    desc: '这是第一页的描述文案这是第一页的描述文案',
     background: gradients.techBlue,
   },
   {
     id: 2,
-    title: '数字化转型',
-    desc: '助力企业实现数字化转型升级',
+    title: '这是第二页',
+    desc: '这是第二页的描述文案这是第二页的描述文案',
     background: gradients.businessBlue,
   },
   {
     id: 3,
-    title: '最新动态',
-    desc: '公司荣获2024年度创新企业奖',
+    title: '这是第三页',
+    desc: '这是第三页的描述文案这是第三页的描述文案',
     background: gradients.techMix,
   },
   {
     id: 4,
-    title: '技术研发',
-    desc: '持续创新，引领行业发展',
+    title: '这是第四页',
+    desc: '这是第四页的描述文案这是第四页的描述文案',
     background: gradients.techGold,
   },
 ];
@@ -40,13 +40,40 @@ const carouselData = [
 const Home: React.FC = () => {
   usePageTitle('首页');
 
+  React.useEffect(() => {
+    // 初始化时为第一个 slide 添加 active 类
+    const firstSlide = document.querySelector('.carousel-item-0');
+    if (firstSlide) {
+      firstSlide.classList.add('active');
+    }
+  }, []);
+
   return (
     <Content>
       {/* 轮播图 */}
-      <Carousel autoplay className="home-carousel">
-        {carouselData.map(item => (
+      <Carousel 
+        autoplay 
+        className="home-carousel"
+        beforeChange={(current, next) => {
+          // 移除当前 slide 的 active 类
+          const currentSlide = document.querySelector(`.carousel-item-${current}`);
+          if (currentSlide) {
+            currentSlide.classList.remove('active');
+          }
+          
+          // 计算实际的下一个索引
+          const nextIndex = next % carouselData.length;
+          
+          // 为下一个 slide 添加 active 类
+          const nextSlide = document.querySelector(`.carousel-item-${nextIndex}`);
+          if (nextSlide) {
+            nextSlide.classList.add('active');
+          }
+        }}
+      >
+        {carouselData.map((item, index) => (
           <div key={item.id}>
-            <div className="carousel-item">
+            <div className={`carousel-item carousel-item-${index}`}>
               <div 
                 className="carousel-content"
                 style={{ background: item.background }}
@@ -68,26 +95,25 @@ const Home: React.FC = () => {
             <div className="intro-content">
               <Title level={2}>公司简介</Title>
               <Paragraph className="intro-description">
-                中泰民安科技有限公司成立于2000年，是一家专注于智能制造和数字化转型的高新技术企业。
-                二十余年来，公司始终坚持"创新驱动发展"的理念，以卓越的技术能力和丰富的行业经验，
-                为客户提供全方位的解决方案。
+                中泰民安科技有限公司成立于xxxx年，是一家专注于xxxxxxxxxxxxxxxxx的企业。
+                xx余年来，公司始终坚持"xxxxxxxx"的理念
               </Paragraph>
               <div className="intro-highlights">
                 <div className="highlight-item">
                   <span className="highlight-dot" />
-                  国家级高新技术企业
+                  xxxxxxxxxxxxxxxx
                 </div>
                 <div className="highlight-item">
                   <span className="highlight-dot" />
-                  智能制造解决方案提供商
+                  xxxxxxxxxxxxxxxx
                 </div>
                 <div className="highlight-item">
                   <span className="highlight-dot" />
-                  数字化转型服务专家
+                  xxxxxxxxxxxxxxxx
                 </div>
                 <div className="highlight-item">
                   <span className="highlight-dot" />
-                  技术创新研发中心
+                  xxxxxxxxxxxxxxxx
                 </div>
               </div>
               <Link to="/about">

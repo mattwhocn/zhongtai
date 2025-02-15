@@ -16,7 +16,7 @@ const menuItems = [
 ];
 
 const Footer: React.FC = () => {
-  const address = '北京市朝阳区xxx大厦';
+  const address = '北京市海淀区xxx大厦';
   const baiduMapUrl = `https://api.map.baidu.com/marker?location=39.904989,116.405285&title=${encodeURIComponent(address)}&content=${encodeURIComponent(address)}&output=html`;
 
   return (
@@ -68,7 +68,7 @@ const Footer: React.FC = () => {
                 className="company-logo"
               />
               <p className="company-desc">
-                致力于为客户提供专业的解决方案和优质服务
+                xxxxxxxxxxxxxxxxxxxxxxxx
               </p>
             </div>
           </Col>

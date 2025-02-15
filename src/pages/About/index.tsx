@@ -11,10 +11,7 @@ const { Title, Paragraph } = Typography;
 // 公司简介数据
 const companyProfile = {
   title: '公司简介',
-  content: `中泰民安科技有限公司成立于2000年，是一家专注于智能制造和数字化转型的高新技术企业。
-    二十余年来，公司始终坚持"创新驱动发展"的理念，以卓越的技术能力和丰富的行业经验，
-    为客户提供全方位的解决方案。我们的业务覆盖智能制造、工业互联网、数字化转型等领域，
-    致力于帮助传统制造业实现智能化升级。`,
+  content: `中泰民安科技有限公司成立于xxxxx年，是一家企业。中泰民安科技有限公司成立于xxxxx年，是一家企业。中泰民安科技有限公司成立于xxxxx年，是一家企业。中泰民安科技有限公司成立于xxxxx年，是一家企业。`,
   background: gradients.techBlue
 };
 
@@ -25,19 +22,19 @@ const management = {
     {
       name: '张三',
       position: '董事长',
-      intro: '拥有20年制造业数字化转型经验，曾主导多个国家级智能制造项目',
+      intro: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
       background: gradients.businessBlue
     },
     {
       name: '李四',
       position: '总经理',
-      intro: '工业互联网领域专家，参与制定多项行业标准',
+      intro: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
       background: gradients.techMix
     },
     {
       name: '王五',
       position: '技术总监',
-      intro: '人工智能与大数据专家，拥有多项发明专利',
+      intro: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
       background: gradients.premiumGray
     }
   ]
@@ -49,17 +46,17 @@ const culture = {
   items: [
     {
       title: '企业使命',
-      content: '以科技创新推动制造业升级，助力中国智造',
+      content: 'xxxxxxxxxxxxxxxxxxx',
       background: gradients.techBlue
     },
     {
       title: '企业愿景',
-      content: '成为全球领先的智能制造解决方案提供商',
+      content: 'xxxxxxxxxxxxxxxxxxx',
       background: gradients.businessBlue
     },
     {
       title: '企业理念',
-      content: '创新、专注、协作、共赢',
+      content: 'xxxxxxxxxxxxxxxxxxx',
       background: gradients.techGold
     }
   ]
@@ -68,7 +65,7 @@ const culture = {
 // 全球布局数据
 const globalLayout = {
   title: '全球布局',
-  description: '公司总部位于北京，在上海、广州、深圳等地设有研发中心和营销服务网络，业务覆盖全球多个国家和地区。',
+  description: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
   background: gradients.techMix
 };
 
@@ -77,19 +74,19 @@ const qualifications = {
   title: '资质与荣誉',
   items: [
     {
-      title: '国家高新技术企业',
+      title: 'xxxxxxxxxxxxxxxxxxx',
       background: gradients.techBlue
     },
     {
-      title: '专精特新"小巨人"企业',
+      title: 'xxxxxxxxxxxxxxxxxxx',
       background: gradients.businessBlue
     },
     {
-      title: '工信部制造业单项冠军',
+      title: 'xxxxxxxxxxxxxxxxxxx',
       background: gradients.techGold
     },
     {
-      title: 'ISO9001质量管理体系认证',
+      title: 'xxxxxxxxxxxxxxxxxxx',
       background: gradients.techMix
     }
   ]

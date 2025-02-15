@@ -2,18 +2,17 @@ import React from 'react';
 import { Layout, Menu } from 'antd';
 import { Link, useLocation } from 'react-router-dom';
 import './style.less';
-import { t } from '../../utils/locale';
 
 const { Header: AntHeader } = Layout;
 
 const menuItems = [
-  { key: '/', label: t('nav.home') },
-  { key: '/about', label: t('nav.about') },
-  { key: '/business', label: t('nav.business') },
-  { key: '/news', label: t('nav.news') },
-  { key: '/sustainability', label: t('nav.sustainability') },
-  { key: '/career', label: t('nav.career') },
-  { key: '/contact', label: t('nav.contact') },
+  { key: '/', label: '首页' },
+  { key: '/about', label: '关于我们' },
+  { key: '/business', label: '业务板块' },
+  { key: '/news', label: '新闻中心' },
+  { key: '/sustainability', label: '可持续发展' },
+  { key: '/career', label: '职业发展' },
+  { key: '/contact', label: '联系我们' },
 ];
 
 const Header: React.FC = () => {

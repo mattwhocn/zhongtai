@@ -53,11 +53,6 @@ const config: Configuration = {
       {
         test: /\.(png|jpg|jpeg|gif|svg)$/i,
         type: 'asset/resource',
-      },
-      {
-        test: /\.json$/,
-        loader: 'json5-loader',
-        type: 'javascript/auto'
       }
     ],
   },

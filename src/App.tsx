@@ -1,7 +1,8 @@
-import { Menu, Layout } from 'antd';
+import { Layout } from 'antd';
 import React from 'react';
-import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
+import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import About from './pages/About';
@@ -13,31 +14,13 @@ import Contact from './pages/Contact';
 
 import './styles/app.less';
 
-const { Header, Content } = Layout;
-
-const menuItems = [
-  { key: '/', label: '首页' },
-  { key: '/about', label: '关于我们' },
-  { key: '/business', label: '业务板块' },
-  { key: '/news', label: '新闻中心' },
-  { key: '/sustainability', label: '可持续发展' },
-  { key: '/career', label: '职业发展' },
-  { key: '/contact', label: '联系我们' },
-];
+const { Content } = Layout;
 
 export const App: React.FC = () => {
   return (
     <BrowserRouter>
       <Layout className="app-container">
-        <Header className="app-header">
-          <Menu
-            mode="horizontal"
-            items={menuItems.map(item => ({
-              ...item,
-              label: <Link to={item.key}>{item.label}</Link>,
-            }))}
-          />
-        </Header>
+        <Header />
         <Content className="app-content">
           <Routes>
             <Route path="/" element={<Home />} />
