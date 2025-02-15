@@ -3,10 +3,10 @@
 @dark-blue: #001529;          // 深蓝色
 @light-blue: #1890ff;         // 浅蓝色（原主色调）
 
-// 金色系
-@gold: #faad14;               // 主要金色
-@light-gold: #ffd666;         // 浅金色
-@dark-gold: #d48806;          // 深金色
+// 金色系 - 调整为更深的色调
+@gold: #d48806;               // 主要金色（原来是 #faad14）
+@light-gold: #ffc53d;         // 浅金色（原来是 #ffd666）
+@dark-gold: #ad6800;          // 深金色（原来是 #d48806）
 
 // 灰色系
 @gray-1: #ffffff;             // 纯白
@@ -44,3 +44,15 @@
 // 阴影
 @box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 @text-shadow: 0 0 10px rgba(0, 80, 179, 0.5);  // 调整为新的主色调 
+
+// 相应地调整金色光晕的颜色
+.app-footer {
+  &::after {
+    background: radial-gradient(
+      circle at 50% 0%,
+      rgba(212, 136, 6, 0.05) 0%,    // 使用新的金色
+      rgba(212, 136, 6, 0.02) 25%,
+      transparent 50%
+    );
+  }
+} 
