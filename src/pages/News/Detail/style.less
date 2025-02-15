@@ -1,0 +1,117 @@
+@import '../../../styles/theme.less';
+
+.news-detail-page {
+  .detail-banner {
+    height: 400px;
+    position: relative;
+    margin-top: 64px;
+    
+    .banner-content {
+      height: 100%;
+      position: relative;
+      
+      .tech-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: @tech-grid;
+        opacity: 0.1;
+      }
+    }
+  }
+  
+  .detail-container {
+    max-width: 1000px;
+    margin: -60px auto 80px;
+    padding: 40px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: @box-shadow;
+    position: relative;
+    
+    .detail-breadcrumb {
+      margin-bottom: 20px;
+      
+      a {
+        color: @gray-6;
+        transition: all 0.3s ease;
+        
+        &:hover {
+          color: @gold;
+        }
+      }
+    }
+    
+    .back-link {
+      position: absolute;
+      top: 40px;
+      right: 40px;
+      color: @gray-6;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      
+      &:hover {
+        color: @gold;
+      }
+    }
+    
+    .news-content {
+      h2 {
+        color: @dark-blue;
+        margin-bottom: 24px;
+      }
+      
+      .news-meta {
+        margin-bottom: 40px;
+        
+        .ant-tag {
+          padding: 4px 12px;
+          font-size: 14px;
+          border: none;
+        }
+        
+        .news-date {
+          color: @gray-5;
+          
+          .anticon {
+            margin-right: 8px;
+          }
+        }
+      }
+      
+      .news-body {
+        .ant-typography {
+          color: @gray-6;
+          font-size: 16px;
+          line-height: 1.8;
+          margin-bottom: 24px;
+          
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+// 响应式调整
+@media (max-width: 768px) {
+  .news-detail-page {
+    .detail-banner {
+      height: 300px;
+    }
+    
+    .detail-container {
+      margin: -40px 16px 40px;
+      padding: 24px;
+      
+      .back-link {
+        top: 24px;
+        right: 24px;
+      }
+    }
+  }
+} 

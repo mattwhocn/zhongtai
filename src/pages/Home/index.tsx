@@ -1,9 +1,11 @@
 import React from 'react';
-import { Layout, Row, Col, Typography, Card, Button, Carousel } from 'antd';
+import { Layout, Row, Col, Typography, Card, Button, Carousel, Tag } from 'antd';
 import { RightOutlined } from '@ant-design/icons';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { usePageTitle } from '../../hooks/usePageTitle';
 import { gradients } from '../../utils/gradients';
+import { newsData } from '../News';  // 导入新闻数据
+import { getNewsTagColor } from '../../utils/newsHelpers';
 import './style.less';
 
 const { Content } = Layout;
@@ -39,6 +41,7 @@ const carouselData = [
 
 const Home: React.FC = () => {
   usePageTitle('首页');
+  const navigate = useNavigate();
 
   React.useEffect(() => {
     // 初始化时为第一个 slide 添加 active 类
@@ -47,6 +50,16 @@ const Home: React.FC = () => {
       firstSlide.classList.add('active');
     }
   }, []);
+
+  // 获取每种类型最新的新闻
+  const latestNews = {
+    featured: newsData.company[0],  // 公司新闻第一条作为特色新闻
+    list: [
+      newsData.company[1],  // 公司新闻第二条
+      newsData.industry[0], // 行业新闻第一条
+      newsData.training[0]  // 培训活动第一条
+    ]
+  };
 
   return (
     <Content>
@@ -146,47 +159,46 @@ const Home: React.FC = () => {
           <Col xs={24} lg={12}>
             <Card 
               className="featured-news"
-              style={{ background: gradients.techBlue }}
+              style={{ background: latestNews.featured.background }}
+              onClick={() => navigate(`/news/company/${latestNews.featured.id}`)}
             >
               <div className="news-image">
                 <div className="image-overlay" />
               </div>
               <div className="news-content">
-                <h3>中泰民安成功入选国家级"专精特新"企业名单</h3>
-                <p>近日，工信部公布2024年度"专精特新"企业名单，我公司凭借在智能制造领域的突出表现成功入选...</p>
-                <span className="news-date">2024-03-15</span>
+                <Tag color={getNewsTagColor(latestNews.featured.category)}>
+                  {latestNews.featured.category}
+                </Tag>
+                <h3>{latestNews.featured.title}</h3>
+                <p>{latestNews.featured.summary}</p>
+                <span className="news-date">{latestNews.featured.date}</span>
               </div>
             </Card>
           </Col>
           <Col xs={24} lg={12}>
             <div className="news-list">
-              <Card className="news-card">
-                <div className="news-card-content">
-                  <div className="news-info">
-                    <h3>公司与某大型制造企业达成战略合作</h3>
-                    <p>双方将在智能制造、数字化转型等领域展开深度合作，共同推动制造业升级...</p>
+              {latestNews.list.map((news, index) => (
+                <Card 
+                  key={index}
+                  className="news-card"
+                  onClick={() => {
+                    const category = news.category === '公司新闻' ? 'company' :
+                                   news.category === '行业新闻' ? 'industry' : 'training';
+                    navigate(`/news/${category}/${news.id}`);
+                  }}
+                >
+                  <div className="news-card-content">
+                    <div className="news-info">
+                      <Tag color={getNewsTagColor(news.category)}>
+                        {news.category}
+                      </Tag>
+                      <h3>{news.title}</h3>
+                      <p>{news.summary}</p>
+                    </div>
+                    <span className="news-date">{news.date}</span>
                   </div>
-                  <span className="news-date">2024-03-10</span>
-                </div>
-              </Card>
-              <Card className="news-card">
-                <div className="news-card-content">
-                  <div className="news-info">
-                    <h3>2024智能制造技术研讨会圆满举行</h3>
-                    <p>来自全国各地的行业专家齐聚一堂，共同探讨智能制造发展趋势与技术创新...</p>
-                  </div>
-                  <span className="news-date">2024-03-05</span>
-                </div>
-              </Card>
-              <Card className="news-card">
-                <div className="news-card-content">
-                  <div className="news-info">
-                    <h3>数字化转型实践培训课程开课</h3>
-                    <p>为期三天的培训课程涵盖数字化转型战略、技术实施等多个方面...</p>
-                  </div>
-                  <span className="news-date">2024-03-01</span>
-                </div>
-              </Card>
+                </Card>
+              ))}
             </div>
           </Col>
         </Row>

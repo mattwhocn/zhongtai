@@ -1,44 +1,109 @@
 @import '../../styles/theme.less';
 
 .news-page {
-  padding: 80px 0;
+  padding: 0 0 80px;
   
+  .news-banner {
+    height: 300px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    margin-top: 0;
+    padding-top: 64px;
+    
+    .banner-content {
+      position: relative;
+      z-index: 1;
+      color: #fff;
+      
+      h1 {
+        font-size: 36px;
+        margin-bottom: 16px;
+        color: #fff;
+      }
+      
+      p {
+        font-size: 16px;
+        opacity: 0.9;
+      }
+    }
+    
+    .tech-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: @tech-grid;
+      opacity: 0.1;
+    }
+  }
+
+  .tabs-wrapper {
+    position: relative;
+    background: #fff;
+    z-index: 900;
+    
+    .tabs-container {
+      width: 100%;
+      transition: all 0.3s ease;
+      
+      &.affix-active {
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        box-shadow: 0 1px 6px rgba(0, 0, 0, 0.06);
+      }
+      
+      .news-tabs {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 12px 24px;
+        
+        .ant-tabs-nav {
+          margin: 0;
+          
+          .ant-tabs-tab {
+            font-size: 16px;
+            padding: 8px 20px;
+            margin: 0 4px;
+            transition: all 0.3s ease;
+            
+            &:hover {
+              color: @gold;
+            }
+            
+            &.ant-tabs-tab-active {
+              .ant-tabs-tab-btn {
+                color: @gold;
+              }
+            }
+          }
+          
+          .ant-tabs-ink-bar {
+            background: @gold;
+            height: 2px;
+            border-radius: 2px;
+          }
+        }
+      }
+    }
+  }
+
   .news-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 24px;
+    padding: 24px;
     
-    .news-tabs {
-      .ant-tabs-nav {
-        margin-bottom: 40px;
-        
-        &::before {
-          border-bottom: none;
-        }
-        
-        .ant-tabs-tab {
-          font-size: 18px;
-          padding: 12px 24px;
-          margin: 0 8px;
-          transition: all 0.3s ease;
-          
-          &:hover {
-            color: @gold;
-          }
-          
-          &.ant-tabs-tab-active {
-            .ant-tabs-tab-btn {
-              color: @gold;
-            }
-          }
-        }
-        
-        .ant-tabs-ink-bar {
-          background: @gold;
-          height: 3px;
-          border-radius: 3px;
-        }
-      }
+    .news-content {
+      padding-top: 0;
+    }
+    
+    .ant-tabs-content {
+      padding: 0;
     }
     
     .news-card {
@@ -124,6 +189,13 @@
         .news-date {
           color: @gray-5;
           font-size: 14px;
+        }
+        
+        .ant-tag {
+          margin-bottom: 12px;
+          padding: 4px 12px;
+          font-size: 14px;
+          border: none;
         }
       }
     }

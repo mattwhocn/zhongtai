@@ -1,0 +1,82 @@
+@import '../../styles/theme.less';
+
+.sustainability-page {
+  padding: 64px 0 80px;
+  
+  section {
+    padding: 80px 0;
+    
+    &:nth-child(even) {
+      background: @gray-2;
+    }
+    
+    .section-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      
+      h2 {
+        color: @dark-blue;
+        margin-bottom: 48px;
+        position: relative;
+        
+        &::after {
+          content: '';
+          position: absolute;
+          left: 0;
+          bottom: -12px;
+          width: 60px;
+          height: 3px;
+          background: @gold;
+        }
+      }
+      
+      .ant-typography {
+        color: @gray-6;
+        font-size: 16px;
+        line-height: 1.8;
+      }
+      
+      .section-image {
+        height: 400px;
+        border-radius: 12px;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        
+        &:hover {
+          transform: translateY(-5px);
+          box-shadow: @box-shadow;
+        }
+        
+        .tech-overlay {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: @tech-grid;
+          opacity: 0.1;
+        }
+      }
+    }
+  }
+}
+
+// 响应式调整
+@media (max-width: 991px) {
+  .sustainability-page {
+    padding: 40px 0;
+    
+    section {
+      padding: 40px 0;
+      
+      .section-content {
+        .section-image {
+          height: 300px;
+          margin-bottom: 24px;
+        }
+      }
+    }
+  }
+} 

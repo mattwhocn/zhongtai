@@ -269,7 +269,7 @@
   }
   
   .featured-news {
-    height: 360px;
+    height: 100%;  // 设置为100%以填充整个列高度
     position: relative;
     border-radius: 8px;
     // 移除 overflow: hidden，仅保留在内容区
@@ -323,10 +323,21 @@
       }
       
       p {
-        color: rgba(255, 255, 255, 0.9);
-        font-size: 16px;
-        margin: 0;
+        color: @gray-6;
+        font-size: 14px;
         line-height: 1.6;
+        margin: 0 0 16px;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;  // 只显示一行
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+
+      .ant-tag {
+        padding: 4px 12px;
+        font-size: 14px;
+        border: none;
+        margin-bottom: 12px;
       }
     }
     
@@ -337,121 +348,62 @@
   }
   
   .news-list {
+    height: 100%;  // 确保列表容器高度与特色新闻一致
     display: flex;
     flex-direction: column;
-    height: 360px;
-    gap: 12px;
+    justify-content: space-between;  // 均匀分布卡片
     
     .news-card {
-      flex: 1;
-      margin: 0;
-      display: flex;
-      cursor: pointer;
-      border: 1px solid rgba(0, 0, 0, 0.06);
-      transition: all 0.3s ease;
+      flex: 1;  // 让每个卡片平均分配空间
+      margin-bottom: 16px;  // 卡片之间的间距
       
-      .ant-card-body {
-        flex: 1;
-        padding: 16px;
-        display: flex;
+      &:last-child {
+        margin-bottom: 0;  // 最后一个卡片不需要底部间距
       }
       
       .news-card-content {
-        flex: 1;
         display: flex;
         justify-content: space-between;
-        align-items: flex-start;
+        height: 100%;  // 确保内容填充整个卡片
         
         .news-info {
           flex: 1;
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-          padding-right: 16px;
           
           h3 {
             font-size: 16px;
-            margin-bottom: 8px;
-            line-height: 1.4;
+            margin: 0 0 8px;
             color: @dark-blue;
             transition: all 0.3s ease;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;  // 标题只显示一行
+            -webkit-box-orient: vertical;
+            overflow: hidden;
           }
           
           p {
-            font-size: 14px;
-            margin: 0;
-            line-height: 1.5;
             color: @gray-6;
+            font-size: 14px;
+            line-height: 1.6;
+            margin: 0 0 8px;
             display: -webkit-box;
-            -webkit-line-clamp: 2;
+            -webkit-line-clamp: 1;  // 摘要只显示一行
             -webkit-box-orient: vertical;
-            line-clamp: 2;
             overflow: hidden;
-            transition: all 0.3s ease;
+          }
+
+          .ant-tag {
+            padding: 4px 12px;
+            font-size: 14px;
+            border: none;
+            margin-bottom: 12px;
           }
         }
         
         .news-date {
           color: @gray-5;
           font-size: 14px;
-          white-space: nowrap;
-          transition: all 0.3s ease;
-        }
-      }
-      
-      // hover 态
-      &:hover {
-        transform: translateX(5px);
-        border-color: @gold;
-        background: rgba(250, 173, 20, 0.02);
-        box-shadow: @box-shadow;
-        
-        .news-info {
-          h3 {
-            color: @gold;
-          }
-          
-          p {
-            color: @gray-6;
-          }
-        }
-        
-        .news-date {
-          color: @gold;
-        }
-      }
-      
-      // 选中态
-      &.active {
-        border-color: @gold;
-        background: rgba(250, 173, 20, 0.05);
-        transform: translateX(5px);
-        
-        &::before {
-          content: '';
-          position: absolute;
-          left: -2px;
-          top: 0;
-          bottom: 0;
-          width: 3px;
-          background: @gold;
-          border-radius: 0 2px 2px 0;
-        }
-        
-        .news-info {
-          h3 {
-            color: @gold;
-            font-weight: 500;
-          }
-          
-          p {
-            color: @gray-6;
-          }
-        }
-        
-        .news-date {
-          color: @gold;
-          font-weight: 500;
+          flex-shrink: 0;  // 防止日期被压缩
+          margin-left: 16px;  // 与内容保持间距
         }
       }
     }
