@@ -60,10 +60,20 @@ const News: React.FC = () => {
   const [showAffix, setShowAffix] = useState(false);
   const [activeCategory, setActiveCategory] = useState<string>('全部');
   
-  // 根据分类筛选新闻
-  const filteredNews = activeCategory === '全部' 
-    ? newsData 
-    : newsData.filter(news => news.category === activeCategory);
+  // 根据当前 tab 获取对应的分类
+  const getCategoryByTab = (tab: string): NewsCategory => {
+    switch (tab) {
+      case 'company': return '公司新闻';
+      case 'industry': return '行业新闻';
+      case 'training': return '培训活动';
+      default: return '公司新闻';
+    }
+  };
+
+  // 根据当前 tab 筛选新闻
+  const filteredNews = newsData.filter(
+    news => news.category === getCategoryByTab(activeTab)
+  );
 
   useEffect(() => {
     const handleScroll = () => {
@@ -76,8 +86,8 @@ const News: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleNewsClick = (category: string, id: number) => {
-    navigate(`/news/${category}/${id}`);
+  const handleNewsClick = (id: number) => {
+    navigate(`/news/${id}`);
   };
 
   return (
@@ -120,7 +130,7 @@ const News: React.FC = () => {
                 <Col xs={24} sm={12} lg={8} key={news.id}>
                   <Card 
                     className="news-card"
-                    onClick={() => handleNewsClick(news.category, news.id)}
+                    onClick={() => handleNewsClick(news.id)}
                   >
                     <div 
                       className="news-image"
@@ -145,7 +155,7 @@ const News: React.FC = () => {
                 <Col xs={24} sm={12} lg={8} key={news.id}>
                   <Card 
                     className="news-card"
-                    onClick={() => handleNewsClick(news.category, news.id)}
+                    onClick={() => handleNewsClick(news.id)}
                   >
                     <div 
                       className="news-image"
@@ -170,7 +180,7 @@ const News: React.FC = () => {
                 <Col xs={24} sm={12} lg={8} key={news.id}>
                   <Card 
                     className="news-card"
-                    onClick={() => handleNewsClick(news.category, news.id)}
+                    onClick={() => handleNewsClick(news.id)}
                   >
                     <div 
                       className="news-image"

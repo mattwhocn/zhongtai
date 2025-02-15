@@ -160,7 +160,7 @@ const Home: React.FC = () => {
             <Card 
               className="featured-news"
               style={{ background: latestNews.featured.background }}
-              onClick={() => navigate(`/news/company/${latestNews.featured.id}`)}
+              onClick={() => navigate(`/news/${latestNews.featured.id}`)}
             >
               <div className="news-image">
                 <div className="image-overlay" />
@@ -176,11 +176,7 @@ const Home: React.FC = () => {
                 <Card 
                   key={index}
                   className="news-card"
-                  onClick={() => {
-                    const category = news.category === '公司新闻' ? 'company' :
-                                   news.category === '行业新闻' ? 'industry' : 'training';
-                    navigate(`/news/${category}/${news.id}`);
-                  }}
+                  onClick={() => navigate(`/news/${news.id}`)}
                 >
                   <div className="news-card-content">
                     <div className="news-info">

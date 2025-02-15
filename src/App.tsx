@@ -29,7 +29,7 @@ export const App: React.FC = () => {
             <Route path="/about" element={<About />} />
             <Route path="/business" element={<Business />} />
             <Route path="/news" element={<News />} />
-            <Route path="/news/:category/:id" element={<NewsDetail />} />
+            <Route path="/news/:id" element={<NewsDetail />} />
             <Route path="/sustainability" element={<Sustainability />} />
             <Route path="/career" element={<Career />} />
             <Route path="/contact" element={<Contact />} />
