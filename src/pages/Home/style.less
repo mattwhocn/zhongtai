@@ -269,7 +269,7 @@
   }
   
   .featured-news {
-    height: 100%;  // 设置为100%以填充整个列高度
+    height: 452px;  // 调整为右侧三个卡片的总高度 (140px * 3 + 16px * 2)
     position: relative;
     border-radius: 8px;
     // 移除 overflow: hidden，仅保留在内容区
@@ -328,7 +328,8 @@
         line-height: 1.6;
         margin: 0 0 16px;
         display: -webkit-box;
-        -webkit-line-clamp: 1;  // 只显示一行
+        -webkit-line-clamp: 1;
+        line-clamp: 1;
         -webkit-box-orient: vertical;
         overflow: hidden;
       }
@@ -354,56 +355,70 @@
     justify-content: space-between;  // 均匀分布卡片
     
     .news-card {
-      flex: 1;  // 让每个卡片平均分配空间
-      margin-bottom: 16px;  // 卡片之间的间距
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+      margin-bottom: 16px;
+      height: 140px;
+      overflow: hidden;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: pointer;
       
-      &:last-child {
-        margin-bottom: 0;  // 最后一个卡片不需要底部间距
+      &:hover {
+        transform: translateX(6px);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
       }
       
       .news-card-content {
+        height: 100%;
         display: flex;
-        justify-content: space-between;
-        height: 100%;  // 确保内容填充整个卡片
         
         .news-info {
           flex: 1;
           
           h3 {
             font-size: 16px;
-            margin: 0 0 8px;
             color: @dark-blue;
-            transition: all 0.3s ease;
+            margin-bottom: 12px;
+            line-height: 1.4;
             display: -webkit-box;
-            -webkit-line-clamp: 1;  // 标题只显示一行
+            -webkit-line-clamp: 1;
+            line-clamp: 1;
             -webkit-box-orient: vertical;
             overflow: hidden;
           }
           
-          p {
-            color: @gray-6;
+          .news-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 8px;
+            
+            .ant-tag {
+              margin: 0;
+            }
+            
+            .news-date {
+              color: @gray-5;
+              font-size: 13px;
+            }
+          }
+          
+          .news-summary {
             font-size: 14px;
-            line-height: 1.6;
-            margin: 0 0 8px;
+            color: @gray-7;
+            margin: 0;
             display: -webkit-box;
-            -webkit-line-clamp: 1;  // 摘要只显示一行
+            -webkit-line-clamp: 1;
+            line-clamp: 1;
             -webkit-box-orient: vertical;
             overflow: hidden;
-          }
-
-          .ant-tag {
-            padding: 4px 12px;
-            font-size: 14px;
-            border: none;
-            margin-bottom: 12px;
           }
         }
         
         .news-date {
+          font-size: 13px;
           color: @gray-5;
-          font-size: 14px;
-          flex-shrink: 0;  // 防止日期被压缩
-          margin-left: 16px;  // 与内容保持间距
         }
       }
     }
@@ -439,6 +454,34 @@
     
     &.slick-active {
       opacity: 1;
+    }
+  }
+}
+
+// 特色新闻的摘要
+.featured-news {
+  .news-content {
+    p {
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      line-clamp: 1;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+  }
+}
+
+// 新闻列表的标题和摘要
+.news-list {
+  .news-card {
+    .news-info {
+      h3, p {
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
     }
   }
 } 

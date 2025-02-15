@@ -166,12 +166,7 @@ const Home: React.FC = () => {
                 <div className="image-overlay" />
               </div>
               <div className="news-content">
-                <Tag color={getNewsTagColor(latestNews.featured.category)}>
-                  {latestNews.featured.category}
-                </Tag>
                 <h3>{latestNews.featured.title}</h3>
-                <p>{latestNews.featured.summary}</p>
-                <span className="news-date">{latestNews.featured.date}</span>
               </div>
             </Card>
           </Col>
@@ -189,13 +184,15 @@ const Home: React.FC = () => {
                 >
                   <div className="news-card-content">
                     <div className="news-info">
-                      <Tag color={getNewsTagColor(news.category)}>
-                        {news.category}
-                      </Tag>
                       <h3>{news.title}</h3>
-                      <p>{news.summary}</p>
+                      <div className="news-meta">
+                        <Tag color={getNewsTagColor(news.category)} bordered={false}>
+                          {news.category}
+                        </Tag>
+                        <span className="news-date">{news.date}</span>
+                      </div>
+                      <p className="news-summary">{news.summary}</p>
                     </div>
-                    <span className="news-date">{news.date}</span>
                   </div>
                 </Card>
               ))}
