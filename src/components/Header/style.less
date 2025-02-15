@@ -63,6 +63,10 @@
           background: @gold;
           transform: translate(-50%, -50%) rotate(45deg);
         }
+        
+        &:hover {
+          transform: none;
+        }
       }
       
       h3 {
@@ -77,16 +81,6 @@
         -webkit-background-clip: text;
         background-clip: text;
         -webkit-text-fill-color: transparent;
-      }
-      
-      &:hover .logo-mark {
-        &::before {
-          transform: rotate(225deg);
-        }
-        
-        &::after {
-          transform: translate(-50%, -50%) rotate(225deg);
-        }
       }
     }
     

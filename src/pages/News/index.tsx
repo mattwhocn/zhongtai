@@ -9,33 +9,61 @@ import './style.less';
 const { Content } = Layout;
 const { TabPane } = Tabs;
 
+type NewsCategory = '公司新闻' | '行业新闻' | '培训活动';
+
 // 生成指定数量的新闻数据
-const generateNewsData = (category: string, count: number) => {
-  return Array.from({ length: count }, (_, index) => ({
-    id: index + 1,
-    title: `${category}标题 ${index + 1}：这是一个示例新闻标题，编号 ${index + 1}`,
-    summary: `这是${category}摘要 ${index + 1}：这是一段示例新闻摘要文字，用于展示新闻内容的概要信息。这是一段示例新闻摘要文字，用于展示新闻内容的概要信息。`,
-    date: new Date(Date.now() - index * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
-    background: index % 4 === 0 ? gradients.techBlue :
-                index % 4 === 1 ? gradients.businessBlue :
-                index % 4 === 2 ? gradients.techMix :
-                gradients.techGold,
-    category: category
-  }));
+const generateNewsData = (count: number) => {
+  const categories: NewsCategory[] = ['公司新闻', '行业新闻', '培训活动'];
+  const titles: Record<NewsCategory, string[]> = {
+    '公司新闻': [
+      '中泰民安科技荣获2024年度科技创新奖',
+      '公司成功举办2024年度技术研讨会',
+      '我司与某知名企业达成战略合作',
+    ],
+    '行业新闻': [
+      '行业政策解读：XXXXX新规出台',
+      '2024年度行业发展趋势分析',
+      '全球技术创新发展报告解读',
+    ],
+    '培训活动': [
+      '2024年度员工培训计划启动',
+      '技术创新能力提升培训圆满结束',
+      '新员工入职培训顺利开展',
+    ]
+  };
+
+  return Array.from({ length: count }, (_, index) => {
+    const category = categories[index % 3] as NewsCategory;
+    const titleIndex = Math.floor(Math.random() * titles[category].length);
+    
+    return {
+      id: index + 1,
+      title: titles[category][titleIndex],
+      category: category,
+      date: new Date(Date.now() - index * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
+      summary: `这是一段关于${category}的示例摘要文字，用于展示新闻内容的概要信息。这是一段示例新闻摘要文字，用于展示新闻内容的概要信息。`,
+      background: index % 4 === 0 ? gradients.techBlue :
+                 index % 4 === 1 ? gradients.businessBlue :
+                 index % 4 === 2 ? gradients.techMix :
+                 gradients.techGold
+    };
+  });
 };
 
-// 新闻数据
-export const newsData = {
-  company: generateNewsData('公司新闻', 30),
-  industry: generateNewsData('行业新闻', 30),
-  training: generateNewsData('培训活动', 30)
-};
+// 生成90条新闻数据
+export const newsData = generateNewsData(90);
 
 const News: React.FC = () => {
   usePageTitle('新闻中心');
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('company');
   const [showAffix, setShowAffix] = useState(false);
+  const [activeCategory, setActiveCategory] = useState<string>('全部');
+  
+  // 根据分类筛选新闻
+  const filteredNews = activeCategory === '全部' 
+    ? newsData 
+    : newsData.filter(news => news.category === activeCategory);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -88,11 +116,11 @@ const News: React.FC = () => {
         <div className="news-content">
           {activeTab === 'company' && (
             <Row gutter={[24, 24]}>
-              {newsData.company.map(news => (
+              {filteredNews.map(news => (
                 <Col xs={24} sm={12} lg={8} key={news.id}>
                   <Card 
                     className="news-card"
-                    onClick={() => handleNewsClick('company', news.id)}
+                    onClick={() => handleNewsClick(news.category, news.id)}
                   >
                     <div 
                       className="news-image"
@@ -113,11 +141,11 @@ const News: React.FC = () => {
           )}
           {activeTab === 'industry' && (
             <Row gutter={[24, 24]}>
-              {newsData.industry.map(news => (
+              {filteredNews.map(news => (
                 <Col xs={24} sm={12} lg={8} key={news.id}>
                   <Card 
                     className="news-card"
-                    onClick={() => handleNewsClick('industry', news.id)}
+                    onClick={() => handleNewsClick(news.category, news.id)}
                   >
                     <div 
                       className="news-image"
@@ -138,11 +166,11 @@ const News: React.FC = () => {
           )}
           {activeTab === 'training' && (
             <Row gutter={[24, 24]}>
-              {newsData.training.map(news => (
+              {filteredNews.map(news => (
                 <Col xs={24} sm={12} lg={8} key={news.id}>
                   <Card 
                     className="news-card"
-                    onClick={() => handleNewsClick('training', news.id)}
+                    onClick={() => handleNewsClick(news.category, news.id)}
                   >
                     <div 
                       className="news-image"

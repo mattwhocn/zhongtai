@@ -53,12 +53,12 @@ const Home: React.FC = () => {
 
   // 获取每种类型最新的新闻
   const latestNews = {
-    featured: newsData.company[0],  // 公司新闻第一条作为特色新闻
+    featured: newsData.find(news => news.category === '公司新闻')!,  // 添加非空断言
     list: [
-      newsData.company[1],  // 公司新闻第二条
-      newsData.industry[0], // 行业新闻第一条
-      newsData.training[0]  // 培训活动第一条
-    ]
+      newsData.filter(news => news.category === '公司新闻')[1]!,     // 添加非空断言
+      newsData.find(news => news.category === '行业新闻')!,          // 添加非空断言
+      newsData.find(news => news.category === '培训活动')!           // 添加非空断言
+    ].filter(Boolean)  // 过滤掉可能的 undefined
   };
 
   return (

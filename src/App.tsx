@@ -1,6 +1,7 @@
-import { Layout } from 'antd';
+import { Layout, BackTop } from 'antd';
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { UpOutlined } from '@ant-design/icons';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -35,6 +36,11 @@ export const App: React.FC = () => {
           </Routes>
         </Content>
         <Footer />
+        <BackTop>
+          <div className="back-to-top">
+            <UpOutlined />
+          </div>
+        </BackTop>
       </Layout>
     </BrowserRouter>
   );
