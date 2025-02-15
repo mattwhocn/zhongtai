@@ -76,14 +76,22 @@
         border: none;
         
         .ant-collapse-item {
-          margin-bottom: 16px;
-          border: 1px solid @gray-4;
-          border-radius: 8px;
+          margin-bottom: 12px;
+          border: none;
+          border-radius: 12px;
           overflow: hidden;
+          background: #fff;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+          transition: all 0.3s ease;
+          
+          &:hover {
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+          }
           
           .ant-collapse-header {
             background: #fff;
-            padding: 24px;
+            padding: 20px 24px;
             
             .job-header {
               display: flex;
@@ -94,36 +102,64 @@
               .job-title {
                 h3 {
                   font-size: 18px;
-                  margin: 0 0 12px;
+                  margin: 0 0 8px;
                   color: @dark-blue;
+                  font-weight: 500;
                 }
                 
                 .ant-tag {
-                  margin: 4px;
+                  margin: 4px 8px 4px 0;
+                  padding: 4px 12px;
+                  border: none;
+                  border-radius: 4px;
+                  font-size: 13px;
+                  
+                  &:last-child {
+                    margin-right: 0;
+                  }
+                }
+              }
+              
+              .ant-btn {
+                border-radius: 6px;
+                height: 36px;
+                padding: 0 20px;
+                font-size: 14px;
+                font-weight: 500;
+                
+                &:hover {
+                  transform: translateY(-1px);
+                  box-shadow: 0 4px 12px rgba(24, 144, 255, 0.15);
                 }
               }
             }
           }
           
           .ant-collapse-content {
+            border-top: 1px solid @gray-3;
+            
             .job-detail {
-              padding: 24px;
-              background: @gray-2;
+              padding: 20px 24px;
+              background: linear-gradient(to bottom, #fff, @gray-2);
               
               .job-tags {
                 margin-bottom: 16px;
                 
                 .ant-tag {
                   padding: 4px 12px;
-                  font-size: 14px;
+                  font-size: 13px;
+                  border: none;
+                  background: rgba(0, 0, 0, 0.04);
+                  color: @gray-7;
                 }
               }
               
               .job-description {
-                color: @gray-6;
+                color: @gray-7;
                 font-size: 14px;
                 line-height: 1.8;
                 margin: 0;
+                white-space: pre-line;
               }
             }
           }

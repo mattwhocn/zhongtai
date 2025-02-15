@@ -45,13 +45,27 @@ const Footer: React.FC = () => {
               <Row gutter={24}>
                 <Col span={12}>
                   <div className="qr-code">
-                    <img src="https://via.placeholder.com/120" alt="微信二维码" />
+                    <div className="qr-code-placeholder">
+                      <div className="qr-code-inner">
+                        <div className="qr-code-square" />
+                        <div className="qr-code-square" />
+                        <div className="qr-code-square" />
+                        <div className="qr-code-square" />
+                      </div>
+                    </div>
                     <p>微信公众号</p>
                   </div>
                 </Col>
                 <Col span={12}>
                   <div className="qr-code">
-                    <img src="https://via.placeholder.com/120" alt="抖音二维码" />
+                    <div className="qr-code-placeholder">
+                      <div className="qr-code-inner">
+                        <div className="qr-code-square" />
+                        <div className="qr-code-square" />
+                        <div className="qr-code-square" />
+                        <div className="qr-code-square" />
+                      </div>
+                    </div>
                     <p>抖音号</p>
                   </div>
                 </Col>
@@ -62,11 +76,10 @@ const Footer: React.FC = () => {
           <Col xs={24} md={8}>
             <div className="footer-section">
               <h3>公司简介</h3>
-              <img 
-                src="https://via.placeholder.com/200x60" 
-                alt="公司logo" 
-                className="company-logo"
-              />
+              <div className="logo">
+                <div className="logo-mark" />
+                <h3>中泰民安</h3>
+              </div>
               <p className="company-desc">
                 xxxxxxxxxxxxxxxxxxxxxxxx
               </p>
