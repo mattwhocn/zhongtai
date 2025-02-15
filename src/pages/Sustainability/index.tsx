@@ -31,6 +31,18 @@ const Sustainability: React.FC = () => {
 
   return (
     <Content className="sustainability-page">
+      {/* 顶部 Banner */}
+      <div 
+        className="page-banner"
+        style={{ background: gradients.techBlue }}
+      >
+        <div className="banner-content">
+          <h1>可持续发展</h1>
+          <p>创新科技，绿色发展，共创美好未来</p>
+        </div>
+        <div className="tech-overlay" />
+      </div>
+
       {/* 可持续发展战略 */}
       <section className="section-strategy">
         <div className="section-content">
