@@ -108,7 +108,7 @@ const Home: React.FC = () => {
             <div className="intro-content">
               <Title level={2}>公司简介</Title>
               <Paragraph className="intro-description">
-                中泰民安科技有限公司成立于xxxx年，是一家专注于xxxxxxxxxxxxxxxxx的企业。
+                中泰民安成立于xxxx年，是一家专注于xxxxxxxxxxxxxxxxx的企业。
                 xx余年来，公司始终坚持"xxxxxxxx"的理念
               </Paragraph>
               <div className="intro-highlights">

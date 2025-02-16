@@ -11,7 +11,7 @@ const { Title, Paragraph } = Typography;
 // 公司简介数据
 const companyProfile = {
   title: '公司简介',
-  content: `中泰民安科技有限公司成立于xxxxx年，是一家企业。中泰民安科技有限公司成立于xxxxx年，是一家企业。中泰民安科技有限公司成立于xxxxx年，是一家企业。中泰民安科技有限公司成立于xxxxx年，是一家企业。`,
+  content: `中泰民安成立于xxxxx年，是一家企业。中泰民安成立于xxxxx年，是一家企业。中泰民安成立于xxxxx年，是一家企业。中泰民安成立于xxxxx年，是一家企业。`,
   background: gradients.techBlue
 };
 

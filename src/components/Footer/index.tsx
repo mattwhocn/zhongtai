@@ -34,7 +34,7 @@ const Footer: React.FC = () => {
                 target="_blank" 
                 rel="noopener noreferrer"
               >
-                在百度地图中查看
+                在百度地图中查看位置
               </a>
             </div>
           </Col>
@@ -98,7 +98,7 @@ const Footer: React.FC = () => {
             ))}
           </Space>
           <p className="copyright">
-            © {new Date().getFullYear()} 公司名称. All Rights Reserved.
+            © {new Date().getFullYear()} 中泰民安. All Rights Reserved.
           </p>
         </div>
       </div>
