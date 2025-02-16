@@ -13,6 +13,7 @@ import Sustainability from './pages/Sustainability';
 import Career from './pages/Career';
 import Contact from './pages/Contact';
 import NewsDetail from './pages/News/Detail';
+import ScrollToTop from './components/ScrollToTop';
 
 import './styles/app.less';
 
@@ -21,6 +22,7 @@ const { Content } = Layout;
 export const App: React.FC = () => {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Layout className="app-container">
         <Header />
         <Content className="app-content">
