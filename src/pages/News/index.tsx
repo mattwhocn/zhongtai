@@ -94,7 +94,7 @@ const News: React.FC = () => {
     <Content className="news-page">
       {/* 顶部配图 */}
       <div 
-        className="news-banner"
+        className="page-banner"
         style={{ background: gradients.techBlue }}
       >
         <div className="banner-content">

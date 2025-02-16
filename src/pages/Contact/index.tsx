@@ -23,7 +23,7 @@ const Contact: React.FC = () => {
     <Content className="contact-page">
       {/* 顶部横幅 */}
       <div 
-        className="contact-banner"
+        className="page-banner"
         style={{ background: gradients.techBlue }}
       >
         <div className="banner-content">

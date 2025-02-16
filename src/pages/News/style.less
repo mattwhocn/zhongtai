@@ -1,45 +1,11 @@
 @import '../../styles/theme.less';
+@import '../../styles/common.less';
 
 .news-page {
   padding: 0 0 80px;
   
-  .news-banner {
-    height: 300px;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    overflow: hidden;
-    margin-top: 0;
-    padding-top: 64px;
-    
-    .banner-content {
-      position: relative;
-      z-index: 1;
-      color: #fff;
-      
-      h1 {
-        font-size: 36px;
-        margin-bottom: 16px;
-        color: #fff;
-      }
-      
-      p {
-        font-size: 16px;
-        opacity: 0.9;
-      }
-    }
-    
-    .tech-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: @tech-grid;
-      opacity: 0.1;
-    }
+  .page-banner {
+    &:extend(.page-banner all);
   }
 
   .tabs-wrapper {

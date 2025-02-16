@@ -1,0 +1,57 @@
+@import './theme.less';
+
+// 添加通用的 banner 样式
+.page-banner {
+  height: 280px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  
+  .banner-content {
+    position: relative;
+    z-index: 1;
+    color: #fff;
+    
+    h1 {
+      font-size: 32px;
+      font-weight: 600;
+      margin: 0 0 12px;
+      color: #fff;
+    }
+    
+    p {
+      font-size: 16px;
+      margin: 0;
+      opacity: 0.9;
+    }
+  }
+  
+  .tech-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: @tech-grid;
+    opacity: 0.1;
+  }
+}
+
+// 响应式调整
+@media (max-width: 768px) {
+  .page-banner {
+    height: 200px;
+    
+    .banner-content {
+      h1 {
+        font-size: 28px;
+      }
+      
+      p {
+        font-size: 14px;
+      }
+    }
+  }
+} 

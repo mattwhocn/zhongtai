@@ -154,7 +154,7 @@ const Career: React.FC = () => {
     <Content className="career-page">
       {/* 顶部横幅 */}
       <div 
-        className="career-banner"
+        className="page-banner"
         style={{ background: gradients.techBlue }}
       >
         <div className="banner-content">
