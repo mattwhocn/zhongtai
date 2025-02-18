@@ -6,6 +6,9 @@ import { usePageTitle } from '../../hooks/usePageTitle';
 import { gradients } from '../../utils/gradients';
 import { newsData } from '../News';  // 导入新闻数据
 import { getNewsTagColor } from '../../utils/newsHelpers';
+import banner1 from '../../assets/images/banner/banner1.png';
+import banner2 from '../../assets/images/banner/banner2.png';
+import banner3 from '../../assets/images/banner/banner3.png';
 import './style.less';
 
 const { Content } = Layout;
@@ -17,25 +20,19 @@ const carouselData = [
     id: 1,
     title: '这是第一页',
     desc: '这是第一页的描述文案这是第一页的描述文案',
-    background: gradients.techBlue,
+    background: banner1,
   },
   {
     id: 2,
     title: '这是第二页',
     desc: '这是第二页的描述文案这是第二页的描述文案',
-    background: gradients.businessBlue,
+    background: banner2,
   },
   {
     id: 3,
     title: '这是第三页',
     desc: '这是第三页的描述文案这是第三页的描述文案',
-    background: gradients.techMix,
-  },
-  {
-    id: 4,
-    title: '这是第四页',
-    desc: '这是第四页的描述文案这是第四页的描述文案',
-    background: gradients.techGold,
+    background: banner3,
   },
 ];
 
@@ -132,10 +129,12 @@ const Home: React.FC = () => {
         {carouselData.map((item, index) => (
           <div key={item.id}>
             <div className={`carousel-item carousel-item-${index}`}>
-              <div 
-                className="carousel-content"
-                style={{ background: item.background }}
-              >
+              <div className="carousel-content">
+                <img 
+                  src={item.background} 
+                  alt={item.title}
+                  className="carousel-image"
+                />
                 <div className="carousel-text">
                   <h2>{item.title}</h2>
                   <p>{item.desc}</p>
