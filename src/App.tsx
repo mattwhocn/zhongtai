@@ -14,6 +14,8 @@ import Career from './pages/Career';
 import Contact from './pages/Contact';
 import NewsDetail from './pages/News/Detail';
 import ScrollToTop from './components/ScrollToTop';
+import AdminUpload from './pages/Admin/Upload';
+import AdminAuth from './components/AdminAuth';
 
 import './styles/app.less';
 
@@ -35,6 +37,14 @@ export const App: React.FC = () => {
             <Route path="/sustainability" element={<Sustainability />} />
             <Route path="/career" element={<Career />} />
             <Route path="/contact" element={<Contact />} />
+            <Route 
+              path="/admin/upload" 
+              element={
+                <AdminAuth>
+                  <AdminUpload />
+                </AdminAuth>
+              } 
+            />
           </Routes>
         </Content>
         <Footer />

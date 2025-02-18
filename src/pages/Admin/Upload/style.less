@@ -1,0 +1,45 @@
+@import '../../../styles/theme.less';
+
+.admin-upload-page {
+  padding: 40px;
+  min-height: calc(100vh - 64px);
+  background: @gray-2;
+
+  .upload-card {
+    max-width: 800px;
+    margin: 0 auto;
+    border-radius: 8px;
+    box-shadow: @box-shadow;
+
+    .ant-card-head-title {
+      font-size: 20px;
+      color: @dark-blue;
+    }
+
+    .ant-upload-drag {
+      background: #fff;
+      border: 2px dashed @gray-4;
+      border-radius: 8px;
+      transition: all 0.3s;
+
+      &:hover {
+        border-color: @gold;
+      }
+
+      .ant-upload-text {
+        color: @dark-blue;
+        font-size: 16px;
+        margin: 16px 0 8px;
+      }
+
+      .ant-upload-hint {
+        color: @gray-6;
+      }
+
+      .anticon {
+        color: @gold;
+        font-size: 48px;
+      }
+    }
+  }
+} 
