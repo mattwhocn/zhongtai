@@ -89,34 +89,50 @@
 }
 
 .company-intro {
-  padding: 60px 24px;
-  max-width: 1200px;
-  margin: 0 auto;
+  padding: 80px 0;
   
   .intro-content {
-    h2 {
-      color: @dark-blue;
-      margin-bottom: 24px;
-      position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    
+    .section-header {
+      &:extend(.section-header all);
       
-      &::after {
-        content: '';
-        position: absolute;
-        left: 0;
-        bottom: -8px;
-        width: 60px;
-        height: 3px;
-        background: @gold;
+      h2 {
+        font-size: 32px;  // 强制设置字号
       }
     }
     
-    .intro-description {
+    .intro-image {
+      height: 360px;
+      border-radius: 12px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: @box-shadow;
+      }
+      
+      .tech-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: @tech-grid;
+        opacity: 0.1;
+      }
+    }
+    
+    .ant-typography {
       color: @gray-6;
       font-size: 16px;
       line-height: 1.8;
-      margin-bottom: 32px;
     }
-    
+
     .intro-highlights {
       margin: 24px 0;
 
@@ -137,86 +153,16 @@
       }
     }
   }
-  
-  .intro-image-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-    .intro-image-container {
-      position: relative;
-      width: 100%;
-      max-width: 600px;
-      height: 400px;
-      background-size: 400px 400px !important;
-      transition: all 0.3s ease;
-      
-      &::before {
-        content: '';
-        position: absolute;
-        top: -10px;
-        left: -10px;
-        right: 10px;
-        bottom: 10px;
-        background: @tech-grid;
-        background-size: 20px 20px;
-        opacity: 0.1;
-        z-index: 1;
-      }
-      
-      .intro-image {
-        width: 100%;
-        height: auto;
-        position: relative;
-        z-index: 2;
-        border: 1px solid rgba(0, 80, 179, 0.1);
-        box-shadow: @box-shadow;
-      }
-      
-      .image-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: linear-gradient(
-          45deg,
-          rgba(0, 80, 179, 0.05),
-          transparent
-        );
-        z-index: 3;
-      }
-      
-      .tech-border {
-        position: absolute;
-        top: 10px;
-        left: 10px;
-        right: -10px;
-        bottom: -10px;
-        border: 1px solid @gold;
-        opacity: 0.3;
-        z-index: 1;
-      }
-      
-      &:hover {
-        transform: translateY(-5px);
-        box-shadow: @box-shadow;
-        
-        .tech-border {
-          opacity: 0.5;
-        }
-      }
-    }
-  }
 }
 
 // 响应式调整
 @media (max-width: 991px) {
   .company-intro {
-    padding: 40px 24px;
-    
     .intro-content {
-      margin-bottom: 40px;
+      .intro-image {
+        height: 280px;
+        margin-top: 24px;
+      }
     }
   }
 }
@@ -224,8 +170,11 @@
 .news-section {
   padding: 80px 0;
   background: #fff;
-  max-width: 1200px;
-  margin: 0 auto;
+  .section-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
   
   .section-header {
     display: flex;

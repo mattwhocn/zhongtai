@@ -54,4 +54,46 @@
       }
     }
   }
+}
+
+// 添加通用的标题样式
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  
+  h2 {
+    color: @dark-blue;
+    font-size: 32px;
+    margin: 0;
+    position: relative;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -8px;
+      width: 60px;
+      height: 3px;
+      background: @gold;
+    }
+  }
+  
+  .view-more {
+    display: flex;
+    align-items: center;
+    color: @gray-6;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    
+    .anticon {
+      margin-left: 4px;
+      font-size: 12px;
+    }
+    
+    &:hover {
+      color: @gold;
+    }
+  }
 } 

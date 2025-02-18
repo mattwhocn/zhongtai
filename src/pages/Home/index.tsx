@@ -171,13 +171,15 @@ const Home: React.FC = () => {
 
       {/* 公司简介 */}
       <section className="company-intro">
-        <Row gutter={[48, 48]}>
-          <Col xs={24} md={12}>
-            <div className="intro-content">
-              <Title level={2}>公司简介</Title>
-              <Paragraph className="intro-description">
-                中泰民安成立于xxxx年，是一家专注于xxxxxxxxxxxxxxxxx的企业。
-                xx余年来，公司始终坚持"xxxxxxxx"的理念
+        <div className="intro-content">
+          <div className="section-header">
+            <Title level={2}>公司简介</Title>
+          </div>
+          <Row gutter={[48, 48]} align="middle">
+            <Col xs={24} lg={12}>
+              <Paragraph>
+                中泰民安成立于xxxxx年，是一家企业。中泰民安成立于xxxxx年，是一家企业。
+                中泰民安成立于xxxxx年，是一家企业。中泰民安成立于xxxxx年，是一家企业。
               </Paragraph>
               <div className="intro-highlights">
                 <div className="highlight-item">
@@ -202,67 +204,69 @@ const Home: React.FC = () => {
                   了解更多 <RightOutlined />
                 </Button>
               </Link>
-            </div>
-          </Col>
-          <Col xs={24} md={12}>
-            <div 
-              className="intro-image"
-              style={{ background: gradients.premiumGray }}
-            >
-              <div className="tech-overlay" />
-            </div>
-          </Col>
-        </Row>
+            </Col>
+            <Col xs={24} lg={12}>
+              <div 
+                className="intro-image"
+                style={{ background: gradients.techBlue }}
+              >
+                <div className="tech-overlay" />
+              </div>
+            </Col>
+          </Row>
+        </div>
       </section>
 
       {/* 新闻动态 */}
       <section className="news-section">
-        <div className="section-header">
-          <Title level={2}>新闻动态</Title>
-          <Link to="/news" className="view-more">
-            查看更多 <RightOutlined />
-          </Link>
-        </div>
-        <Row gutter={[24, 24]}>
-          <Col xs={24} lg={12}>
-            <Card 
-              className="featured-news"
-              style={{ background: latestNews.featured.background }}
-              onClick={() => navigate(`/news/${latestNews.featured.id}`)}
-            >
-              <div className="news-image">
-                <div className="image-overlay" />
-              </div>
-              <div className="news-content">
-                <h3>{latestNews.featured.title}</h3>
-              </div>
-            </Card>
-          </Col>
-          <Col xs={24} lg={12}>
-            <div className="news-list">
-              {latestNews.list.map((news, index) => (
-                <Card 
-                  key={index}
-                  className="news-card"
-                  onClick={() => navigate(`/news/${news.id}`)}
-                >
-                  <div className="news-card-content">
-                    <div className="news-info">
-                      <h3>{news.title}</h3>
-                      <div className="news-meta">
-                        <Tag color={getNewsTagColor(news.category)} bordered={false}>
-                          {news.category}
-                        </Tag>
-                        <span className="news-date">{news.date}</span>
+        <div className="section-content">
+          <div className="section-header">
+            <Title level={2}>新闻动态</Title>
+            <Link to="/news" className="view-more">
+              查看更多 <RightOutlined />
+            </Link>
+          </div>
+          <Row gutter={[24, 24]}>
+            <Col xs={24} lg={12}>
+              <Card 
+                className="featured-news"
+                style={{ background: latestNews.featured.background }}
+                onClick={() => navigate(`/news/${latestNews.featured.id}`)}
+              >
+                <div className="news-image">
+                  <div className="image-overlay" />
+                </div>
+                <div className="news-content">
+                  <h3>{latestNews.featured.title}</h3>
+                </div>
+              </Card>
+            </Col>
+            <Col xs={24} lg={12}>
+              <div className="news-list">
+                {latestNews.list.map((news, index) => (
+                  <Card 
+                    key={index}
+                    className="news-card"
+                    onClick={() => navigate(`/news/${news.id}`)}
+                  >
+                    <div className="news-card-content">
+                      <div className="news-info">
+                        <h3>{news.title}</h3>
+                        <div className="news-meta">
+                          <Tag color={getNewsTagColor(news.category)} bordered={false}>
+                            {news.category}
+                          </Tag>
+                          <span className="news-date">{news.date}</span>
+                        </div>
+                        <p className="news-summary">{news.summary}</p>
                       </div>
-                      <p className="news-summary">{news.summary}</p>
                     </div>
-                  </div>
-                </Card>
-              ))}
-            </div>
-          </Col>
-        </Row>
+                  </Card>
+                ))}
+              </div>
+            </Col>
+          </Row>
+        </div>
       </section>
     </Content>
   );
