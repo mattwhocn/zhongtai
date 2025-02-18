@@ -247,11 +247,15 @@ const Home: React.FC = () => {
                   <Card 
                     key={index}
                     className="news-card"
-                    onClick={() => navigate(`/news/${news.id}`)}
                   >
                     <div className="news-card-content">
                       <div className="news-info">
-                        <h3>{news.title}</h3>
+                        <div className="news-header">
+                          <h3>{news.title}</h3>
+                          <Link to={`/news/${news.id}`} className="view-detail">
+                            查看详情 <RightOutlined />
+                          </Link>
+                        </div>
                         <div className="news-meta">
                           <Tag color={getNewsTagColor(news.category)} bordered={false}>
                             {news.category}
