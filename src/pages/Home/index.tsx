@@ -82,6 +82,8 @@ const businessShowcase = [
 const Home: React.FC = () => {
   usePageTitle('首页');
   const navigate = useNavigate();
+  // 添加悬停状态
+  const [hoveredNews, setHoveredNews] = React.useState<typeof latestNews.featured | null>(null);
 
   React.useEffect(() => {
     // 初始化时为第一个 slide 添加 active 类
@@ -100,6 +102,9 @@ const Home: React.FC = () => {
       newsData.find(news => news.category === '培训活动')!           // 添加非空断言
     ].filter(Boolean)  // 过滤掉可能的 undefined
   };
+
+  // 获取当前显示的新闻
+  const displayedNews = hoveredNews || latestNews.featured;
 
   return (
     <Content className="home-page">
@@ -230,14 +235,14 @@ const Home: React.FC = () => {
             <Col xs={24} lg={12}>
               <Card 
                 className="featured-news"
-                style={{ background: latestNews.featured.background }}
-                onClick={() => navigate(`/news/${latestNews.featured.id}`)}
+                style={{ background: displayedNews.background }}
+                onClick={() => navigate(`/news/${displayedNews.id}`)}
               >
                 <div className="news-image">
                   <div className="image-overlay" />
                 </div>
                 <div className="news-content">
-                  <h3>{latestNews.featured.title}</h3>
+                  <h3>{displayedNews.title}</h3>
                 </div>
               </Card>
             </Col>
@@ -247,6 +252,8 @@ const Home: React.FC = () => {
                   <Card 
                     key={index}
                     className="news-card"
+                    onMouseEnter={() => setHoveredNews(news)}
+                    onMouseLeave={() => setHoveredNews(null)}
                   >
                     <div className="news-card-content">
                       <div className="news-info">
