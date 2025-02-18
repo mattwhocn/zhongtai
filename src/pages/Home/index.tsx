@@ -39,6 +39,46 @@ const carouselData = [
   },
 ];
 
+// 业务展示数据
+const businessShowcase = [
+  {
+    id: 1,
+    title: '智能安防',
+    desc: '提供专业的智能安防解决方案',
+    background: gradients.techBlue
+  },
+  {
+    id: 2,
+    title: '消防培训',
+    desc: '专业的消防安全培训服务',
+    background: gradients.techGold
+  },
+  {
+    id: 3,
+    title: '应急救援',
+    desc: '快速响应的应急救援服务',
+    background: gradients.businessBlue
+  },
+  {
+    id: 4,
+    title: '设备维护',
+    desc: '全方位的安防设备维护',
+    background: gradients.techMix
+  },
+  {
+    id: 5,
+    title: '系统集成',
+    desc: '一站式安防系统集成服务',
+    background: gradients.premiumGray
+  },
+  {
+    id: 6,
+    title: '技术咨询',
+    desc: '专业的安防技术咨询服务',
+    background: gradients.techBlue
+  }
+];
+
 const Home: React.FC = () => {
   usePageTitle('首页');
   const navigate = useNavigate();
@@ -62,7 +102,7 @@ const Home: React.FC = () => {
   };
 
   return (
-    <Content>
+    <Content className="home-page">
       {/* 轮播图 */}
       <Carousel 
         autoplay 
@@ -100,6 +140,34 @@ const Home: React.FC = () => {
           </div>
         ))}
       </Carousel>
+
+      {/* 业务展示 */}
+      <section className="business-showcase">
+        <div className="section-content">
+          <div className="section-header">
+            <Title level={2}>业务展示</Title>
+            <Link to="/business" className="view-more">
+              查看更多 <RightOutlined />
+            </Link>
+          </div>
+          <Row gutter={[24, 24]}>
+            {businessShowcase.map(item => (
+              <Col xs={24} sm={12} md={8} key={item.id}>
+                <Card 
+                  className="showcase-card"
+                  style={{ background: item.background }}
+                >
+                  <div className="tech-overlay" />
+                  <div className="card-content">
+                    <h3>{item.title}</h3>
+                    <p>{item.desc}</p>
+                  </div>
+                </Card>
+              </Col>
+            ))}
+          </Row>
+        </div>
+      </section>
 
       {/* 公司简介 */}
       <section className="company-intro">
