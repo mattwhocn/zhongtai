@@ -9,6 +9,12 @@ import { getNewsTagColor } from '../../utils/newsHelpers';
 import banner1 from '../../assets/images/banner/banner1.png';
 import banner2 from '../../assets/images/banner/banner2.png';
 import banner3 from '../../assets/images/banner/banner3.png';
+import business1 from '../../assets/images/business/business1.png';
+import business2 from '../../assets/images/business/business2.jpg';
+import business3 from '../../assets/images/business/business3.png';
+import business4 from '../../assets/images/business/business4.png';
+import business5 from '../../assets/images/business/business5.jpg';
+import business6 from '../../assets/images/business/business6.jpg';
 import './style.less';
 
 const { Content } = Layout;
@@ -18,21 +24,21 @@ const { Title, Paragraph } = Typography;
 const carouselData = [
   {
     id: 1,
-    title: '这是第一页',
+    title: '让城市更安全，让文明更韧性',
     desc: '这是第一页的描述文案这是第一页的描述文案',
-    background: banner1,
+    image: banner1,
   },
   {
     id: 2,
-    title: '这是第二页',
+    title: '兴泰启航，科技护疆',
     desc: '这是第二页的描述文案这是第二页的描述文案',
-    background: banner2,
+    image: banner2,
   },
   {
     id: 3,
-    title: '这是第三页',
+    title: '兴宾育才，安全未来',
     desc: '这是第三页的描述文案这是第三页的描述文案',
-    background: banner3,
+    image: banner3,
   },
 ];
 
@@ -40,39 +46,39 @@ const carouselData = [
 const businessShowcase = [
   {
     id: 1,
-    title: '智能安防',
-    desc: '提供专业的智能安防解决方案',
-    background: gradients.techBlue
+    title: '电子沙盘',
+    desc: '电子沙盘平台',
+    image: business1,
   },
   {
     id: 2,
-    title: '消防培训',
-    desc: '专业的消防安全培训服务',
-    background: gradients.techGold
+    title: '维和平台',
+    desc: '维和指挥控制平台',
+    image: business2,
   },
   {
     id: 3,
-    title: '应急救援',
-    desc: '快速响应的应急救援服务',
-    background: gradients.businessBlue
+    title: '保安培训',
+    desc: '保安考试培训',
+    image: business3,
   },
   {
     id: 4,
-    title: '设备维护',
-    desc: '全方位的安防设备维护',
-    background: gradients.techMix
+    title: '消防培训',
+    desc: '泰康消防培训',
+    image: business4,
   },
   {
     id: 5,
-    title: '系统集成',
-    desc: '一站式安防系统集成服务',
-    background: gradients.premiumGray
+    title: '医院保安项目',
+    desc: '医院保安项目',
+    image: business5,
   },
   {
     id: 6,
-    title: '技术咨询',
-    desc: '专业的安防技术咨询服务',
-    background: gradients.techBlue
+    title: '抗洪救灾项目',
+    desc: '抗洪救灾项目',
+    image: business6,
   }
 ];
 
@@ -131,7 +137,7 @@ const Home: React.FC = () => {
             <div className={`carousel-item carousel-item-${index}`}>
               <div className="carousel-content">
                 <img 
-                  src={item.background} 
+                  src={item.image} 
                   alt={item.title}
                   className="carousel-image"
                 />
@@ -157,16 +163,15 @@ const Home: React.FC = () => {
           <Row gutter={[24, 24]}>
             {businessShowcase.map(item => (
               <Col xs={24} sm={12} md={8} key={item.id}>
-                <Card 
-                  className="showcase-card"
-                  style={{ background: item.background }}
-                >
-                  <div className="tech-overlay" />
+                <div className="showcase-card">
+                  <div className="tech-overlay">
+                    <img src={item.image} alt={item.title} />
+                  </div>
                   <div className="card-content">
                     <h3>{item.title}</h3>
                     <p>{item.desc}</p>
                   </div>
-                </Card>
+                </div>
               </Col>
             ))}
           </Row>

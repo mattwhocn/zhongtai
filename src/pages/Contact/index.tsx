@@ -40,7 +40,7 @@ const Contact: React.FC = () => {
           <div className="info-cards">
             <Card className="info-card">
               <EnvironmentOutlined />
-              <h3>公司地址</h3>
+              <h3>集团地址</h3>
               <p>{contactInfo.address}</p>
             </Card>
             <Card className="info-card">

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Layout, Menu } from 'antd';
 import { Link, useLocation } from 'react-router-dom';
+import logo from '../../assets/images/logo.png'
 import './style.less';
 
 const { Header: AntHeader } = Layout;
@@ -26,7 +27,9 @@ const Header: React.FC = () => {
     <AntHeader className="app-header">
       <div className="header-content">
         <Link to="/" className="logo">
-          <div className="logo-mark" />
+          <div className="logo-mark">
+            <img src={logo} alt="中泰民安" />  
+          </div>  
           <h3>中泰民安</h3>
         </Link>
         <Menu

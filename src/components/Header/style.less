@@ -17,7 +17,7 @@
     position: relative;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 24px;
+    padding: 0;
     display: flex;
     align-items: center;
     height: 100%;
@@ -32,39 +32,11 @@
         height: 36px;
         margin-right: 12px;
         position: relative;
-        
-        // 简单的科技感logo设计
-        &::before,
-        &::after {
-          content: '';
-          position: absolute;
-          background: @primary-blue;
-          transition: all 0.3s ease;
-        }
-        
-        // 外圈
-        &::before {
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          border: 3px solid @primary-blue;
-          border-radius: 8px;
-        }
-        
-        // 内部图形
-        &::after {
-          top: 50%;
-          left: 50%;
-          width: 20px;
-          height: 20px;
-          border-radius: 4px;
-          background: @gold;
-          transform: translate(-50%, -50%) rotate(45deg);
-        }
-        
-        &:hover {
-          transform: none;
+
+        img {
+          vertical-align: unset;
+          width: 36px;
+          height: 36px;
         }
       }
       

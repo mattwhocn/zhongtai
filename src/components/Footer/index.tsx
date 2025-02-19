@@ -1,6 +1,9 @@
 import { Layout, Row, Col, Space, Divider } from 'antd';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import weixin from '../../assets/images/weixin.jpg';
+import douyin from '../../assets/images/douyin.png';
+import logo from '../../assets/images/logo.png';
 import './style.less';
 
 const { Footer: AntFooter } = Layout;
@@ -16,7 +19,7 @@ const menuItems = [
 ];
 
 const Footer: React.FC = () => {
-  const address = '北京市海淀区xxx大厦';
+  const address = '北京市大兴区庞各庄镇庞新路5号';
   const baiduMapUrl = `https://api.map.baidu.com/marker?location=39.904989,116.405285&title=${encodeURIComponent(address)}&content=${encodeURIComponent(address)}&output=html`;
 
   return (
@@ -26,8 +29,8 @@ const Footer: React.FC = () => {
           <Col xs={24} sm={12} md={8}>
             <div className="footer-section">
               <h3>联系我们</h3>
-              <p>公司地址：{address}</p>
-              <p>联系电话：010-xxxxxxxx</p>
+              <p>集团地址：{address}</p>
+              <p>联系方式：二维码咨询</p>
               <p>电子邮箱：contact@company.com</p>
               <a 
                 href={baiduMapUrl}
@@ -46,12 +49,7 @@ const Footer: React.FC = () => {
                 <Col span={12}>
                   <div className="qr-code">
                     <div className="qr-code-placeholder">
-                      <div className="qr-code-inner">
-                        <div className="qr-code-square" />
-                        <div className="qr-code-square" />
-                        <div className="qr-code-square" />
-                        <div className="qr-code-square" />
-                      </div>
+                      <img src={weixin} alt="weixin" />
                     </div>
                     <p>微信公众号</p>
                   </div>
@@ -59,12 +57,7 @@ const Footer: React.FC = () => {
                 <Col span={12}>
                   <div className="qr-code">
                     <div className="qr-code-placeholder">
-                      <div className="qr-code-inner">
-                        <div className="qr-code-square" />
-                        <div className="qr-code-square" />
-                        <div className="qr-code-square" />
-                        <div className="qr-code-square" />
-                      </div>
+                      <img src={douyin} alt="douyin" />
                     </div>
                     <p>抖音号</p>
                   </div>
@@ -77,11 +70,13 @@ const Footer: React.FC = () => {
             <div className="footer-section">
               <h3>公司简介</h3>
               <div className="logo">
-                <div className="logo-mark" />
+                <div className="logo-mark">
+                  <img src={logo} alt="中泰民安" />
+                </div>
                 <h3>中泰民安</h3>
               </div>
               <p className="company-desc">
-                xxxxxxxxxxxxxxxxxxxxxxxx
+                
               </p>
             </div>
           </Col>

@@ -3,6 +3,10 @@ import { Layout, Row, Col, Typography, Card } from 'antd';
 import { usePageTitle } from '../../hooks/usePageTitle';
 import { gradients } from '../../utils/gradients';
 import Elevator from '../../components/Elevator';
+import businessTech from '../../assets/images/business/business-tech.png';
+import businessSecurity from '../../assets/images/business/business-security.png';
+import businessTraining from '../../assets/images/business/business-training.png';
+
 import './style.less';
 
 const { Content } = Layout;
@@ -12,7 +16,7 @@ const { Title, Paragraph } = Typography;
 const techSection = {
   title: '科技板块',
   description: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-  background: gradients.techBlue,
+  image: businessTech,
   products: [
     {
       id: 1,
@@ -34,7 +38,7 @@ const techSection = {
 const securitySection = {
   title: '安防板块',
   description: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-  background: gradients.businessBlue,
+  image: businessSecurity,
   cases: [
     {
       id: 1,
@@ -56,7 +60,7 @@ const securitySection = {
 const trainingSection = {
   title: '消防培训',
   description: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-  background: gradients.techGold,
+  image: businessTraining,
   courses: [
     {
       id: 1,
@@ -101,11 +105,10 @@ const Business: React.FC = () => {
               </div>
             </Col>
             <Col xs={24} lg={12}>
-              <div 
-                className="section-image"
-                style={{ background: techSection.background }}
-              >
-                <div className="tech-overlay" />
+              <div className="section-image">
+                <div className="tech-overlay">
+                  <img src={techSection.image} alt={techSection.title} />
+                </div>
               </div>
             </Col>
           </Row>
@@ -134,11 +137,10 @@ const Business: React.FC = () => {
         <div className="section-content">
           <Row gutter={[48, 48]} align="middle">
             <Col xs={24} lg={12}>
-              <div 
-                className="section-image"
-                style={{ background: securitySection.background }}
-              >
-                <div className="tech-overlay" />
+              <div className="section-image">
+                <div className="tech-overlay">
+                  <img src={securitySection.image} alt={securitySection.title} />
+                </div>
               </div>
             </Col>
             <Col xs={24} lg={12}>
@@ -153,7 +155,7 @@ const Business: React.FC = () => {
             <Title level={3}>项目案例</Title>
             <Row gutter={[24, 24]}>
               {securitySection.cases.map(case_ => (
-                <Col xs={24} sm={12} key={case_.id}>
+                <Col xs={24} sm={12} lg={8} key={case_.id}>
                   <Card 
                     className="case-card"
                     style={{ background: case_.background }}
@@ -179,11 +181,10 @@ const Business: React.FC = () => {
               </div>
             </Col>
             <Col xs={24} lg={12}>
-              <div 
-                className="section-image"
-                style={{ background: trainingSection.background }}
-              >
-                <div className="tech-overlay" />
+              <div className="section-image">
+                <div className="tech-overlay">
+                  <img src={trainingSection.image} alt={trainingSection.title} />
+                </div>
               </div>
             </Col>
           </Row>
