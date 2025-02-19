@@ -1,6 +1,7 @@
 import React from 'react';
 import { Layout, Row, Col, Typography, Card, Button, Carousel, Tag } from 'antd';
 import { RightOutlined } from '@ant-design/icons';
+import { isNil } from 'lodash';
 import { Link, useNavigate } from 'react-router-dom';
 import { usePageTitle } from '../../hooks/usePageTitle';
 import { gradients } from '../../utils/gradients';
@@ -24,20 +25,20 @@ const { Title, Paragraph } = Typography;
 const carouselData = [
   {
     id: 1,
-    title: '让城市更安全，让文明更韧性',
-    desc: '这是第一页的描述文案这是第一页的描述文案',
+    title: '中泰民安',
+    desc: '让城市更安全，让文明更韧性',
     image: banner1,
   },
   {
     id: 2,
-    title: '兴泰启航，科技护疆',
-    desc: '这是第二页的描述文案这是第二页的描述文案',
+    title: '兴泰科技',
+    desc: '兴泰启航，科技护疆',
     image: banner2,
   },
   {
     id: 3,
-    title: '兴宾育才，安全未来',
-    desc: '这是第三页的描述文案这是第三页的描述文案',
+    title: '兴宾学校',
+    desc: '兴宾育才，安全未来',
     image: banner3,
   },
 ];
@@ -113,7 +114,7 @@ const Home: React.FC = () => {
     <Content className="home-page">
       {/* 轮播图 */}
       <Carousel 
-        autoplay 
+        autoplay
         className="home-carousel"
         beforeChange={(current, next) => {
           // 移除当前 slide 的 active 类
@@ -121,14 +122,15 @@ const Home: React.FC = () => {
           if (currentSlide) {
             currentSlide.classList.remove('active');
           }
-          
           // 计算实际的下一个索引
           const nextIndex = next % carouselData.length;
-          
           // 为下一个 slide 添加 active 类
-          const nextSlide = document.querySelector(`.carousel-item-${nextIndex}`);
-          if (nextSlide) {
-            nextSlide.classList.add('active');
+          const nextSlideList = document.querySelectorAll(`.carousel-item-${nextIndex}`);
+          // 这个Carousel为了循环轮播，最后一张轮播图会显示两次，所以需要遍历所有的节点
+          if (nextSlideList.length > 0) {
+            nextSlideList.forEach(slide => {
+              slide.classList.add('active');
+            });
           }
         }}
       >
@@ -193,19 +195,15 @@ const Home: React.FC = () => {
               <div className="intro-highlights">
                 <div className="highlight-item">
                   <span className="highlight-dot" />
-                  xxxxxxxxxxxxxxxx
+                  中泰民安：让城市更安全，让文明更韧性
                 </div>
                 <div className="highlight-item">
                   <span className="highlight-dot" />
-                  xxxxxxxxxxxxxxxx
+                  兴泰科技：兴泰启航，科技护疆
                 </div>
                 <div className="highlight-item">
                   <span className="highlight-dot" />
-                  xxxxxxxxxxxxxxxx
-                </div>
-                <div className="highlight-item">
-                  <span className="highlight-dot" />
-                  xxxxxxxxxxxxxxxx
+                  兴宾学校：兴宾育才，安全未来
                 </div>
               </div>
               <Link to="/about">
