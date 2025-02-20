@@ -47,15 +47,15 @@ const carouselData = [
 const businessShowcase = [
   {
     id: 1,
-    title: '电子沙盘',
-    desc: '电子沙盘平台',
-    image: business1,
+    title: '医院保安项目',
+    desc: '医院保安项目',
+    image: business5,
   },
   {
     id: 2,
-    title: '维和平台',
-    desc: '维和指挥控制平台',
-    image: business2,
+    title: '电子沙盘',
+    desc: '电子沙盘平台',
+    image: business1,
   },
   {
     id: 3,
@@ -65,21 +65,21 @@ const businessShowcase = [
   },
   {
     id: 4,
-    title: '消防培训',
-    desc: '泰康消防培训',
-    image: business4,
-  },
-  {
-    id: 5,
-    title: '医院保安项目',
-    desc: '医院保安项目',
-    image: business5,
-  },
-  {
-    id: 6,
     title: '抗洪救灾项目',
     desc: '抗洪救灾项目',
     image: business6,
+  },
+  {
+    id: 5,
+    title: '维和平台',
+    desc: '维和指挥控制平台',
+    image: business2,
+  },
+  {
+    id: 6,
+    title: '消防培训',
+    desc: '泰康消防培训',
+    image: business4,
   }
 ];
 
@@ -144,8 +144,8 @@ const Home: React.FC = () => {
                   className="carousel-image"
                 />
                 <div className="carousel-text">
-                  <h2>{item.title}</h2>
-                  <p>{item.desc}</p>
+                  <p>{item.title}</p>
+                  <h2>{item.desc}</h2>
                 </div>
               </div>
             </div>
