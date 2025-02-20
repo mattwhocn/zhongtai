@@ -1,27 +1,52 @@
 import React from 'react';
 import { Layout, Menu } from 'antd';
 import { Link, useLocation } from 'react-router-dom';
+import type { MenuProps } from 'antd';
 import logo from '../../assets/images/logo.png'
 import './style.less';
 
 const { Header: AntHeader } = Layout;
 
-const menuItems = [
-  { key: '/', label: '首页' },
-  { key: '/about', label: '关于我们' },
-  { key: '/business', label: '业务板块' },
-  { key: '/news', label: '新闻中心' },
-  { key: '/sustainability', label: '可持续发展' },
-  { key: '/career', label: '职业发展' },
-  { key: '/contact', label: '联系我们' },
+const menuItems: MenuProps['items'] = [
+  {
+    key: '/',
+    label: <Link to="/">首页</Link>,
+  },
+  {
+    key: '/about',
+    label: <Link to="/about">关于我们</Link>,
+  },
+  {
+    key: '/business',
+    label: <Link to="/business">业务板块</Link>,
+    children: [
+      {
+        key: '/business/tech',
+        label: <Link to="/business/tech">科技板块</Link>,
+      },
+      {
+        key: '/business/security',
+        label: <Link to="/business/security">安防板块</Link>,
+      },
+      {
+        key: '/business/training',
+        label: <Link to="/business/training">消防培训</Link>,
+      },
+    ],
+  },
+  {
+    key: '/news',
+    label: <Link to="/news">新闻中心</Link>,
+  },
+  {
+    key: '/sustainability',
+    label: <Link to="/sustainability">可持续发展</Link>,
+  },
 ];
 
 const Header: React.FC = () => {
   const location = useLocation();
-  const selectedKey = menuItems.find(item => 
-    location.pathname === item.key || 
-    (item.key !== '/' && location.pathname.startsWith(item.key))
-  )?.key || '/';
+  const selectedKey = location.pathname === '/' ? '/' : `/${location.pathname.split('/')[1]}`;
 
   return (
     <AntHeader className="app-header">
@@ -35,14 +60,9 @@ const Header: React.FC = () => {
         <Menu
           mode="horizontal"
           selectedKeys={[selectedKey]}
+          items={menuItems}
           className="header-menu"
-        >
-          {menuItems.map(item => (
-            <Menu.Item key={item.key}>
-              <Link to={item.key}>{item.label}</Link>
-            </Menu.Item>
-          ))}
-        </Menu>
+        />
       </div>
     </AntHeader>
   );
