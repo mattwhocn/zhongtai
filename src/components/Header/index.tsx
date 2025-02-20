@@ -42,6 +42,14 @@ const menuItems: MenuProps['items'] = [
     key: '/sustainability',
     label: <Link to="/sustainability">可持续发展</Link>,
   },
+  {
+    key: '/career',
+    label: <Link to="/career">职业发展</Link>,
+  },
+  {
+    key: '/contact',
+    label: <Link to="/contact">联系我们</Link>,
+  },
 ];
 
 const Header: React.FC = () => {
