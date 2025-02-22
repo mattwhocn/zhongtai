@@ -64,5 +64,12 @@ export const gradients = {
     colors: ['#001529', '#003366', '#874d00', '#d48806'],
     angle: 165,
     overlay: true
+  }),
+
+  // AI感的渐变
+  aiGradient: createGradient({
+    colors: ['#001529', '#003366', '#874d00', '#d48806'],
+    angle: 165,
+    overlay: true
   })
 }; 
