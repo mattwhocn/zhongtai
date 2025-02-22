@@ -30,6 +30,7 @@ import qualifications22 from '../../assets/images/about/qualifications/图片 22
 import qualifications23 from '../../assets/images/about/qualifications/图片 23.png';
 import qualifications24 from '../../assets/images/about/qualifications/图片 24.png';
 import avatar1 from '../../assets/images/about/management/avatar1.jpg';
+import culture1 from '../../assets/images/about/culture/culture1.png';
 
 import './style.less';
 const { Content } = Layout;
@@ -61,17 +62,20 @@ const culture = {
     {
       title: '企业使命',
       content: '让城市更安全',
-      background: gradients.techBlue
+      background: gradients.techBlue,
+      image: culture1,
     },
     {
       title: '企业愿景',
       content: '成为全球智慧安全领域的技术标准制定者与综合服务标杆',
-      background: gradients.aiGradient
+      background: gradients.aiGradient,
+      image: culture1,
     },
     {
       title: '企业理念',
       content: '合作共赢 百年传承',
-      background: gradients.techGold
+      background: gradients.techGold,
+      image: culture1,
     }
   ]
 };

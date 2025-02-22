@@ -69,7 +69,7 @@ const Strategy: React.FC = () => {
                   }}
                 >
                   <div className="strategy-content">
-                    <div className="strategy-number">{index + 1}</div>
+                    <div className="strategy-number">{strategy.icon}</div>
                     <Title level={3}>
                       {strategy.icon} {strategy.title}
                     </Title>

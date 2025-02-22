@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Layout, Row, Col, Typography, Affix, Tabs } from 'antd';
 import { usePageTitle } from '../../hooks/usePageTitle';
 import { gradients } from '../../utils/gradients';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useLocation } from 'react-router-dom';
 
 import strategieBanner from '../../assets/images/sustainability/strategie.png';
 import environmentBanner from '../../assets/images/sustainability/environment.png';
@@ -32,19 +32,32 @@ const tabItems = [
 
 const Sustainability: React.FC = () => {
   usePageTitle('可持续发展');
+  const location = useLocation();
   const [activeTab, setActiveTab] = useState('strategy');
   const [showAffix, setShowAffix] = useState(false);
+  const [currentTabItem, setCurrentTabItem] = useState(tabItems[0]);
+
+  // 根据当前路由路径设置激活的 tab
+  useEffect(() => {
+    const path = location.pathname;
+    const tab = path.split('/').pop() || 'strategy';
+    setActiveTab(tab);
+  }, [location]);
 
   useEffect(() => {
     const handleScroll = () => {
-      const bannerHeight = document.querySelector('.news-banner')?.getBoundingClientRect().height || 0;
+      const bannerHeight = document.querySelector('.page-banner')?.getBoundingClientRect().height || 0;
       const scrollTop = window.scrollY;
-      setShowAffix(scrollTop > bannerHeight - 64); // 64px 是 header 的高度
+      setShowAffix(scrollTop > bannerHeight - 64);
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  useEffect(() => {
+    setCurrentTabItem(tabItems.find(item => item.key === activeTab) ?? tabItems[0]);
+  }, [activeTab]);
 
   return (
     <Content className="sustainability-page">
@@ -57,9 +70,9 @@ const Sustainability: React.FC = () => {
           <h1>可持续发展</h1>
           <p>创新科技，绿色发展，共创美好未来</p>
         </div>
-        {/* <div className="tech-overlay">
-          <img src={image} alt="" srcset="" />
-        </div> */}
+        <div className="tech-overlay">
+          {currentTabItem.image && <img src={currentTabItem.image} alt={currentTabItem.key} />}
+        </div>
       </div>
 
       {/* 吸顶导航 */}

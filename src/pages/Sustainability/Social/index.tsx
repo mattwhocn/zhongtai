@@ -1,11 +1,11 @@
 import React from 'react';
 import { Typography, Row, Col, Card } from 'antd';
 import { 
-  GlobalOutlined, 
-  TrophyOutlined, 
-  TeamOutlined, 
-  EnvironmentOutlined,
-  HeartOutlined 
+  AlertOutlined,
+  SecurityScanOutlined,
+  ShopOutlined,
+  HeartOutlined,
+  UsergroupAddOutlined
 } from '@ant-design/icons';
 import { gradients } from '../../../utils/gradients';
 import case1 from '../../../assets/images/sustainability/social/case1.jpg';
@@ -30,21 +30,21 @@ const strategies = [
 2023 年 7 月，中泰民安红十字应急救援服务中心发扬 "人道、博爱、奉献" 的红十字精神，出动 30 人，调动防汛车 1 辆，救援车 3 辆，大型抽水机 3 台等防汛救灾物资，到达永定河大堤、采育镇、榆垡镇、黄村镇、庞各庄镇、狼垡地区等重点点位地段进行巡视、开展救援，24 小时不间断值守。
 `,
     gradient: gradients.techBlue,
-    icon: <GlobalOutlined />
+    icon: <AlertOutlined />
   },
   {
     id: 2,
     title: '安保服务方面',
     content: `疫情期间，成立 "中泰民安集团疫情防控党员先锋队"，设立党员带班值守岗位 20 个，董事长赵性仓每天到 80 余个执勤岗位了解防控情况，累计派出 50 余万人次，每天检测车辆达 15000 余台次，接触人员 50000 余人次。`,
     gradient: gradients.techGold,
-    icon: <TrophyOutlined />
+    icon: <SecurityScanOutlined />
   },
   {
     id: 3,
     title: '消费帮扶方面',
     content: `2023 年 11 月 21 日，参与承办 "京蒙协作大兴消费帮扶合作基地成立大会暨锡林郭勒盟绿色农畜产品推介品鉴会"，锡林郭勒盟 14 家绿色农畜产品加工企业与采购企业达成合作意向并进行了签约，签约金额近 2 亿元，共同推进京蒙协作走实走深，助力乡村振兴。`,
     gradient: gradients.businessBlue,
-    icon: <TeamOutlined />
+    icon: <ShopOutlined />
   },
   {
     id: 4,
@@ -55,7 +55,7 @@ const strategies = [
 成立中泰民安红十字志愿服务队与 "北京市大兴区中泰民安红十字救援服务中心"，参与了 "5.12 防灾减灾"、"2021.5.8 红气球定向越野赛暨京津冀应急救护达人大赛"、"首都社区应急救护大赛暨第五届全国红十字应急救护大赛" 等活动。
 `,
     gradient: gradients.premiumGray,
-    icon: <EnvironmentOutlined />
+    icon: <HeartOutlined />
   },
   {
     id: 5,
@@ -64,7 +64,7 @@ const strategies = [
 发放季度项目好人好事奖金，对集团各项目中涌现出来的好人好事正能量事迹进行表彰，并对参与队员进行现金奖励。
 `,
     gradient: gradients.aiGradient,
-    icon: <HeartOutlined />
+    icon: <UsergroupAddOutlined />
   }
 ];
 
@@ -135,7 +135,7 @@ const Social: React.FC = () => {
                   }}
                 >
                   <div className="strategy-content">
-                    <div className="strategy-number">{index + 1}</div>
+                    <div className="strategy-number">{strategy.icon}</div>
                     <Title level={3}>
                       {strategy.icon} {strategy.title}
                     </Title>
