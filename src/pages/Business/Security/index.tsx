@@ -105,12 +105,7 @@ const SecurityBusiness: React.FC = () => {
           <Title level={2}>项目案例</Title>
           <Row gutter={[24, 48]}>
             {securitySection.cases.map(case_ => (
-              <Col 
-                xs={24}
-                className='case-card-wrapper'
-                lg={getColSpan(case_.images.length)} 
-                key={case_.id}
-              >
+              <Col xs={24} lg={getColSpan(case_.images.length)} key={case_.id}>
                 <Card className="case-card">
                   <Title level={4} className="case-title">{case_.name}</Title>
                   <div className="case-images">
