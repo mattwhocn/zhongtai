@@ -252,6 +252,29 @@
     transition: all 0.3s ease;
     background-size: cover !important;
     background-position: center !important;
+
+    .news-image {
+      width: 100%;
+      height: 100%;
+      border-radius: 12px;
+      position: relative;
+      overflow: hidden;
+
+      .image-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+
     
     .news-content-wrapper {
       position: absolute;
@@ -361,11 +384,13 @@
             
             h3 {
               margin: 0;
+              margin-right: 10px;
               color: @dark-blue;
               font-size: 16px;
             }
             
             .view-detail {
+              flex: 0 0 74px;
               color: @gray-6;
               font-size: 14px;
               transition: all 0.3s ease;

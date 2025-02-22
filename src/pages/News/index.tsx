@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Layout, Tabs, Row, Col, Card, Affix, Tag } from 'antd';
+import { Layout, Tabs, Row, Col, Card, Affix, Tag, Empty } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { usePageTitle } from '../../hooks/usePageTitle';
 import { gradients } from '../../utils/gradients';
@@ -78,32 +78,34 @@ const News: React.FC = () => {
         <div className="news-content">
           {activeTab === 'company' && (
             <Row gutter={[24, 24]}>
-              {filteredNews.map(news => (
+              {filteredNews.length ? filteredNews.map(news => (
                 <Col xs={24} sm={12} lg={8} key={news.id}>
                   <Card 
                     className="news-card"
                     onClick={() => handleNewsClick(news.id)}
                   >
-                    <div 
-                      className="news-image"
-                      style={{ background: news.metadata.cover }}
-                    >
-                      <div className="image-overlay" />
+                    <div className="news-image">
+                      <div className="image-overlay">
+                        <img src={news.metadata.cover} alt={news.metadata.title} />
+                      </div>
                     </div>
                     <div className="news-info">
                       <Tag color={getNewsTagColor(news.metadata.category)}>{news.metadata.category}</Tag>
                       <h3>{news.metadata.title}</h3>
-                      <p>{news.metadata.description}</p>
                       <span className="news-date">{news.metadata.date}</span>
                     </div>
                   </Card>
                 </Col>
-              ))}
+              )) : (
+              <Col span={24}>
+                <Empty style={{ margin: '100px' }} description="暂无相关新闻" />
+              </Col>
+            )}
             </Row>
           )}
           {activeTab === 'industry' && (
             <Row gutter={[24, 24]}>
-              {filteredNews.map(news => (
+              {filteredNews.length ? filteredNews.map(news => (
                 <Col xs={24} sm={12} lg={8} key={news.id}>
                   <Card 
                     className="news-card"
@@ -113,22 +115,27 @@ const News: React.FC = () => {
                       className="news-image"
                       style={{ background: news.metadata.cover }}
                     >
-                      <div className="image-overlay" />
+                      <div className="image-overlay">
+                        <img src={news.metadata.cover} alt={news.metadata.title} />
+                      </div>
                     </div>
                     <div className="news-info">
                       <Tag color={getNewsTagColor(news.metadata.category)}>{news.metadata.category}</Tag>
                       <h3>{news.metadata.title}</h3>
-                      <p>{news.metadata.description}</p>
                       <span className="news-date">{news.metadata.date}</span>
                     </div>
                   </Card>
                 </Col>
-              ))}
+              )) : (
+                <Col span={24}>
+                  <Empty style={{ margin: '100px' }} description="暂无相关新闻" />
+                </Col>
+              )}
             </Row>
           )}
           {activeTab === 'training' && (
             <Row gutter={[24, 24]}>
-              {filteredNews.map(news => (
+              {filteredNews.length ? filteredNews.map(news => (
                 <Col xs={24} sm={12} lg={8} key={news.id}>
                   <Card 
                     className="news-card"
@@ -138,17 +145,22 @@ const News: React.FC = () => {
                       className="news-image"
                       style={{ background: news.metadata.cover }}
                     >
-                      <div className="image-overlay" />
+                      <div className="image-overlay">
+                        <img src={news.metadata.cover} alt={news.metadata.title} />
+                      </div>
                     </div>
                     <div className="news-info">
                       <Tag color={getNewsTagColor(news.metadata.category)}>{news.metadata.category}</Tag>
                       <h3>{news.metadata.title}</h3>
-                      <p>{news.metadata.description}</p>
                       <span className="news-date">{news.metadata.date}</span>
                     </div>
                   </Card>
                 </Col>
-              ))}
+              )) : (
+                <Col span={24}>
+                  <Empty style={{ margin: '100px' }} description="暂无相关新闻" />
+                </Col>
+              )}
             </Row>
           )}
         </div>
