@@ -8,7 +8,7 @@ const { Title, Paragraph } = Typography;
 
 // 培训教育板块数据
 const trainingSection = {
-  title: '消防培训',
+  title: '培训学校',
   description: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
   image: businessTraining,
   courses: [
@@ -31,11 +31,11 @@ const trainingSection = {
 };
 
 
-const FireTraining: React.FC = () => {
-  usePageTitle('消防培训');
+const TrainingBusiness: React.FC = () => {
+  usePageTitle('培训学校');
   
   return (
-    <Layout.Content className="business-page">
+    <Layout.Content className="training-business-page">
       {/* 培训教育板块 */}
       <section className="section-training" id="training">
         <div className="section-content">
@@ -78,4 +78,4 @@ const FireTraining: React.FC = () => {
   );
 };
 
-export default FireTraining; 
+export default TrainingBusiness; 

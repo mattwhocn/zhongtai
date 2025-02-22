@@ -15,9 +15,9 @@ export const menuItems = [
         path: '/business/security',
       },
       {
-        key: 'fire-training',
-        label: '消防培训',
-        path: '/business/fire-training',
+        key: 'training',
+        label: '培训学校',
+        path: '/business/training',
       },
     ],
   },

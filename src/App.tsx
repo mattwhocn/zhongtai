@@ -10,7 +10,7 @@ import About from './pages/About';
 import Business from './pages/Business';
 import TechBusiness from './pages/Business/Tech';
 import SecurityBusiness from './pages/Business/Security';
-import FireTraining from './pages/Business/FireTraining';
+import TrainingBusiness from './pages/Business/Training';
 import News from './pages/News';
 import Sustainability from './pages/Sustainability';
 import Career from './pages/Career';
@@ -38,7 +38,7 @@ export const App: React.FC = () => {
               <Route index element={<Navigate to="tech" replace />} />
               <Route path="tech" element={<TechBusiness />} />
               <Route path="security" element={<SecurityBusiness />} />
-              <Route path="training" element={<FireTraining />} />
+              <Route path="training" element={<TrainingBusiness />} />
             </Route>
             <Route path="/news" element={<News />} />
             <Route path="/news/:id" element={<NewsDetail />} />
