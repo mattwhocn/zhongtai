@@ -1,11 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Layout, Row, Col, Typography, Card, Button, Carousel, Tag } from 'antd';
 import { RightOutlined } from '@ant-design/icons';
-import { isNil } from 'lodash';
 import { Link, useNavigate } from 'react-router-dom';
 import { usePageTitle } from '../../hooks/usePageTitle';
-import { gradients } from '../../utils/gradients';
-import { newsData } from '../News';  // 导入新闻数据
 import { getNewsTagColor } from '../../utils/newsHelpers';
 import banner1 from '../../assets/images/banner/banner1.png';
 import banner2 from '../../assets/images/banner/banner2.png';
@@ -18,6 +15,7 @@ import business5 from '../../assets/images/business/business5.jpg';
 import business6 from '../../assets/images/business/business6.jpg';
 import companyImage from '../../assets/images/about/company.png';
 import { companyProfile } from '../About';
+import { newsContent, NewsItem } from '../../assets';
 import './style.less';
 
 const { Content } = Layout;
@@ -89,9 +87,9 @@ const Home: React.FC = () => {
   usePageTitle('首页');
   const navigate = useNavigate();
   // 添加悬停状态
-  const [hoveredNews, setHoveredNews] = React.useState<typeof latestNews.featured | null>(null);
+  const [hoveredNews, setHoveredNews] = React.useState<NewsItem | null>(null);
 
-  React.useEffect(() => {
+  useEffect(() => {
     // 初始化时为第一个 slide 添加 active 类
     const firstSlide = document.querySelector('.carousel-item-0');
     if (firstSlide) {
@@ -99,18 +97,13 @@ const Home: React.FC = () => {
     }
   }, []);
 
-  // 获取每种类型最新的新闻
-  const latestNews = {
-    featured: newsData.find(news => news.category === '公司新闻')!,  // 添加非空断言
-    list: [
-      newsData.filter(news => news.category === '公司新闻')[1]!,     // 添加非空断言
-      newsData.find(news => news.category === '行业新闻')!,          // 添加非空断言
-      newsData.find(news => news.category === '培训活动')!           // 添加非空断言
-    ].filter(Boolean)  // 过滤掉可能的 undefined
-  };
+  // 获取最新的3条新闻
+  const latestNews = newsContent
+    .sort((a, b) => new Date(b.metadata.date).getTime() - new Date(a.metadata.date).getTime())
+    .slice(0, 3);
 
   // 获取当前显示的新闻
-  const displayedNews = hoveredNews || latestNews.featured;
+  const displayedNews = hoveredNews || latestNews[0];
 
   return (
     <Content className="home-page">
@@ -237,20 +230,20 @@ const Home: React.FC = () => {
             <Col xs={24} lg={12}>
               <Card 
                 className="featured-news"
-                style={{ background: displayedNews.background }}
+                style={{ background: displayedNews.metadata.cover }}
                 onClick={() => navigate(`/news/${displayedNews.id}`)}
               >
                 <div className="news-image">
                   <div className="image-overlay" />
                 </div>
                 <div className="news-content">
-                  <h3>{displayedNews.title}</h3>
+                  <h3>{displayedNews.metadata.title}</h3>
                 </div>
               </Card>
             </Col>
             <Col xs={24} lg={12}>
               <div className="news-list">
-                {latestNews.list.map((news, index) => (
+                {latestNews.map((news, index) => (
                   <Card 
                     key={index}
                     className="news-card"
@@ -260,18 +253,18 @@ const Home: React.FC = () => {
                     <div className="news-card-content">
                       <div className="news-info">
                         <div className="news-header">
-                          <h3>{news.title}</h3>
+                          <h3>{news.metadata.title}</h3>
                           <Link to={`/news/${news.id}`} className="view-detail">
                             查看详情 <RightOutlined />
                           </Link>
                         </div>
                         <div className="news-meta">
-                          <Tag color={getNewsTagColor(news.category)} bordered={false}>
-                            {news.category}
+                          <Tag color={getNewsTagColor(news.metadata.category)} bordered={false}>
+                            {news.metadata.category}
                           </Tag>
-                          <span className="news-date">{news.date}</span>
+                          <span className="news-date">{news.metadata.date}</span>
                         </div>
-                        <p className="news-summary">{news.summary}</p>
+                        <p className="news-summary">{news.metadata.description}</p>
                       </div>
                     </div>
                   </Card>

@@ -3,6 +3,7 @@ import { fileURLToPath } from 'url';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import type { Configuration as WebpackConfig } from 'webpack';
 import type { Configuration as DevServerConfig } from 'webpack-dev-server';
+import CopyPlugin from 'copy-webpack-plugin';
 
 interface Configuration extends WebpackConfig {
   devServer?: DevServerConfig;
@@ -64,6 +65,14 @@ const config: Configuration = {
     new HtmlWebpackPlugin({
       template: './public/index.html',
     }),
+    new CopyPlugin({
+      patterns: [
+        { 
+          from: 'src/assets',
+          to: 'assets',
+        }
+      ]
+    })
   ],
   devServer: {
     static: {

@@ -7,19 +7,11 @@
     height: 400px;
     position: relative;
     
-    .banner-content {
+    img {
+      width: 100%;
       height: 100%;
-      position: relative;
-      
-      .tech-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: @tech-grid;
-        opacity: 0.1;
-      }
+      object-fit: contain;
+      background: @tech-gradient;
     }
   }
   

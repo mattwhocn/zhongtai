@@ -6,8 +6,8 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { usePageTitle } from '../../../hooks/usePageTitle';
 import { getNewsTagColor } from '../../../utils/newsHelpers';
+import { findNewsById } from '../../../assets';
 import './style.less';
-import { newsContent } from '../../../content/news';
 
 const { Content } = Layout;
 const { Title } = Typography;
@@ -32,8 +32,9 @@ const NewsDetail: React.FC = () => {
   const [newsData, setNewsData] = useState<NewsContent | null>(null);
   
   useEffect(() => {
-    if (id && newsContent[id]) {
-      setNewsData(newsContent[id]);
+    const news = findNewsById(id || '');
+    if (news) {
+      setNewsData(news);
     } else {
       message.error('新闻内容获取失败，3秒后返回新闻列表');
       setTimeout(() => navigate('/news'), 3000);
