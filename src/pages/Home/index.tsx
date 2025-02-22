@@ -16,6 +16,8 @@ import business3 from '../../assets/images/business/business3.png';
 import business4 from '../../assets/images/business/business4.png';
 import business5 from '../../assets/images/business/business5.jpg';
 import business6 from '../../assets/images/business/business6.jpg';
+import companyImage from '../../assets/images/about/company.png';
+import { companyProfile } from '../About';
 import './style.less';
 
 const { Content } = Layout;
@@ -189,8 +191,7 @@ const Home: React.FC = () => {
           <Row gutter={[48, 48]} align="middle">
             <Col xs={24} lg={12}>
               <Paragraph>
-                中泰民安成立于xxxxx年，是一家企业。中泰民安成立于xxxxx年，是一家企业。
-                中泰民安成立于xxxxx年，是一家企业。中泰民安成立于xxxxx年，是一家企业。
+                {companyProfile.content}
               </Paragraph>
               <div className="intro-highlights">
                 <div className="highlight-item">
@@ -213,11 +214,10 @@ const Home: React.FC = () => {
               </Link>
             </Col>
             <Col xs={24} lg={12}>
-              <div 
-                className="intro-image"
-                style={{ background: gradients.techBlue }}
-              >
-                <div className="tech-overlay" />
+              <div className="intro-image">
+                <div className="tech-overlay">
+                  <img src={companyImage} alt="companyImage" />
+                </div>
               </div>
             </Col>
           </Row>

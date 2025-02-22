@@ -2,16 +2,43 @@ import React from 'react';
 import { Layout, Row, Col, Typography, Card, Space } from 'antd';
 import { usePageTitle } from '../../hooks/usePageTitle';
 import { gradients } from '../../utils/gradients';
-import './style.less';
 import Elevator from '../../components/Elevator';
+import companyImage from '../../assets/images/about/company.png';
+import globalLayoutImage from '../../assets/images/about/global-layout.png';
+import qualifications1 from '../../assets/images/about/qualifications/图片 1.png';
+import qualifications2 from '../../assets/images/about/qualifications/图片 2.png';
+import qualifications3 from '../../assets/images/about/qualifications/图片 3.png';
+import qualifications4 from '../../assets/images/about/qualifications/图片 4.png';
+import qualifications5 from '../../assets/images/about/qualifications/图片 5.png';
+import qualifications6 from '../../assets/images/about/qualifications/图片 6.png';
+import qualifications7 from '../../assets/images/about/qualifications/图片 7.png';
+import qualifications8 from '../../assets/images/about/qualifications/图片 8.png';
+import qualifications9 from '../../assets/images/about/qualifications/图片 9.png';
+import qualifications10 from '../../assets/images/about/qualifications/图片 10.png';
+import qualifications11 from '../../assets/images/about/qualifications/图片 11.png';
+import qualifications12 from '../../assets/images/about/qualifications/图片 12.png';
+import qualifications13 from '../../assets/images/about/qualifications/图片 13.png';
+import qualifications14 from '../../assets/images/about/qualifications/图片 14.jpg';
+import qualifications15 from '../../assets/images/about/qualifications/图片 15.png';
+import qualifications16 from '../../assets/images/about/qualifications/图片 16.png';
+import qualifications17 from '../../assets/images/about/qualifications/图片 17.png';
+import qualifications18 from '../../assets/images/about/qualifications/图片 18.png';
+import qualifications19 from '../../assets/images/about/qualifications/图片 19.png';
+import qualifications20 from '../../assets/images/about/qualifications/图片 20.png';
+import qualifications21 from '../../assets/images/about/qualifications/图片 21.png';
+import qualifications22 from '../../assets/images/about/qualifications/图片 22.png';
+import qualifications23 from '../../assets/images/about/qualifications/图片 23.png';
+import qualifications24 from '../../assets/images/about/qualifications/图片 24.png';
 
+
+import './style.less';
 const { Content } = Layout;
 const { Title, Paragraph } = Typography;
 
 // 公司简介数据
-const companyProfile = {
+export const companyProfile = {
   title: '公司简介',
-  content: `中泰民安成立于xxxxx年，是一家企业。中泰民安成立于xxxxx年，是一家企业。中泰民安成立于xxxxx年，是一家企业。中泰民安成立于xxxxx年，是一家企业。`,
+  content: `中泰民安集团成立于2005年，总部位于北京市大兴区，是一家以安全服务为核心，涵盖科技研发、教育培训、应急救援、物业管理等多领域的综合性企业集群。集团旗下包括多家独立运营的子公司，业务覆盖全国，致力于构建“大安全、大应急”产业生态，服务国家战略与民生需求。多年来积极参与灾害救援与公共安全建设，助力平安中国。`,
   background: gradients.techBlue
 };
 
@@ -46,17 +73,17 @@ const culture = {
   items: [
     {
       title: '企业使命',
-      content: 'xxxxxxxxxxxxxxxxxxx',
+      content: '让城市更安全',
       background: gradients.techBlue
     },
     {
       title: '企业愿景',
-      content: 'xxxxxxxxxxxxxxxxxxx',
+      content: '成为全球智慧安全领域的技术标准制定者与综合服务标杆',
       background: gradients.businessBlue
     },
     {
       title: '企业理念',
-      content: 'xxxxxxxxxxxxxxxxxxx',
+      content: '合作共赢 百年传承',
       background: gradients.techGold
     }
   ]
@@ -65,8 +92,9 @@ const culture = {
 // 全球布局数据
 const globalLayout = {
   title: '全球布局',
-  description: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-  background: gradients.techMix
+  description: '中泰民安立足国际化大都市北京，以首都雄厚的资源优势、人才储备及政策支持为依托，构建起辐射全球的业务网络。作为战略核心枢纽，北京总部汇聚创新动能与尖端技术，通过高效协同的全球化运营体系，将智慧解决方案与高品质服务延伸至亚洲、欧洲、美洲及非洲市场。',
+  background: gradients.techMix,
+  image: globalLayoutImage,
 };
 
 // 资质与荣誉数据
@@ -74,21 +102,101 @@ const qualifications = {
   title: '资质与荣誉',
   items: [
     {
-      title: 'xxxxxxxxxxxxxxxxxxx',
-      background: gradients.techBlue
+      background: gradients.techBlue,
+      image: qualifications1,
     },
     {
-      title: 'xxxxxxxxxxxxxxxxxxx',
-      background: gradients.businessBlue
+      background: gradients.businessBlue,
+      image: qualifications2,
     },
     {
-      title: 'xxxxxxxxxxxxxxxxxxx',
-      background: gradients.techGold
+      background: gradients.techGold,
+      image: qualifications3,
     },
     {
-      title: 'xxxxxxxxxxxxxxxxxxx',
-      background: gradients.techMix
-    }
+      background: gradients.techMix,
+      image: qualifications4,
+    },
+    {
+      background: gradients.businessBlue,
+      image: qualifications5,
+    },
+    {
+      background: gradients.techMix,
+      image: qualifications6,
+    },
+    {
+      background: gradients.businessBlue,
+      image: qualifications7,
+    },
+    {
+      background: gradients.techMix,
+      image: qualifications8,
+    },
+    {
+      background: gradients.businessBlue,
+      image: qualifications9,
+    },
+    {
+      background: gradients.techMix,
+      image: qualifications10,
+    },
+    {
+      background: gradients.businessBlue,
+      image: qualifications11,
+    },
+    {
+      background: gradients.techMix,
+      image: qualifications12,
+    },
+    {
+      background: gradients.businessBlue,
+      image: qualifications13,
+    },
+    {
+      background: gradients.techMix,
+      image: qualifications14,
+    },
+    {
+      background: gradients.businessBlue,
+      image: qualifications15,
+    },
+    {
+      background: gradients.techMix,
+      image: qualifications16,
+    },
+    {
+      background: gradients.businessBlue,
+      image: qualifications17,
+    },
+    {
+      background: gradients.techMix,
+      image: qualifications18,
+    },
+    {
+      background: gradients.businessBlue,
+      image: qualifications19,
+    },
+    {
+      background: gradients.techMix,
+      image: qualifications20,
+    },
+    {
+      background: gradients.businessBlue,
+      image: qualifications21,
+    },
+    {
+      background: gradients.techMix,
+      image: qualifications22,
+    },
+    {
+      background: gradients.businessBlue,
+      image: qualifications23,
+    },
+    {
+      background: gradients.techMix,
+      image: qualifications24,
+    },
   ]
 };
 
@@ -113,11 +221,10 @@ const About: React.FC = () => {
           <Title level={2}>{companyProfile.title}</Title>
           <Row gutter={[48, 24]} align="middle">
             <Col xs={24} lg={12}>
-              <div 
-                className="profile-image"
-                style={{ background: companyProfile.background }}
-              >
-                <div className="tech-overlay" />
+              <div className="profile-image">
+                <div className="tech-overlay">
+                  <img src={companyImage} alt="companyImage" />
+                </div>
               </div>
             </Col>
             <Col xs={24} lg={12}>
@@ -163,7 +270,7 @@ const About: React.FC = () => {
                   style={{ background: item.background }}
                 >
                   <Title level={3}>{item.title}</Title>
-                  <Paragraph>{item.content}</Paragraph>
+                  <p>{item.content}</p>
                 </Card>
               </Col>
             ))}
@@ -175,11 +282,10 @@ const About: React.FC = () => {
       <section id="global" className="section-global">
         <div className="section-content">
           <Title level={2}>{globalLayout.title}</Title>
-          <div 
-            className="global-map"
-            style={{ background: globalLayout.background }}
-          >
-            <div className="map-overlay" />
+          <div className="global-map">
+            <div className="map-overlay">
+              <img src={globalLayout.image} alt="globalLayout" />
+            </div>
           </div>
           <Paragraph className="global-description">
             {globalLayout.description}
@@ -198,8 +304,9 @@ const About: React.FC = () => {
                   className="qualification-item"
                   style={{ background: item.background }}
                 >
-                  <div className="tech-overlay" />
-                  <span>{item.title}</span>
+                  <div className="tech-overlay">
+                    <img src={item.image} alt="资质与荣誉" />
+                  </div>
                 </div>
               </Col>
             ))}

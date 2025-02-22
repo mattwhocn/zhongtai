@@ -13,86 +13,18 @@ const { Panel } = Collapse;
 const jobList = [
   {
     id: 1,
-    title: '研发工程师',
-    department: '研发中心',
-    location: '北京',
-    experience: '3-5年',
-    education: '本科及以上',
-    tags: ['开发', '架构设计', '团队协作'],
+    title: '保安（男性）',
+    tags: ['北京', '3-5年', '本科及以上', '研发中心', '保安'],
     description: `
-      岗位职责：
-      1. 负责公司核心技术项目的研发工作
-      2. 参与技术方案设计和技术选型
-      3. 负责项目技术难点攻关
-      
-      任职要求：
-      1. 本科及以上学历，计算机相关专业
-      2. 3年以上相关开发经验
-      3. 具备良好的系统设计能力和问题解决能力
-      4. 良好的团队协作精神和沟通能力
-    `,
-  },
-  {
-    id: 2,
-    title: '产品经理',
-    department: '产品部',
-    location: '北京',
-    experience: '3-5年',
-    education: '本科及以上',
-    tags: ['产品规划', '用户研究', '项目管理'],
-    description: `
-      岗位职责：
-      1. 负责公司产品的规划和设计
-      2. 进行市场调研和用户需求分析
-      3. 协调各部门推进产品落地
-      
-      任职要求：
-      1. 本科及以上学历
-      2. 3年以上产品经理经验
-      3. 具备较强的产品思维和项目管理能力
-      4. 良好的沟通协调能力
-    `,
-  },
-  {
-    id: 3,
-    title: '销售经理',
-    department: '销售部',
-    location: '全国',
-    experience: '2-4年',
-    education: '本科及以上',
-    tags: ['销售', '客户管理', '商务拓展'],
-    description: `
-      岗位职责：
-      1. 负责公司产品的市场开拓和销售
-      2. 建立和维护客户关系
-      3. 完成销售目标和业绩指标
-      
-      任职要求：
-      1. 本科及以上学历
-      2. 2年以上销售经验
-      3. 具备良好的商务谈判能力
-      4. 有较强的市场开拓能力和执行力
-    `,
-  },
-  {
-    id: 4,
-    title: '运营专员',
-    department: '运营部',
-    location: '北京',
-    experience: '1-3年',
-    education: '本科及以上',
-    tags: ['内容运营', '活动策划', '数据分析'],
-    description: `
-      岗位职责：
-      1. 负责公司产品的运营工作
-      2. 策划和执行运营活动
-      3. 进行运营数据分析和优化
-      
-      任职要求：
-      1. 本科及以上学历
-      2. 1年以上运营经验
-      3. 具备良好的文案功底和创意能力
-      4. 熟悉数据分析，有较强的执行力
+      招工条件：
+      1. 18—50周岁，有正式户口。
+      2. 初中以上文化程度，会说普通话。
+      3. 身体健康，不穿鞋赤脚不低于1.70米。
+
+      工资福利：
+      1. 保安员月工资不低于3000元，由公司负责保安员的吃住及四季服装。
+      2. 工作时间不超过规定标准（每天6—8小时）。加班、休假、患病、因公负伤致残按国家劳动法和有关规定执行。
+      3. 签订劳动合同。
     `,
   }
 ];
@@ -181,11 +113,10 @@ const Career: React.FC = () => {
                     <div className="job-header">
                       <div className="job-title">
                         <h3>{job.title}</h3>
-                        <Space size={8}>
-                          <Tag color="blue">{job.department}</Tag>
-                          <Tag color="gold">{job.location}</Tag>
-                          <Tag color="green">{job.experience}</Tag>
-                          <Tag color="purple">{job.education}</Tag>
+                        <Space size={8} className="job-tags">
+                          {job.tags.map((tag, index) => (
+                            <Tag color={['blue', 'gold', 'green', 'purple'][index % 4]} key={index}>{tag}</Tag>
+                          ))}
                         </Space>
                       </div>
                       <Button type="primary">
@@ -195,11 +126,6 @@ const Career: React.FC = () => {
                   }
                 >
                   <div className="job-detail">
-                    <Space size={8} className="job-tags">
-                      {job.tags.map((tag, index) => (
-                        <Tag key={index}>{tag}</Tag>
-                      ))}
-                    </Space>
                     <Paragraph className="job-description" style={{ whiteSpace: 'pre-line' }}>
                       {job.description}
                     </Paragraph>
