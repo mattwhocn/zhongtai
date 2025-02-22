@@ -20,6 +20,9 @@ import ScrollToTop from './components/ScrollToTop';
 import AdminUpload from './pages/Admin/Upload';
 import AdminAuth from './components/AdminAuth';
 
+import SustainabilityStrategy from './pages/Sustainability/Strategy';
+import SustainabilityEnvironment from './pages/Sustainability/Environment';
+import SustainabilitySocial from './pages/Sustainability/Social';
 import './styles/app.less';
 
 const { Content } = Layout;
@@ -42,7 +45,12 @@ export const App: React.FC = () => {
             </Route>
             <Route path="/news" element={<News />} />
             <Route path="/news/:id" element={<NewsDetail />} />
-            <Route path="/sustainability" element={<Sustainability />} />
+            <Route path="/sustainability" element={<Sustainability />}>
+              <Route index element={<Navigate to="strategy" replace />} />
+              <Route path="strategy" element={<SustainabilityStrategy />} />
+              <Route path="environment" element={<SustainabilityEnvironment />} />
+              <Route path="social" element={<SustainabilitySocial />} />
+            </Route>
             <Route path="/career" element={<Career />} />
             <Route path="/contact" element={<Contact />} />
             <Route 

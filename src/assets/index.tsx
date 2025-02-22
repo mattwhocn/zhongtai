@@ -37,7 +37,7 @@ export const newsContent: NewsItem[] = [
     id: '1',
     metadata: {
       title: "雄安新区出台计划：布局卫星互联网、时空信息、商业卫星智造和空天飞行器等重点赛道",
-      date: "2024-03-19",
+      date: "2025-1-21",
       category: "行业新闻",
       categoryKey: "industry",
       cover: news1Cover,
@@ -49,7 +49,7 @@ export const newsContent: NewsItem[] = [
     id: '2',
     metadata: {
       title: "“实景三维+噪声地图”亮相北斗峰会",
-      date: "2024-10-24",
+      date: "2024-10-28",
       category: "行业新闻",
       categoryKey: "industry",
       cover: news2Cover,
@@ -60,7 +60,7 @@ export const newsContent: NewsItem[] = [
     id: '3',
     metadata: {
       title: "北京保安协会召开第二届理事会第十三次会议暨第二届会员大会第四次会议",
-      date: "2025-01-08",
+      date: "2025-1-9",
       category: "行业新闻",
       categoryKey: "industry",
       cover: news3Cover,
@@ -71,7 +71,7 @@ export const newsContent: NewsItem[] = [
     id: '4',
     metadata: {
       title: "首都实业所属北京保总、振远护卫圆满完成春节期间安保工作",
-      date: "2024-03-18", 
+      date: "2025-2-6", 
       category: "行业新闻",
       categoryKey: "industry",
       cover: news4Cover,
@@ -82,7 +82,7 @@ export const newsContent: NewsItem[] = [
     id: '5',
     metadata: {
       title: "北京市保安服务有限公司召开2024年工作总结暨2025年工作部署会",
-      date: "2024-03-18",
+      date: "2025-1-26",
       category: "行业新闻",
       categoryKey: "industry",
       cover: news5Cover,
@@ -93,7 +93,7 @@ export const newsContent: NewsItem[] = [
     id: '6',
     metadata: {
       title: "北京开展第二波疏散通道集中“大扫除”，聚焦四类问题",
-      date: "2024-03-18",
+      date: "2025-1-23",
       category: "行业新闻",
       categoryKey: "industry",
       cover: news6Cover,
@@ -104,7 +104,7 @@ export const newsContent: NewsItem[] = [
     id: '7',
     metadata: {
       title: "《集团董事长赵性仓当选第十届“北京榜样·最美义工”榜样人物》",
-      date: "2025-03-01",
+      date: "2025-01-04",
       category: "公司新闻",
       categoryKey: "company",
       cover: news7Cover,
