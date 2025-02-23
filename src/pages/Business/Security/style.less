@@ -1,0 +1,132 @@
+@import '../../../styles/theme.less';
+
+.security-business-page {
+  .section-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 64px 24px;
+  }
+
+  .section-security {
+    background: #f5f5f5;
+
+    .section-image {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      
+      img {
+        width: 100%;
+        height: auto;
+        transition: transform 0.3s ease;
+      }
+
+      &:hover img {
+        transform: scale(1.05);
+      }
+
+      .tech-overlay {
+        position: relative;
+        overflow: hidden;
+      }
+    }
+
+    .product-info {
+      h3 {
+        margin-bottom: 24px;
+      }
+
+      p {
+        font-size: 16px;
+        line-height: 1.8;
+        color: #666;
+      }
+    }
+  }
+
+  .section-cases {
+    background: #fff;
+
+    .case-card {
+      border: none;
+      box-shadow: @box-shadow;
+      
+      .case-title {
+        margin-bottom: 24px;
+        text-align: center;
+      }
+
+      .case-images {
+        display: grid;
+        gap: 16px;
+        
+        // 根据图片数量动态设置网格布局
+        &:has(.image-wrapper:nth-child(3)) {
+          grid-template-columns: repeat(3, 1fr);
+        }
+        
+        &:has(.image-wrapper:nth-child(4)) {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        
+        &:has(.image-wrapper:nth-child(5)) {
+          grid-template-columns: repeat(3, 1fr);
+          .image-wrapper:nth-child(4),
+          .image-wrapper:nth-child(5) {
+            grid-column: span 1.5;
+          }
+        }
+        
+        &:has(.image-wrapper:nth-child(6)) {
+          grid-template-columns: repeat(3, 1fr);
+        }
+        
+        &:has(.image-wrapper:nth-child(7)),
+        &:has(.image-wrapper:nth-child(8)) {
+          grid-template-columns: repeat(4, 1fr);
+        }
+
+        .image-wrapper {
+          aspect-ratio: 16/9;
+          overflow: hidden;
+          border-radius: 8px;
+          
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+            
+            &:hover {
+              transform: scale(1.05);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // 响应式调整
+  @media (max-width: 768px) {
+    .section-content {
+      padding: 40px 16px;
+    }
+
+    .core-product {
+      .product-info {
+        margin-top: 24px;
+      }
+    }
+
+    .case-images {
+      grid-template-columns: repeat(2, 1fr) !important;
+      
+      &:has(.image-wrapper:nth-child(5)) {
+        .image-wrapper:nth-child(4),
+        .image-wrapper:nth-child(5) {
+          grid-column: span 1 !important;
+        }
+      }
+    }
+  }
+} 

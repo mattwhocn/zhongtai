@@ -4,6 +4,34 @@ import { RightOutlined } from '@ant-design/icons';
 import { usePageTitle } from '../../hooks/usePageTitle';
 import { gradients } from '../../utils/gradients';
 import './style.less';
+import career1 from '../../assets/images/career/career1.png';
+import career2 from '../../assets/images/career/career2.png';
+import career3 from '../../assets/images/career/career3.png';
+import career4 from '../../assets/images/career/career4.png';
+import career5 from '../../assets/images/career/career5.png';
+import career6 from '../../assets/images/career/career6.png';
+import career7 from '../../assets/images/career/career7.jpg';
+import career8 from '../../assets/images/career/career8.jpg';
+import career9 from '../../assets/images/career/career9.jpg';
+import career10 from '../../assets/images/career/career10.jpg';
+import career11 from '../../assets/images/career/career11.jpg';
+import career12 from '../../assets/images/career/career12.jpg';
+import career13 from '../../assets/images/career/career13.jpg';
+import career14 from '../../assets/images/career/career14.jpg';
+import career15 from '../../assets/images/career/career15.jpg';
+import career16 from '../../assets/images/career/career16.jpg';
+import career18 from '../../assets/images/career/career18.jpg';
+import career19 from '../../assets/images/career/career19.jpg';
+import career20 from '../../assets/images/career/career20.jpg';
+import career21 from '../../assets/images/career/career21.jpg';
+import career22 from '../../assets/images/career/career22.jpg';
+import career23 from '../../assets/images/career/career23.jpg';
+import career24 from '../../assets/images/career/career24.jpg';
+import career25 from '../../assets/images/career/career25.jpg';
+import career26 from '../../assets/images/career/career26.jpg';
+import career27 from '../../assets/images/career/career27.jpg';
+import career28 from '../../assets/images/career/career28.jpg';
+
 
 const { Content } = Layout;
 const { Title, Paragraph } = Typography;
@@ -14,7 +42,7 @@ const jobList = [
   {
     id: 1,
     title: '保安（男性）',
-    tags: ['北京', '3-5年', '本科及以上', '研发中心', '保安'],
+    tags: ['北京', '18—50周岁', '初中及以上', '保安'],
     description: `
       招工条件：
       1. 18—50周岁，有正式户口。
@@ -33,48 +61,15 @@ const jobList = [
 const cultureSections = [
   {
     title: '公司环境',
-    items: [
-      {
-        title: '现代化办公环境',
-        description: '宽敞明亮的办公空间，配备高端设备',
-        background: gradients.techBlue,
-      },
-      {
-        title: '休闲娱乐区',
-        description: '健身房、咖啡厅、图书馆等配套设施',
-        background: gradients.businessBlue,
-      },
-    ],
+    items: [career1, career2, career3, career4, career5, career6, career7, career8, career9, career10, career11, career12, career13, career14, career15, career16, career18, career19, career20, career21, career22, career23, career24, career25, career26, career27, career28],
   },
   {
     title: '员工福利',
-    items: [
-      {
-        title: '具有竞争力的薪酬',
-        description: '业内领先的薪资水平，年终奖金',
-        background: gradients.techGold,
-      },
-      {
-        title: '完善的保障体系',
-        description: '五险一金、补充医疗保险、年度体检',
-        background: gradients.techMix,
-      },
-    ],
+    items: [career1, career2, career3, career4, career5, career6, career7, career8, career9, career10, career11, career12, career13, career14, career15, career16, career18, career19, career20, career21, career22, career23, career24, career25, career26, career27, career28],
   },
   {
     title: '职业发展',
-    items: [
-      {
-        title: '清晰的晋升通道',
-        description: '双通道发展路径：管理序列和专业序列',
-        background: gradients.premiumGray,
-      },
-      {
-        title: '持续的学习成长',
-        description: '内部培训体系、外部进修机会',
-        background: gradients.businessBlue,
-      },
-    ],
+    items: [career1, career2, career3, career4, career5, career6, career7, career8, career9, career10, career11, career12, career13, career14, career15, career16, career18, career19, career20, career21, career22, career23, career24, career25, career26, career27, career28],
   },
 ];
 
@@ -145,14 +140,14 @@ const Career: React.FC = () => {
               <Title level={2}>{section.title}</Title>
               <Row gutter={[24, 24]}>
                 {section.items.map((item, itemIndex) => (
-                  <Col xs={24} sm={12} key={itemIndex}>
+                  <Col xs={24} sm={8} lg={8} key={itemIndex}>
                     <Card 
                       className="culture-card"
-                      style={{ background: item.background }}
+                      style={{ background: item }}
                     >
-                      <h3>{item.title}</h3>
-                      <p>{item.description}</p>
-                      <div className="tech-overlay" />
+                      <div className="tech-overlay">
+                        <img src={item} alt={`culture-${itemIndex}`} />
+                      </div>
                     </Card>
                   </Col>
                 ))}

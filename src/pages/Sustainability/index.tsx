@@ -1,33 +1,63 @@
-import React from 'react';
-import { Layout, Row, Col, Typography } from 'antd';
+import React, { useEffect, useState } from 'react';
+import { Layout, Row, Col, Typography, Affix, Tabs } from 'antd';
 import { usePageTitle } from '../../hooks/usePageTitle';
 import { gradients } from '../../utils/gradients';
+import { Link, Outlet, useLocation } from 'react-router-dom';
+
+import strategieBanner from '../../assets/images/sustainability/strategie.png';
+import environmentBanner from '../../assets/images/sustainability/environment.png';
+
 import './style.less';
 
 const { Content } = Layout;
 const { Title, Paragraph } = Typography;
 
-// 页面数据
-const sustainabilityData = {
-  strategy: {
-    title: '可持续发展战略',
-    content: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-    background: gradients.techBlue
+// Tab 项配置
+const tabItems = [
+  {
+    key: 'strategy',
+    label: <Link to="/sustainability/strategy">发展战略</Link>,
+    image: strategieBanner,
   },
-  environment: {
-    title: '环保举措',
-    content: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-    background: gradients.techGold
+  {
+    key: 'environment',
+    label: <Link to="/sustainability/environment">环保举措</Link>,
+    image: environmentBanner,
   },
-  social: {
-    title: '社会责任',
-    content: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-    background: gradients.businessBlue
-  }
-};
+  {
+    key: 'social',
+    label: <Link to="/sustainability/social">社会责任</Link>,
+  },
+];
 
 const Sustainability: React.FC = () => {
   usePageTitle('可持续发展');
+  const location = useLocation();
+  const [activeTab, setActiveTab] = useState('strategy');
+  const [showAffix, setShowAffix] = useState(false);
+  const [currentTabItem, setCurrentTabItem] = useState(tabItems[0]);
+
+  // 根据当前路由路径设置激活的 tab
+  useEffect(() => {
+    const path = location.pathname;
+    const tab = path.split('/').pop() || 'strategy';
+    setActiveTab(tab);
+  }, [location]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const bannerHeight = document.querySelector('.page-banner')?.getBoundingClientRect().height || 0;
+      const scrollTop = window.scrollY;
+      setShowAffix(scrollTop > bannerHeight - 64);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    setCurrentTabItem(tabItems.find(item => item.key === activeTab) ?? tabItems[0]);
+  }, [activeTab]);
 
   return (
     <Content className="sustainability-page">
@@ -40,68 +70,29 @@ const Sustainability: React.FC = () => {
           <h1>可持续发展</h1>
           <p>创新科技，绿色发展，共创美好未来</p>
         </div>
-        <div className="tech-overlay" />
+        <div className="tech-overlay">
+          {currentTabItem.image && <img src={currentTabItem.image} alt={currentTabItem.key} />}
+        </div>
       </div>
 
-      {/* 可持续发展战略 */}
-      <section className="section-strategy">
-        <div className="section-content">
-          <Title level={2}>{sustainabilityData.strategy.title}</Title>
-          <Row gutter={[48, 48]} align="middle">
-            <Col xs={24} lg={12}>
-              <Paragraph>{sustainabilityData.strategy.content}</Paragraph>
-            </Col>
-            <Col xs={24} lg={12}>
-              <div 
-                className="section-image"
-                style={{ background: sustainabilityData.strategy.background }}
-              >
-                <div className="tech-overlay" />
-              </div>
-            </Col>
-          </Row>
-        </div>
-      </section>
+      {/* 吸顶导航 */}
+      <div className="tabs-wrapper">
+        <Affix offsetTop={64}>
+          <div className={`tabs-container ${showAffix ? 'affix-active' : ''}`}>
+            <Tabs
+              activeKey={activeTab}
+              items={tabItems}
+              onChange={setActiveTab}
+              className="sustainability-tabs"
+            />
+          </div>
+        </Affix>
+      </div>
 
-      {/* 环保举措 */}
-      <section className="section-environment">
-        <div className="section-content">
-          <Title level={2}>{sustainabilityData.environment.title}</Title>
-          <Row gutter={[48, 48]} align="middle">
-            <Col xs={24} lg={12}>
-              <div 
-                className="section-image"
-                style={{ background: sustainabilityData.environment.background }}
-              >
-                <div className="tech-overlay" />
-              </div>
-            </Col>
-            <Col xs={24} lg={12}>
-              <Paragraph>{sustainabilityData.environment.content}</Paragraph>
-            </Col>
-          </Row>
-        </div>
-      </section>
-
-      {/* 社会责任 */}
-      <section className="section-social">
-        <div className="section-content">
-          <Title level={2}>{sustainabilityData.social.title}</Title>
-          <Row gutter={[48, 48]} align="middle">
-            <Col xs={24} lg={12}>
-              <Paragraph>{sustainabilityData.social.content}</Paragraph>
-            </Col>
-            <Col xs={24} lg={12}>
-              <div 
-                className="section-image"
-                style={{ background: sustainabilityData.social.background }}
-              >
-                <div className="tech-overlay" />
-              </div>
-            </Col>
-          </Row>
-        </div>
-      </section>
+      {/* 内容区域 */}
+      <div className="sustainability-page-content">
+        <Outlet />
+      </div>
     </Content>
   );
 };

@@ -10,7 +10,7 @@ import About from './pages/About';
 import Business from './pages/Business';
 import TechBusiness from './pages/Business/Tech';
 import SecurityBusiness from './pages/Business/Security';
-import FireTraining from './pages/Business/FireTraining';
+import TrainingBusiness from './pages/Business/Training';
 import News from './pages/News';
 import Sustainability from './pages/Sustainability';
 import Career from './pages/Career';
@@ -20,6 +20,9 @@ import ScrollToTop from './components/ScrollToTop';
 import AdminUpload from './pages/Admin/Upload';
 import AdminAuth from './components/AdminAuth';
 
+import SustainabilityStrategy from './pages/Sustainability/Strategy';
+import SustainabilityEnvironment from './pages/Sustainability/Environment';
+import SustainabilitySocial from './pages/Sustainability/Social';
 import './styles/app.less';
 
 const { Content } = Layout;
@@ -38,11 +41,16 @@ export const App: React.FC = () => {
               <Route index element={<Navigate to="tech" replace />} />
               <Route path="tech" element={<TechBusiness />} />
               <Route path="security" element={<SecurityBusiness />} />
-              <Route path="training" element={<FireTraining />} />
+              <Route path="training" element={<TrainingBusiness />} />
             </Route>
             <Route path="/news" element={<News />} />
             <Route path="/news/:id" element={<NewsDetail />} />
-            <Route path="/sustainability" element={<Sustainability />} />
+            <Route path="/sustainability" element={<Sustainability />}>
+              <Route index element={<Navigate to="strategy" replace />} />
+              <Route path="strategy" element={<SustainabilityStrategy />} />
+              <Route path="environment" element={<SustainabilityEnvironment />} />
+              <Route path="social" element={<SustainabilitySocial />} />
+            </Route>
             <Route path="/career" element={<Career />} />
             <Route path="/contact" element={<Contact />} />
             <Route 

@@ -228,18 +228,19 @@ const Home: React.FC = () => {
           </div>
           <Row gutter={[24, 24]}>
             <Col xs={24} lg={12}>
-              <Card 
+              <div 
                 className="featured-news"
-                style={{ background: displayedNews.metadata.cover }}
                 onClick={() => navigate(`/news/${displayedNews.id}`)}
               >
                 <div className="news-image">
-                  <div className="image-overlay" />
+                  <div className="image-overlay">
+                    <img src={displayedNews.metadata.cover} alt={displayedNews.metadata.title} />
+                  </div>  
                 </div>
                 <div className="news-content">
                   <h3>{displayedNews.metadata.title}</h3>
                 </div>
-              </Card>
+              </div>
             </Col>
             <Col xs={24} lg={12}>
               <div className="news-list">

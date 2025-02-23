@@ -63,7 +63,7 @@ const Contact: React.FC = () => {
       </section>
 
       {/* 地图区域 */}
-      <section className="map-section">
+      {/* <section className="map-section">
         <div className="section-content">
           <Title level={2}>公司位置</Title>
           <div className="map-container">
@@ -73,7 +73,7 @@ const Contact: React.FC = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
     </Content>
   );
 };

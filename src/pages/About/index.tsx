@@ -29,7 +29,8 @@ import qualifications21 from '../../assets/images/about/qualifications/图片 21
 import qualifications22 from '../../assets/images/about/qualifications/图片 22.png';
 import qualifications23 from '../../assets/images/about/qualifications/图片 23.png';
 import qualifications24 from '../../assets/images/about/qualifications/图片 24.png';
-
+import avatar1 from '../../assets/images/about/management/avatar1.jpg';
+import culture1 from '../../assets/images/about/culture/culture1.png';
 
 import './style.less';
 const { Content } = Layout;
@@ -38,34 +39,21 @@ const { Title, Paragraph } = Typography;
 // 公司简介数据
 export const companyProfile = {
   title: '公司简介',
-  content: `中泰民安集团成立于2005年，总部位于北京市大兴区，是一家以安全服务为核心，涵盖科技研发、教育培训、应急救援、物业管理等多领域的综合性企业集群。集团旗下包括多家独立运营的子公司，业务覆盖全国，致力于构建“大安全、大应急”产业生态，服务国家战略与民生需求。多年来积极参与灾害救援与公共安全建设，助力平安中国。`,
+  content: `中泰民安集团成立于2005年，总部位于北京市大兴区，是一家以安全服务为核心，涵盖科技研发、教育培训、应急救援、物业管理等多领域的综合性企业集群。集团旗下包括多家独立运营的子公司，业务覆盖全国，致力于构建"大安全、大应急"产业生态，服务国家战略与民生需求。多年来积极参与灾害救援与公共安全建设，助力平安中国。`,
   background: gradients.techBlue
 };
 
 // 管理层数据
-const management = {
-  title: '管理层',
-  members: [
-    {
-      name: '张三',
-      position: '董事长',
-      intro: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-      background: gradients.businessBlue
-    },
-    {
-      name: '李四',
-      position: '总经理',
-      intro: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-      background: gradients.techMix
-    },
-    {
-      name: '王五',
-      position: '技术总监',
-      intro: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-      background: gradients.premiumGray
-    }
-  ]
-};
+const managementTeam = [
+  {
+    id: 1,
+    name: '赵性仓',
+    title: '董事长',
+    avatar: avatar1,
+    description: `赵性仓，男，1968年3月出生，山东梁山人，中共党员，梁山在京流动党员党委副书记，中泰民安安全服务集团有限公司党支部书记、董事长，北京市大兴区中泰民安红十字救援服务中心总负责人。30多年来，他凭着矢志不渝的创业精神和强烈的社会责任感，始终以“有我在、跟我上、看我的”为理念，以“身先士卒、率先垂范”为要求，在平凡的岗位上带领团队创造了诸多不平凡的业绩。现集团旗下10家子公司、1所培训学校，解决就业3万余人次。`,
+  },
+  // ... 可能有更多管理层成员
+];
 
 // 企业文化数据
 const culture = {
@@ -74,17 +62,20 @@ const culture = {
     {
       title: '企业使命',
       content: '让城市更安全',
-      background: gradients.techBlue
+      background: gradients.techBlue,
+      image: culture1,
     },
     {
       title: '企业愿景',
       content: '成为全球智慧安全领域的技术标准制定者与综合服务标杆',
-      background: gradients.businessBlue
+      background: gradients.aiGradient,
+      image: culture1,
     },
     {
       title: '企业理念',
       content: '合作共赢 百年传承',
-      background: gradients.techGold
+      background: gradients.techGold,
+      image: culture1,
     }
   ]
 };
@@ -211,6 +202,9 @@ const elevatorItems = [
 const About: React.FC = () => {
   usePageTitle('关于我们');
 
+  // 判断是否为单个管理层成员
+  const isSingleManager = managementTeam.length === 1;
+
   return (
     <Content className="about-page">
       <Elevator items={elevatorItems} />
@@ -236,25 +230,51 @@ const About: React.FC = () => {
         </div>
       </section>
 
-      {/* 管理层 */}
-      <section id="management" className="section-management">
+      {/* 管理层介绍 */}
+      <section className="management-team">
         <div className="section-content">
-          <Title level={2}>{management.title}</Title>
-          <Row gutter={[24, 24]}>
-            {management.members.map((member, index) => (
-              <Col xs={24} md={8} key={index}>
-                <Card className="management-card">
-                  <div 
-                    className="member-avatar"
-                    style={{ background: member.background }}
-                  />
-                  <Title level={4}>{member.name}</Title>
-                  <Title level={5} type="secondary">{member.position}</Title>
-                  <Paragraph>{member.intro}</Paragraph>
+          <Title level={2}>管理层介绍</Title>
+          {isSingleManager ? (
+            // 单个管理层成员时的布局
+            <Row gutter={[48, 48]} align="middle">
+              <Col xs={24} lg={8}>
+                <Card className="manager-card single">
+                  <div className="avatar-wrapper">
+                    <img src={managementTeam[0].avatar} alt={managementTeam[0].name} />
+                  </div>
+                  <div className="info">
+                    <h3>{managementTeam[0].name}</h3>
+                    <p>{managementTeam[0].title}</p>
+                  </div>
                 </Card>
               </Col>
-            ))}
-          </Row>
+              <Col xs={24} lg={16}>
+                <div className="manager-description">
+                  <Paragraph>{managementTeam[0].description}</Paragraph>
+                </div>
+              </Col>
+            </Row>
+          ) : (
+            // 多个管理层成员时的布局
+            <Row gutter={[24, 48]}>
+              {managementTeam.map(manager => (
+                <Col xs={24} sm={12} lg={8} key={manager.id}>
+                  <Card className="manager-card">
+                    <div className="avatar-wrapper">
+                      <img src={manager.avatar} alt={manager.name} />
+                    </div>
+                    <div className="info">
+                      <h3>{manager.name}</h3>
+                      <p>{manager.title}</p>
+                    </div>
+                    <div className="description">
+                      <Paragraph>{manager.description}</Paragraph>
+                    </div>
+                  </Card>
+                </Col>
+              ))}
+            </Row>
+          )}
         </div>
       </section>
 
