@@ -1,7 +1,9 @@
-import React from 'react';
-import { Layout, Menu } from 'antd';
+import React, { useState } from 'react';
+import { Layout, Menu, Button, Drawer } from 'antd';
 import { Link, useLocation } from 'react-router-dom';
 import type { MenuProps } from 'antd';
+import { MenuOutlined } from '@ant-design/icons';
+import { useIsMobile } from '../../hooks/useIsMobile';
 import logo from '../../assets/images/logo.png'
 import './style.less';
 
@@ -54,6 +56,9 @@ const menuItems: MenuProps['items'] = [
 
 const Header: React.FC = () => {
   const location = useLocation();
+  const [mobileMenuVisible, setMobileMenuVisible] = useState(false);
+  const isMobile = useIsMobile();
+
   const selectedKey = location.pathname === '/' ? '/' : `/${location.pathname.split('/')[1]}`;
 
   return (
@@ -65,12 +70,41 @@ const Header: React.FC = () => {
           </div>  
           <h3>中泰民安</h3>
         </Link>
-        <Menu
-          mode="horizontal"
-          selectedKeys={[selectedKey]}
-          items={menuItems}
-          className="header-menu"
-        />
+
+        {/* 根据设备类型显示不同的菜单 */}
+        {!isMobile ? (
+          <Menu
+            mode="horizontal"
+            selectedKeys={[selectedKey]}
+            items={menuItems}
+            className="header-menu"
+          />
+        ) : (
+          <>
+            <div className="mobile-menu">
+              <Button
+                type="text"
+                icon={<MenuOutlined />}
+                onClick={() => setMobileMenuVisible(true)}
+              />
+            </div>
+            <Drawer
+              title="菜单"
+              placement="right"
+              onClose={() => setMobileMenuVisible(false)}
+              open={mobileMenuVisible}
+              className="mobile-drawer"
+              width="50%"
+            >
+              <Menu
+                mode="inline"
+                selectedKeys={[selectedKey]}
+                items={menuItems}
+                onClick={() => setMobileMenuVisible(false)}
+              />
+            </Drawer>
+          </>
+        )}
       </div>
     </AntHeader>
   );

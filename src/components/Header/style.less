@@ -15,16 +15,17 @@
   
   .header-content {
     position: relative;
-    max-width: 1200px;
+    max-width: 1248px;
     margin: 0 auto;
-    padding: 0;
+    padding: 0 24px;
     display: flex;
     align-items: center;
     height: 100%;
-    
+    // 桌面端菜单
     .logo {
       display: flex;
       align-items: center;
+      min-width: 120px;
       margin-right: 48px;
       
       .logo-mark {
@@ -147,6 +148,18 @@
         }
       }
     }
+
+    // 移动端菜单按钮
+    .mobile-menu {
+      margin-left: auto;
+      
+      .ant-btn {
+        font-size: 20px;
+        padding: 0 12px;
+        height: 64px;
+        color: @dark-blue;
+      }
+    }
   }
 
   // 添加一个伪元素来增强毛玻璃效果
@@ -164,13 +177,21 @@
 }
 
 // 响应式调整
-@media (max-width: 768px) {
+@media (max-width: 991px) {
   .app-header {
     .header-content {
       .logo {
         .logo-mark {
+          position: relative;
           width: 24px;
           height: 24px;
+          font-size: 0;
+
+          img {
+            position: absolute;
+            width: 24px;
+            height: 24px;
+          }
           
           &::after {
             width: 12px;
@@ -192,6 +213,39 @@
             font-size: 14px;
           }
         }
+      }
+    }
+  }
+}
+
+// 移动端抽屉菜单样式
+.mobile-drawer {
+  .ant-drawer-body {
+    padding: 0;
+    
+    .ant-menu {
+      border: none;
+      
+      .ant-menu-item,
+      .ant-menu-submenu {
+        line-height: 50px;
+        
+        a {
+          color: @gray-6;
+          
+          &:hover {
+            color: @gold;
+          }
+        }
+      }
+      
+      .ant-menu-submenu-title {
+        height: 50px;
+        line-height: 50px;
+      }
+      
+      .ant-menu-item-selected a {
+        color: @gold;
       }
     }
   }
