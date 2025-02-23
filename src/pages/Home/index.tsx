@@ -183,7 +183,7 @@ const Home: React.FC = () => {
           </div>
           <Row gutter={[48, 48]} align="middle">
             <Col xs={24} lg={12}>
-              <Paragraph>
+              <Paragraph className='intro-content-text'>
                 {companyProfile.content}
               </Paragraph>
               <div className="intro-highlights">

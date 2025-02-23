@@ -84,8 +84,8 @@ const TechBusiness: React.FC = () => {
             </Col>
             <Col xs={24} lg={12}>
               <div className="product-info">
-                <Title level={3}>{coreProductData.title}</Title>
-                <Paragraph>{coreProductData.description}</Paragraph>
+                <Title level={3} className="product-info-title">{coreProductData.title}</Title>
+                <Paragraph className="product-info-description">{coreProductData.description}</Paragraph>
               </div>
             </Col>
           </Row>
