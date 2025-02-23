@@ -57,7 +57,7 @@ const Environment: React.FC = () => {
                     <Title level={3}>
                       {strategy.icon} {strategy.title}
                     </Title>
-                    <Paragraph>{strategy.content}</Paragraph>
+                    <Paragraph className="strategy-content-p">{strategy.content}</Paragraph>
                   </div>
                 </Card>
               </Col>
