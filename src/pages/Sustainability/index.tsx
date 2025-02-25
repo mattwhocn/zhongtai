@@ -16,16 +16,19 @@ const { Title, Paragraph } = Typography;
 const tabItems = [
   {
     key: 'strategy',
+    title: '发展战略',
     label: <Link to="/sustainability/strategy">发展战略</Link>,
     image: strategieBanner,
   },
   {
     key: 'environment',
+    title: '环保举措',
     label: <Link to="/sustainability/environment">环保举措</Link>,
     image: environmentBanner,
   },
   {
     key: 'social',
+    title: '社会责任',
     label: <Link to="/sustainability/social">社会责任</Link>,
   },
 ];
@@ -67,7 +70,7 @@ const Sustainability: React.FC = () => {
         style={{ background: gradients.techBlue }}
       >
         <div className="banner-content">
-          <h1>可持续发展</h1>
+          <h1>{currentTabItem.title}</h1>
           <p>创新科技，绿色发展，共创美好未来</p>
         </div>
         <div className="tech-overlay">
