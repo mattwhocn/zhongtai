@@ -16,6 +16,7 @@ import business6 from '../../assets/images/business/business6.jpg';
 import companyImage from '../../assets/images/about/company.png';
 import { companyProfile } from '../About';
 import { newsContent, NewsItem } from '../../assets';
+import { gradients } from '@/utils/gradients';
 import './style.less';
 
 const { Content } = Layout;
@@ -23,6 +24,12 @@ const { Title, Paragraph } = Typography;
 
 // 轮播图数据
 const carouselData = [
+  {
+    id: 0,
+    title: '中泰民安集团',
+    desc: '中泰民安集团',
+    background: gradients.techBlue,
+  },
   {
     id: 1,
     title: '中泰民安',
@@ -132,12 +139,12 @@ const Home: React.FC = () => {
         {carouselData.map((item, index) => (
           <div key={item.id}>
             <div className={`carousel-item carousel-item-${index}`}>
-              <div className="carousel-content">
-                <img 
-                  src={item.image} 
+              <div className="carousel-content" style={{ background: item.background }}>
+                {item?.image && <img 
+                  src={item?.image} 
                   alt={item.title}
                   className="carousel-image"
-                />
+                />}
                 <div className="carousel-text">
                   <p>{item.title}</p>
                   <h2>{item.desc}</h2>

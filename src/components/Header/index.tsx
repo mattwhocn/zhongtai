@@ -15,6 +15,28 @@ const menuItems: MenuProps['items'] = [
   {
     key: '/about',
     label: <Link to="/about">关于我们</Link>,
+    children: [
+      {
+        key: '/about#profile',
+        label: <Link to="/about#profile">公司简介</Link>,
+      },
+      {
+        key: '/about#management',
+        label: <Link to="/about#management">管理层</Link>,
+      },
+      {
+        key: '/about#culture',
+        label: <Link to="/about#culture">企业文化</Link>,
+      },
+      {
+        key: '/about#global',
+        label: <Link to="/about#global">全球布局</Link>,
+      },
+      {
+        key: '/about#qualifications',
+        label: <Link to="/about#qualifications">资质与荣誉</Link>,
+      },
+    ],
   },
   {
     key: '/business',
@@ -61,9 +83,9 @@ const Header: React.FC = () => {
       <div className="header-content">
         <Link to="/" className="logo">
           <div className="logo-mark">
-            <img src={logo} alt="中泰民安" />  
+            <img src={logo} alt="中泰民安集团" />  
           </div>  
-          <h3>中泰民安</h3>
+          <h3>中泰民安集团</h3>
         </Link>
         <Menu
           mode="horizontal"
