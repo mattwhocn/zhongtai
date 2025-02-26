@@ -9,40 +9,46 @@ interface ElevatorItem {
 
 interface ElevatorProps {
   items: ElevatorItem[];
+  activeKey?: string;
+  onChange?: (key: string) => void;
 }
 
-const Elevator: React.FC<ElevatorProps> = ({ items }) => {
-  const [activeKey, setActiveKey] = useState<string>(items[0].key);
+const Elevator: React.FC<ElevatorProps> = (props: ElevatorProps) => {
+  const { items,activeKey, onChange } = props;
 
-  // 监听滚动，更新当前激活的项
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY + 100; // 添加偏移量以提前激活
+  // const [activeKey, setActiveKey] = useState<string>(props.activeKey || items[0].key);
 
-      for (let i = items.length - 1; i >= 0; i--) {
-        const element = document.getElementById(items[i].key);
-        if (element && element.offsetTop <= scrollPosition) {
-          setActiveKey(items[i].key);
-          break;
-        }
-      }
-    };
+  // // 监听滚动，更新当前激活的项
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     const scrollPosition = window.scrollY + 100; // 添加偏移量以提前激活
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [items]);
+  //     for (let i = items.length - 1; i >= 0; i--) {
+  //       const element = document.getElementById(items[i].key);
+  //       if (element && element.offsetTop <= scrollPosition) {
+  //         setActiveKey(items[i].key);
+  //         onChange?.(items[i].key);
+  //         break;
+  //       }
+  //     }
+  //   };
 
-  // 点击导航项
-  const handleClick = (key: string) => {
-    const element = document.getElementById(key);
-    if (element) {
-      const offset = element.offsetTop - 80; // 考虑固定头部的高度
-      window.scrollTo({
-        top: offset,
-        behavior: 'smooth'
-      });
-    }
-  };
+  //   window.addEventListener('scroll', handleScroll);
+  //   return () => window.removeEventListener('scroll', handleScroll);
+  // }, [items]);
+
+  // // 点击导航项
+  // const handleClick = (key: string) => {
+  //   const element = document.getElementById(key);
+  //   if (element) {
+  //     const offset = element.offsetTop - 80; // 考虑固定头部的高度
+  //     window.scrollTo({
+  //       top: offset,
+  //       behavior: 'smooth'
+  //     });
+  //     onChange?.(key);
+  //   }
+  // };
 
   return (
     <Affix className="elevator-container" offsetTop={120}>
@@ -53,7 +59,7 @@ const Elevator: React.FC<ElevatorProps> = ({ items }) => {
             <li 
               key={item.key}
               className={`elevator-item ${activeKey === item.key ? 'active' : ''}`}
-              onClick={() => handleClick(item.key)}
+              onClick={() => onChange?.(item.key)}
             >
               <span className="elevator-dot" />
               {item.title}
