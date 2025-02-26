@@ -7,6 +7,7 @@ import remarkGfm from 'remark-gfm';
 import { usePageTitle } from '../../../hooks/usePageTitle';
 import { getNewsTagColor } from '../../../utils/newsHelpers';
 import { findNewsById, NewsItem } from '../../../assets';
+import { gradients } from '@/utils/gradients';
 import './style.less';
 
 const { Content } = Layout;
@@ -42,11 +43,15 @@ const NewsDetail: React.FC = () => {
   return (
     <Content className="news-detail-page">
       {/* 顶部配图 */}
-      {metadata.cover && (
-        <div className="detail-banner">
-          <img src={metadata.cover} alt={metadata.title} />
+      <div 
+        className="page-banner"
+        style={{ background: gradients.techBlue }}
+      >
+        <div className="banner-content">
+          <h1>{metadata.title}</h1>
         </div>
-      )}
+        <div className="tech-overlay" />
+      </div>
 
       <div className="detail-container">
         {/* 面包屑导航 */}
@@ -67,8 +72,6 @@ const NewsDetail: React.FC = () => {
 
         {/* 新闻内容 */}
         <div className="news-content">
-          <Title level={2}>{metadata.title}</Title>
-          
           <Space className="news-meta" size={16}>
             <Tag color={getNewsTagColor(metadata.category)}>{metadata.category}</Tag>
             <span className="news-date">

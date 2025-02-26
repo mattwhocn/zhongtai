@@ -9,6 +9,12 @@
   .core-product {
     background: #f5f5f5;
 
+    .product-row {
+      &:not(:last-child) {
+        margin-bottom: 48px;
+      }
+    }
+
     .product-image {
       position: relative;
       border-radius: 8px;
@@ -118,4 +124,4 @@
       }
     }
   }
-} 
+}

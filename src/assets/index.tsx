@@ -7,6 +7,7 @@ import news5Content from './news-md/news5.md';
 import news6Content from './news-md/news6.md';
 import news7Content from './news-md/news7.md';
 import news8Content from './news-md/news8.md';
+import news9Content from './news-md/news9.md';
 import news1Cover from './news-cover/news1-1.png';
 import news2Cover from './news-cover/news2-1.png';
 import news3Cover from './news-cover/news3-1.png';
@@ -15,7 +16,7 @@ import news5Cover from './news-cover/news5-1.png';
 import news6Cover from './news-cover/news6-1.png';
 import news7Cover from './news-cover/news7-1.png';
 import news8Cover from './news-cover/news8-1.png';
-
+import news9Cover from './news-cover/news9-1.jpg';
 export type NewsCategory = '公司新闻' | '行业新闻' | '培训活动';
 export type NewsCategoryKey = 'company' | 'industry' | 'training';
 
@@ -121,6 +122,17 @@ export const newsContent: NewsItem[] = [
       cover: news8Cover,
     },
     content: news8Content,
+  },
+  {
+    id: '9',
+    metadata: {
+      title: "泰康集团消防培训",
+      date: "2025-03-01",
+      category: '培训活动',
+      categoryKey: 'training',
+      cover: news9Cover,
+    },
+    content: news9Content,
   }
 ];
 

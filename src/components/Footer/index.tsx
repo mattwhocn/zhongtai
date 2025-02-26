@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import weixin from '../../assets/images/weixin.jpg';
 import douyin from '../../assets/images/douyin.png';
 import logo from '../../assets/images/logo.png';
+import { contactInfo } from '@/pages/Contact';
 import './style.less';
 
 const { Footer: AntFooter } = Layout;
@@ -19,8 +20,7 @@ const menuItems = [
 ];
 
 const Footer: React.FC = () => {
-  const address = '北京市大兴区庞各庄镇庞新路5号';
-  const baiduMapUrl = `https://api.map.baidu.com/marker?location=39.904989,116.405285&title=${encodeURIComponent(address)}&content=${encodeURIComponent(address)}&output=html`;
+  const baiduMapUrl = `https://api.map.baidu.com/marker?location=39.904989,116.405285&title=${encodeURIComponent(contactInfo.address)}&content=${encodeURIComponent(contactInfo.address)}&output=html`;
 
   return (
     <AntFooter className="app-footer">
@@ -29,9 +29,10 @@ const Footer: React.FC = () => {
           <Col xs={24} sm={12} md={8}>
             <div className="footer-section">
               <h3>联系我们</h3>
-              <p>集团地址：{address}</p>
+              <p>集团地址：{contactInfo.address}</p>
               <p>联系方式：二维码咨询</p>
-              <p>电子邮箱：contact@company.com</p>
+              <p>联系电话：{contactInfo.phone}</p>
+              <p>电子邮箱：{contactInfo.email}</p>
               <a 
                 href={baiduMapUrl}
                 target="_blank" 
@@ -76,7 +77,7 @@ const Footer: React.FC = () => {
                 <h3>中泰民安</h3>
               </div>
               <p className="company-desc">
-                
+                安全服务集团
               </p>
             </div>
           </Col>

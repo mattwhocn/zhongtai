@@ -61,6 +61,26 @@
       text-indent: 2em;
       color: @gray-6;
     }
+
+    .intro-highlights {
+      margin: 24px 0;
+
+      .highlight-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 16px;
+        font-size: 16px;
+        
+        .highlight-dot {
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          background: #1890ff; // 使用主题蓝色，可以根据需要调整
+          margin-right: 12px;
+          display: inline-block;
+        }
+      }
+    }
   }
   
   // 管理层
