@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Layout, Typography, Row, Col, Card, Button, Collapse, Tag, Space } from 'antd';
 import { RightOutlined } from '@ant-design/icons';
 import { usePageTitle } from '../../hooks/usePageTitle';
@@ -77,6 +77,12 @@ const Career: React.FC = () => {
   usePageTitle('职业发展');
   const [activeKey, setActiveKey] = useState<string[]>([]);
 
+  useEffect(() => {
+    if (jobList.length === 1) {
+      setActiveKey([jobList[0].id.toString()]);
+    }
+  }, [jobList]);
+
   return (
     <Content className="career-page">
       {/* 顶部横幅 */}
@@ -115,7 +121,7 @@ const Career: React.FC = () => {
                         </Space>
                       </div>
                       <Button type="primary">
-                        立即申请 <RightOutlined />
+                        查看详情 <RightOutlined />
                       </Button>
                     </div>
                   }

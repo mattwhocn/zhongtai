@@ -89,7 +89,7 @@ const SecurityBusiness: React.FC = () => {
               </div>
             </Col>
             <Col xs={24} lg={12} className='section-security-text'>
-              <Paragraph className='section-security-description'>{securitySection.description}</Paragraph>
+              <Paragraph>{securitySection.description}</Paragraph>
               <ul>
                 {securitySection.extra.map((item, index) => (
                   <li key={index}>{item}</li>

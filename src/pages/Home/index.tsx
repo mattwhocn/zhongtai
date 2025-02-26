@@ -4,6 +4,7 @@ import { RightOutlined } from '@ant-design/icons';
 import { Link, useNavigate } from 'react-router-dom';
 import { usePageTitle } from '../../hooks/usePageTitle';
 import { getNewsTagColor } from '../../utils/newsHelpers';
+import banner0 from '../../assets/images/banner/banner0.png';
 import banner1 from '../../assets/images/banner/banner1.png';
 import banner2 from '../../assets/images/banner/banner2.png';
 import banner3 from '../../assets/images/banner/banner3.png';
@@ -26,9 +27,10 @@ const { Title, Paragraph } = Typography;
 const carouselData = [
   {
     id: 0,
-    title: '中泰民安集团',
-    desc: '中泰民安集团',
+    title: '',
+    desc: '',
     background: gradients.techBlue,
+    image: banner0,
   },
   {
     id: 1,

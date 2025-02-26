@@ -225,6 +225,20 @@ const About: React.FC = () => {
               <Paragraph className="profile-text">
                 {companyProfile.content}
               </Paragraph>
+              <div className="intro-highlights">
+                <div className="highlight-item">
+                  <span className="highlight-dot" />
+                  中泰民安：让城市更安全，让文明更韧性
+                </div>
+                <div className="highlight-item">
+                  <span className="highlight-dot" />
+                  兴泰科技：兴泰启航，科技护疆
+                </div>
+                <div className="highlight-item">
+                  <span className="highlight-dot" />
+                  兴宾学校：兴宾育才，安全未来
+                </div>
+              </div>
             </Col>
           </Row>
         </div>

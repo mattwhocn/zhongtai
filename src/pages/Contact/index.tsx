@@ -9,9 +9,9 @@ const { Content } = Layout;
 const { Title } = Typography;
 
 // 联系信息数据
-const contactInfo = {
+export const contactInfo = {
   address: '北京市大兴区庞各庄镇庞新路5号',
-  phone: '010-xxxx xxxx',
+  phone: '010-61288212',
   email: 'contact@example.com',
   workTime: '周一至周五 9:00-18:00'
 };

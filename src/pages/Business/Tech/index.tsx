@@ -18,14 +18,17 @@ import './style.less';
 const { Content } = Layout;
 const { Title, Paragraph } = Typography;
 
-// 核心产品数据
-const coreProductData = {
-  title: "地理信息系统（ZT-Earth）",
-  description: `ZT-Earth平台是中泰民安集团子公司兴泰科技自主研发的一套全方位覆盖时空数据的数字地理信息平台（GIS）。平台可实现数据预案存储、分析与共享。实现三维地理信息技术与空间立体可视化技术的深度融合，致力于打造一款多端数据互联、自主可控、跨行业应用、多领域融合的地理信息和数据运营服务平台。
+// 修改核心产品数据结构为数组
+const coreProductsData = [
+  {
+    id: 1,
+    title: "地理信息系统（ZT-Earth）",
+    description: `ZT-Earth平台是中泰民安集团子公司兴泰科技自主研发的一套全方位覆盖时空数据的数字地理信息平台（GIS）。平台可实现数据预案存储、分析与共享。实现三维地理信息技术与空间立体可视化技术的深度融合，致力于打造一款多端数据互联、自主可控、跨行业应用、多领域融合的地理信息和数据运营服务平台。
 平台集空间数据处理、云服务、云计算等核心技术，通过二次开发平台、数字化预案库形成定制化服务模板，通过共享平台的技术存储与数据权限收发，完成基于高分数字地球的全量大数据展示与分析，形成基于数据、预案、服务的多维服务体系，保证了时空专项数据的高效利用及互联互通；通过丰富的GIS应用，进行大量应用级接口封装，提供广泛的行业应用案例及预案，从而提升了平台业务可扩展能力；通过结合仿真工具、物联网、虚拟现实等科技手段，将物理世界映射到虚拟空间中，形成数字镜像，达到虚实结合、数字孪生建设的目的。并且高分地球平台支持跨平台及国产软硬件环境的部署，搭建了完整的地理信息可视化应用生态圈。
 `,
-  image: coreProduct,
-};
+    image: coreProduct,
+  },
+];
 
 // 定制产品案例数据
 const customCases = [
@@ -74,21 +77,32 @@ const TechBusiness: React.FC = () => {
       <section className="core-product">
         <div className="section-content">
           <Title level={2}>核心产品</Title>
-          <Row gutter={[48, 48]} align="middle">
-            <Col xs={24} lg={12}>
-              <div className="product-image">
-                <div className="tech-overlay">
-                  <img src={coreProductData.image} alt={coreProductData.title} />
+          {coreProductsData.map((product) => (
+            <Row 
+              key={product.id} 
+              gutter={[48, 48]} 
+              align="middle" 
+              className="product-row"
+            >
+              <Col xs={24} lg={12}>
+                <div className="product-image">
+                  <div className="tech-overlay">
+                    <img src={product.image} alt={product.title} />
+                  </div>
                 </div>
-              </div>
-            </Col>
-            <Col xs={24} lg={12}>
-              <div className="product-info">
-                <Title level={3} className="product-info-title">{coreProductData.title}</Title>
-                <Paragraph className="product-info-description">{coreProductData.description}</Paragraph>
-              </div>
-            </Col>
-          </Row>
+              </Col>
+              <Col xs={24} lg={12}>
+                <div className="product-info">
+                  <Title level={3} className="product-info-title">
+                    {product.title}
+                  </Title>
+                  <Paragraph className="product-info-description">
+                    {product.description}
+                  </Paragraph>
+                </div>
+              </Col>
+            </Row>
+          ))}
         </div>
       </section>
 

@@ -6,7 +6,7 @@ import { Link, Outlet, useLocation } from 'react-router-dom';
 
 import strategieBanner from '../../assets/images/sustainability/strategie.png';
 import environmentBanner from '../../assets/images/sustainability/environment.png';
-
+import socialBanner from '../../assets/images/sustainability/social.png';
 import './style.less';
 
 const { Content } = Layout;
@@ -30,6 +30,7 @@ const tabItems = [
     key: 'social',
     title: '社会责任',
     label: <Link to="/sustainability/social">社会责任</Link>,
+    image: socialBanner,
   },
 ];
 
