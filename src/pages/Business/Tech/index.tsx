@@ -115,13 +115,13 @@ const TechBusiness: React.FC = () => {
               <Col xs={24} sm={24} lg={24} key={item.id}>
                 <Card className="case-card" bordered={false}>
                   <Title className="case-title" level={4}>{item.title}</Title>
-                  <div className="case-image">
-                    {item.images.map((image, index) => (
-                      <div key={index}  className="tech-overlay">
+                  <Row gutter={[12, 12]} className="case-image">
+                    {item.images.slice(0, 2).map((image, index) => (
+                      <Col xs={24} sm={24} lg={12} key={index} className="tech-overlay">
                         <img src={image} alt={item.title} />
-                      </div>
+                      </Col>
                     ))}
-                  </div>
+                  </Row>
                   <div className="case-info">
                     <Paragraph>{item.description}</Paragraph>
                     {item.extra && (

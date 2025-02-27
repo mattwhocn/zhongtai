@@ -97,19 +97,25 @@
           .ant-collapse-header {
             background: #fff;
             padding: 20px 24px;
+
+            .ant-collapse-expand-icon {
+              margin-top: 6px;
+            }
             
             .job-header {
-              display: flex;
-              justify-content: space-between;
-              align-items: center;
               width: 100%;
               
               .job-title {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 10px;
+
                 h3 {
-                  font-size: 18px;
-                  margin: 0 0 8px;
+                  font-size: 16px;
                   color: @dark-blue;
                   font-weight: 500;
+                  margin: 0;
                 }
                 
                 .ant-tag {
@@ -127,8 +133,6 @@
               
               .ant-btn {
                 border-radius: 6px;
-                height: 36px;
-                padding: 0 20px;
                 font-size: 14px;
                 font-weight: 500;
                 
@@ -249,9 +253,14 @@
             .job-header {
               flex-direction: column;
               align-items: flex-start;
-              
-              .ant-btn {
-                margin-top: 16px;
+
+              .job-title {
+                h3 {
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                  max-width: 160px;
+                }
               }
             }
           }

@@ -20,8 +20,8 @@ const menuItems = [
 ];
 
 const Footer: React.FC = () => {
-  const baiduMapUrl = `https://api.map.baidu.com/marker?location=39.904989,116.405285&title=${encodeURIComponent(contactInfo.address)}&content=${encodeURIComponent(contactInfo.address)}&output=html`;
-
+  const baiduMapUrl = `https://map.baidu.com/search/${encodeURIComponent(contactInfo.address)}/@12949867.125,4784003,19z?querytype=s&da_src=shareurl&wd=${encodeURIComponent(contactInfo.address)}`;
+  
   return (
     <AntFooter className="app-footer">
       <div className="footer-content">

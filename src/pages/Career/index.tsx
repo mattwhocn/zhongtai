@@ -25,6 +25,9 @@ import career25 from '../../assets/images/career/career25.jpg';
 import career26 from '../../assets/images/career/career26.jpg';
 import career27 from '../../assets/images/career/career27.jpg';
 import career28 from '../../assets/images/career/career28.jpg';
+import career29 from '../../assets/images/career/career29.png';
+import career30 from '../../assets/images/career/career30.png';
+
 
 
 const { Content } = Layout;
@@ -36,7 +39,7 @@ const jobList = [
   {
     id: 1,
     title: '保安（男性）',
-    tags: ['北京', '18—50周岁', '初中及以上', '保安'],
+    tags: ['18—50周岁', '初中及以上', '保安'],
     description: `
       招工条件：
       1. 18—50周岁，有正式户口。
@@ -63,7 +66,7 @@ const cultureSections = [
   },
   {
     title: '职业发展',
-    items: [career7, career8, career9, career10, career11, career12, career13, career14, career15, career16, career18, career19, career20, career21, career22],
+    items: [career29, career30],
   },
 ];
 
@@ -108,15 +111,17 @@ const Career: React.FC = () => {
                     <div className="job-header">
                       <div className="job-title">
                         <h3>{job.title}</h3>
+                        <Button type="primary" size="middle">
+                          查看详情 <RightOutlined />
+                        </Button>
+                      </div>
+                      <div className="job-tags-wrapper">
                         <Space size={8} className="job-tags">
                           {job.tags.map((tag, index) => (
                             <Tag color={['blue', 'gold', 'green', 'purple'][index % 4]} key={index}>{tag}</Tag>
                           ))}
                         </Space>
                       </div>
-                      <Button type="primary">
-                        查看详情 <RightOutlined />
-                      </Button>
                     </div>
                   }
                 >
