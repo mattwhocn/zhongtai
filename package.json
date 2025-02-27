@@ -21,7 +21,9 @@
     "react-dom": "^18.2.0",
     "react-markdown": "^10.0.0",
     "react-router-dom": "^6.22.3",
-    "remark-gfm": "^4.0.1"
+    "remark-gfm": "^4.0.1",
+    "ts-node": "^10.9.2",
+    "ts-node-esm": "^0.0.6"
   },
   "devDependencies": {
     "@eslint/js": "^8.57.0",
@@ -54,6 +56,5 @@
   "engines": {
     "node": ">=16",
     "pnpm": ">=8"
-  },
-  "type": "module"
+  }
 }

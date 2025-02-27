@@ -31,6 +31,7 @@ import qualifications23 from '../../assets/images/about/qualifications/图片 23
 import qualifications24 from '../../assets/images/about/qualifications/图片 24.png';
 import avatar1 from '../../assets/images/about/management/avatar1.jpg';
 import culture1 from '../../assets/images/about/culture/culture1.png';
+import { useLocation } from 'react-router-dom';
 
 import './style.less';
 const { Content } = Layout;
@@ -50,7 +51,7 @@ const managementTeam = [
     name: '赵性仓',
     title: '董事长',
     avatar: avatar1,
-    description: `赵性仓，男，1968年3月出生，山东梁山人，中共党员，梁山在京流动党员党委副书记，中泰民安安全服务集团有限公司党支部书记、董事长，北京市大兴区中泰民安红十字救援服务中心总负责人。30多年来，他凭着矢志不渝的创业精神和强烈的社会责任感，始终以“有我在、跟我上、看我的”为理念，以“身先士卒、率先垂范”为要求，在平凡的岗位上带领团队创造了诸多不平凡的业绩。现集团旗下10家子公司、1所培训学校，解决就业3万余人次。`,
+    description: `赵性仓，男，1968年3月出生，山东梁山人，中共党员，梁山在京流动党员党委副书记，中泰民安安全服务集团有限公司党支部书记、董事长，北京市大兴区中泰民安红十字救援服务中心总负责人。30多年来，他凭着矢志不渝的创业精神和强烈的社会责任感，始终以"有我在、跟我上、看我的"为理念，以"身先士卒、率先垂范"为要求，在平凡的岗位上带领团队创造了诸多不平凡的业绩。现集团旗下10家子公司、1所培训学校，解决就业3万余人次。`,
   },
   // ... 可能有更多管理层成员
 ];
@@ -201,13 +202,102 @@ const elevatorItems = [
 
 const About: React.FC = () => {
   usePageTitle('关于我们');
+  const location = useLocation();
+  
+  // 添加状态来追踪当前活动的部分
+  const [activeSection, setActiveSection] = React.useState('profile');
+  // 添加标志位，防止循环触发
+  const isScrolling = React.useRef(false);
+  const isHashChanging = React.useRef(false);
+
+  // 1. 处理 Hash 变化：触发页面定位和电梯组件选中
+  React.useEffect(() => {
+    const handleHashChange = () => {
+      if (isScrolling.current) return; // 如果是滚动触发的，则不处理
+
+      isHashChanging.current = true;
+      const hash = window.location.hash.slice(1) || 'profile';
+      setActiveSection(hash);
+      const element = document.getElementById(hash);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+      setTimeout(() => {
+        isHashChanging.current = false;
+      }, 100);
+    };
+
+    handleHashChange();
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, [location]);
+
+  // 2. 处理页面滚动：触发 hash 变化和电梯组件选中
+  React.useEffect(() => {
+    const handleScroll = () => {
+      if (isHashChanging.current) return; // 如果是 hash 变化触发的，则不处理
+
+      const sections = elevatorItems.map(item => item.key);
+      
+      // 使用 requestAnimationFrame 优化滚动性能
+      requestAnimationFrame(() => {
+        isScrolling.current = true;
+        
+        // 找到当前可见的部分
+        for (const section of sections) {
+          const element = document.getElementById(section);
+          if (element) {
+            const rect = element.getBoundingClientRect();
+            if (rect.top <= 100 && rect.bottom >= 100) {
+              if (activeSection !== section) {
+                setActiveSection(section);
+                // 更新 URL，但不触发滚动
+                window.history.replaceState(null, '', `#${section}`);
+              }
+              break;
+            }
+          }
+        }
+
+        setTimeout(() => {
+          isScrolling.current = false;
+        }, 100);
+      });
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [activeSection]);
+
+  // 3. 处理电梯组件点击：触发页面定位和 hash 变化
+  const handleElevatorClick = (key: string) => {
+    if (isScrolling.current) return; // 如果正在滚动，则不处理
+
+    setActiveSection(key);
+    isHashChanging.current = true;
+    window.location.hash = key;
+    
+    // 手动触发滚动，因为有些浏览器可能不会响应 hash 变化
+    const element = document.getElementById(key);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    setTimeout(() => {
+      isHashChanging.current = false;
+    }, 100);
+  };
 
   // 判断是否为单个管理层成员
   const isSingleManager = managementTeam.length === 1;
 
   return (
     <Content className="about-page">
-      <Elevator items={elevatorItems} />
+      <Elevator 
+        items={elevatorItems} 
+        activeKey={activeSection}
+        onChange={handleElevatorClick}
+      />
       
       {/* 公司简介 */}
       <section id="profile" className="section-profile">
@@ -225,13 +315,27 @@ const About: React.FC = () => {
               <Paragraph className="profile-text">
                 {companyProfile.content}
               </Paragraph>
+              <div className="intro-highlights">
+                <div className="highlight-item">
+                  <span className="highlight-dot" />
+                  中泰民安：让城市更安全，让文明更韧性
+                </div>
+                <div className="highlight-item">
+                  <span className="highlight-dot" />
+                  兴泰科技：兴泰启航，科技护疆
+                </div>
+                <div className="highlight-item">
+                  <span className="highlight-dot" />
+                  兴宾学校：兴宾育才，安全未来
+                </div>
+              </div>
             </Col>
           </Row>
         </div>
       </section>
 
       {/* 管理层介绍 */}
-      <section className="management-team">
+      <section id="management" className="management-team">
         <div className="section-content">
           <Title level={2}>管理层介绍</Title>
           {isSingleManager ? (

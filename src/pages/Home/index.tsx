@@ -4,6 +4,7 @@ import { RightOutlined } from '@ant-design/icons';
 import { Link, useNavigate } from 'react-router-dom';
 import { usePageTitle } from '../../hooks/usePageTitle';
 import { getNewsTagColor } from '../../utils/newsHelpers';
+import banner0 from '../../assets/images/banner/banner0.png';
 import banner1 from '../../assets/images/banner/banner1.png';
 import banner2 from '../../assets/images/banner/banner2.png';
 import banner3 from '../../assets/images/banner/banner3.png';
@@ -16,6 +17,7 @@ import business6 from '../../assets/images/business/business6.jpg';
 import companyImage from '../../assets/images/about/company.png';
 import { companyProfile } from '../About';
 import { newsContent, NewsItem } from '../../assets';
+import { gradients } from '@/utils/gradients';
 import './style.less';
 
 const { Content } = Layout;
@@ -23,6 +25,13 @@ const { Title, Paragraph } = Typography;
 
 // 轮播图数据
 const carouselData = [
+  {
+    id: 0,
+    title: '',
+    desc: '',
+    background: gradients.techBlue,
+    image: banner0,
+  },
   {
     id: 1,
     title: '中泰民安',
@@ -132,12 +141,12 @@ const Home: React.FC = () => {
         {carouselData.map((item, index) => (
           <div key={item.id}>
             <div className={`carousel-item carousel-item-${index}`}>
-              <div className="carousel-content">
-                <img 
-                  src={item.image} 
+              <div className="carousel-content" style={{ background: item.background }}>
+                {item?.image && <img 
+                  src={item?.image} 
                   alt={item.title}
                   className="carousel-image"
-                />
+                />}
                 <div className="carousel-text">
                   <p>{item.title}</p>
                   <h2>{item.desc}</h2>
@@ -183,7 +192,7 @@ const Home: React.FC = () => {
           </div>
           <Row gutter={[48, 48]} align="middle">
             <Col xs={24} lg={12}>
-              <Paragraph>
+              <Paragraph className='intro-content-text'>
                 {companyProfile.content}
               </Paragraph>
               <div className="intro-highlights">

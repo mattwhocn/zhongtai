@@ -70,6 +70,10 @@ const config: Configuration = {
         { 
           from: 'src/assets',
           to: 'assets',
+        },
+        {
+          from: 'public/illustation',
+          to: 'illustation',
         }
       ]
     })

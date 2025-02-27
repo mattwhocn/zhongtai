@@ -1,15 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Layout, Typography, Row, Col, Card, Button, Collapse, Tag, Space } from 'antd';
 import { RightOutlined } from '@ant-design/icons';
 import { usePageTitle } from '../../hooks/usePageTitle';
 import { gradients } from '../../utils/gradients';
 import './style.less';
-import career1 from '../../assets/images/career/career1.png';
-import career2 from '../../assets/images/career/career2.png';
-import career3 from '../../assets/images/career/career3.png';
-import career4 from '../../assets/images/career/career4.png';
-import career5 from '../../assets/images/career/career5.png';
-import career6 from '../../assets/images/career/career6.png';
 import career7 from '../../assets/images/career/career7.jpg';
 import career8 from '../../assets/images/career/career8.jpg';
 import career9 from '../../assets/images/career/career9.jpg';
@@ -61,21 +55,27 @@ const jobList = [
 const cultureSections = [
   {
     title: '公司环境',
-    items: [career1, career2, career3, career4, career5, career6, career7, career8, career9, career10, career11, career12, career13, career14, career15, career16, career18, career19, career20, career21, career22, career23, career24, career25, career26, career27, career28],
+    items: [career8, career10, career11, career13, career14, career16, career18, career21, career22],
   },
   {
     title: '员工福利',
-    items: [career1, career2, career3, career4, career5, career6, career7, career8, career9, career10, career11, career12, career13, career14, career15, career16, career18, career19, career20, career21, career22, career23, career24, career25, career26, career27, career28],
+    items: [career23, career26, career27, career28],
   },
   {
     title: '职业发展',
-    items: [career1, career2, career3, career4, career5, career6, career7, career8, career9, career10, career11, career12, career13, career14, career15, career16, career18, career19, career20, career21, career22, career23, career24, career25, career26, career27, career28],
+    items: [career7, career8, career9, career10, career11, career12, career13, career14, career15, career16, career18, career19, career20, career21, career22],
   },
 ];
 
 const Career: React.FC = () => {
   usePageTitle('职业发展');
   const [activeKey, setActiveKey] = useState<string[]>([]);
+
+  useEffect(() => {
+    if (jobList.length === 1) {
+      setActiveKey([jobList[0].id.toString()]);
+    }
+  }, [jobList]);
 
   return (
     <Content className="career-page">
@@ -115,7 +115,7 @@ const Career: React.FC = () => {
                         </Space>
                       </div>
                       <Button type="primary">
-                        立即申请 <RightOutlined />
+                        查看详情 <RightOutlined />
                       </Button>
                     </div>
                   }

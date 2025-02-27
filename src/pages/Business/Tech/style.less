@@ -9,6 +9,12 @@
   .core-product {
     background: #f5f5f5;
 
+    .product-row {
+      &:not(:last-child) {
+        margin-bottom: 48px;
+      }
+    }
+
     .product-image {
       position: relative;
       border-radius: 8px;
@@ -31,14 +37,14 @@
     }
 
     .product-info {
-      h3 {
+      .product-info-title {
         margin-bottom: 24px;
       }
 
-      p {
+      .product-info-description {
         font-size: 16px;
         line-height: 1.8;
-        color: #666;
+        text-indent: 2em;
       }
     }
   }
@@ -83,7 +89,12 @@
       }
 
       .case-info {
-        padding: 24px;
+        padding: 24px 0;
+
+        .ant-typography {
+          font-size: 16px;
+          text-indent: 2em;
+        }
 
         h4 {
           margin-bottom: 16px;
@@ -113,4 +124,4 @@
       }
     }
   }
-} 
+}

@@ -34,20 +34,6 @@ const strategies = [
   },
   {
     id: 2,
-    title: '安保服务方面',
-    content: `疫情期间，成立 "中泰民安集团疫情防控党员先锋队"，设立党员带班值守岗位 20 个，董事长赵性仓每天到 80 余个执勤岗位了解防控情况，累计派出 50 余万人次，每天检测车辆达 15000 余台次，接触人员 50000 余人次。`,
-    gradient: gradients.techGold,
-    icon: <SecurityScanOutlined />
-  },
-  {
-    id: 3,
-    title: '消费帮扶方面',
-    content: `2023 年 11 月 21 日，参与承办 "京蒙协作大兴消费帮扶合作基地成立大会暨锡林郭勒盟绿色农畜产品推介品鉴会"，锡林郭勒盟 14 家绿色农畜产品加工企业与采购企业达成合作意向并进行了签约，签约金额近 2 亿元，共同推进京蒙协作走实走深，助力乡村振兴。`,
-    gradient: gradients.businessBlue,
-    icon: <ShopOutlined />
-  },
-  {
-    id: 4,
     title: '公益活动方面',
     content: `带领 128 名员工参加属地义务献血，共 4.8 万毫升；在对全国因公牺牲公安民警，一至四级伤残公安干警家庭及未成年子女的帮扶上捐助善款约 30 万元。
 成立一支 300 人的民兵应急大队，配备各种应急、指挥车辆 33 台；支持对口精准扶贫财物价值 200 余万元。
@@ -56,6 +42,20 @@ const strategies = [
 `,
     gradient: gradients.premiumGray,
     icon: <HeartOutlined />
+  },
+  {
+    id: 3,
+    title: '安保服务方面',
+    content: `疫情期间，成立 "中泰民安集团疫情防控党员先锋队"，设立党员带班值守岗位 20 个，董事长赵性仓每天到 80 余个执勤岗位了解防控情况，累计派出 50 余万人次，每天检测车辆达 15000 余台次，接触人员 50000 余人次。`,
+    gradient: gradients.techGold,
+    icon: <SecurityScanOutlined />
+  },
+  {
+    id: 4,
+    title: '消费帮扶方面',
+    content: `2023 年 11 月 21 日，参与承办 "京蒙协作大兴消费帮扶合作基地成立大会暨锡林郭勒盟绿色农畜产品推介品鉴会"，锡林郭勒盟 14 家绿色农畜产品加工企业与采购企业达成合作意向并进行了签约，签约金额近 2 亿元，共同推进京蒙协作走实走深，助力乡村振兴。`,
+    gradient: gradients.businessBlue,
+    icon: <ShopOutlined />
   },
   {
     id: 5,
@@ -139,7 +139,7 @@ const Social: React.FC = () => {
                     <Title level={3}>
                       {strategy.icon} {strategy.title}
                     </Title>
-                    <Paragraph>{strategy.content}</Paragraph>
+                    <Paragraph className='strategy-content-p'>{strategy.content}</Paragraph>
                   </div>
                 </Card>
               </Col>

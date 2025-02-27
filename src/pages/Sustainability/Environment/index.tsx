@@ -3,7 +3,9 @@ import { Typography, Row, Col, Card } from 'antd';
 import { 
   SafetyCertificateOutlined, 
   ReconciliationOutlined,
-  ThunderboltOutlined 
+  ThunderboltOutlined,
+  MonitorOutlined, 
+  UserOutlined
 } from '@ant-design/icons';
 import { gradients } from '../../../utils/gradients';
 import './style.less';
@@ -32,6 +34,20 @@ const strategies = [
     content: '积极组织员工参与周边社区的环保公益活动，如植树造林、公园清洁、垃圾分类宣传等，通过这些活动增强员工的环保意识，同时也提升集团在社会公众中的环保形象，促进与社区的和谐共生，为营造良好的区域生态环境发挥积极作用。',
     gradient: gradients.businessBlue,
     icon: <SafetyCertificateOutlined />
+  },
+  {
+    id: 4,
+    title: '环境管理与监测',
+    content: '按照国际标准（ ISO14001 环境管理体系标准）建立完善的环境管理体系，明确公司各部门和人员在环保工作中的职责和流程，规范环境管理行为，确保公司的各项活动符合环保要求。',
+    gradient: gradients.businessBlue,
+    icon: <MonitorOutlined />
+  },
+  {
+    id: 5,
+    title: '员工意识与文化方面',
+    content: '定期组织员工参加环保培训，提高员工的环保意识和技能，使员工了解公司的环保政策和措施，掌握环保知识和操作技能，鼓励员工在工作中积极参与环保行动。在公司内部开展各种环保主题活动，如环保知识竞赛、绿色办公行动、环保志愿者活动等，营造环保文化氛围，激发员工的环保热情，形成全员参与环保的良好局面。',
+    gradient: gradients.techBlue,
+    icon: <UserOutlined />
   }
 ];
 
@@ -57,7 +73,7 @@ const Environment: React.FC = () => {
                     <Title level={3}>
                       {strategy.icon} {strategy.title}
                     </Title>
-                    <Paragraph>{strategy.content}</Paragraph>
+                    <Paragraph className="strategy-content-p">{strategy.content}</Paragraph>
                   </div>
                 </Card>
               </Col>
