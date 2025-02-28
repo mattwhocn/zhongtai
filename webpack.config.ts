@@ -74,6 +74,14 @@ const config: Configuration = {
         {
           from: 'public/illustation',
           to: 'illustation',
+        },
+        {
+          from: 'public/favicon.ico',
+          to: 'favicon.ico',
+        },
+        {
+          from: 'public/favicon.png',
+          to: 'favicon.png',
         }
       ]
     })
