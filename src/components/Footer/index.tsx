@@ -29,10 +29,10 @@ const Footer: React.FC = () => {
           <Col xs={24} sm={12} md={8}>
             <div className="footer-section">
               <h3>联系我们</h3>
-              <p>集团地址：{contactInfo.address}</p>
-              <p>联系方式：二维码咨询</p>
               <p>联系电话：{contactInfo.phone}</p>
               <p>电子邮箱：{contactInfo.email}</p>
+              <p>集团地址：{contactInfo.address}</p>
+              <p>集团二办公区地址：{contactInfo.address2}</p>
               <a 
                 href={baiduMapUrl}
                 target="_blank" 
@@ -74,11 +74,8 @@ const Footer: React.FC = () => {
                 <div className="logo-mark">
                   <img src={logo} alt="中泰民安" />
                 </div>
-                <h3>中泰民安</h3>
+                <h3>中泰民安安全服务集团</h3>
               </div>
-              <p className="company-desc">
-                安全服务集团
-              </p>
             </div>
           </Col>
         </Row>

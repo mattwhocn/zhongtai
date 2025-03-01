@@ -22,8 +22,8 @@ const tabItems = [
   },
   {
     key: 'environment',
-    title: '环保举措',
-    label: <Link to="/sustainability/environment">环保举措</Link>,
+    title: '核心竞争力',
+    label: <Link to="/sustainability/environment">核心竞争力</Link>,
     image: environmentBanner,
   },
   {

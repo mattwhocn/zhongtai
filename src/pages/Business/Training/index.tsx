@@ -69,32 +69,32 @@ const trainingData = {
   cases: [
     {
       id: 1,
-      title: '1. 消防培训实操课程',
+      title: '消防培训实操课程',
       images: [case1Img1, case1Img2, case1Img3, case1Img4]
     },
     {
       id: 2,
-      title: '2. 应急救援实操课',
+      title: '应急救援实操课',
       images: [case2Img1, case2Img2, case2Img3, case2Img4]
     },
     {
       id: 3,
-      title: '3. 泰康集团培训',
+      title: '泰康集团培训',
       images: [case3Img1, case3Img2, case3Img3, case3Img4]
     },
     {
       id: 4,
-      title: '4. 消防设施四级培训',
+      title: '消防设施四级培训',
       images: [case4Img1, case4Img2, case4Img3, case4Img4]
     },
     {
       id: 5,
-      title: '5. 保安证考试',
+      title: '保安证考试',
       images: [case5Img1, case5Img2, case5Img3, case5Img4]
     },
     {
       id: 6,
-      title: '6. 消防协会逃生演练',
+      title: '消防协会逃生演练',
       images: [case6Img1, case6Img2, case6Img3, case6Img4]
     }
   ]
@@ -117,20 +117,22 @@ const TrainingBusiness: React.FC = () => {
       <section className="school-intro">
         <div className="section-content">
           <Title level={2}>{trainingData.introduction.title}</Title>
-          <Row gutter={[48, 48]} align="middle">
-            <Col xs={24} lg={12}>
-              <div className="section-image">
-                <img src={trainingData.introduction.image} alt="学校介绍" />
-              </div>
-            </Col>
-            <Col xs={24} lg={12}>
-              <div className="section-text introduction-text">
-                {trainingData.introduction.descriptions.map((description, _index) => (
-                  <Paragraph key={description}>{description}</Paragraph>
-                ))}
-              </div>
-            </Col>
-          </Row>
+          <Card className="case-card" bordered={false}>
+            <Row gutter={[48, 48]} align="middle">
+              <Col xs={24} lg={12}>
+                <div className="section-image">
+                  <img src={trainingData.introduction.image} alt="学校介绍" />
+                </div>
+              </Col>
+              <Col xs={24} lg={12}>
+                <div className="section-text introduction-text">
+                  {trainingData.introduction.descriptions.map((description, _index) => (
+                    <Paragraph key={description}>{description}</Paragraph>
+                  ))}
+                </div>
+              </Col>
+            </Row>
+          </Card>
         </div>
       </section>
 
@@ -138,20 +140,22 @@ const TrainingBusiness: React.FC = () => {
       <section className="business-scope">
         <div className="section-content">
           <Title level={2}>{trainingData.businessScope.title}</Title>
-          <Row gutter={[48, 48]} align="middle">
-            <Col xs={24} lg={12}>
-              <div className="section-text business-scope-text">
-                {trainingData.businessScope.descriptions.map((description, _index) => (
-                  <Paragraph key={description}>{description}</Paragraph>
-                ))}
-              </div>
-            </Col>
-            <Col xs={24} lg={12}>
-              <div className="section-image">
-                <img src={trainingData.businessScope.image} alt="业务范围" />
-              </div>
-            </Col>
-          </Row>
+          <Card className="case-card" bordered={false}>
+            <Row gutter={[48, 48]} align="middle">
+              <Col xs={24} lg={12}>
+                <div className="section-text business-scope-text">
+                  {trainingData.businessScope.descriptions.map((description, _index) => (
+                    <Paragraph key={description}>{description}</Paragraph>
+                  ))}
+                </div>
+              </Col>
+              <Col xs={24} lg={12}>
+                <div className="section-image">
+                  <img src={trainingData.businessScope.image} alt="业务范围" />
+                </div>
+              </Col>
+            </Row>
+          </Card>
         </div>
       </section>
 

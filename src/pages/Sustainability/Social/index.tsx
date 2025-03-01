@@ -72,47 +72,38 @@ const strategies = [
 const socialCases = [
   {
     id: 1,
-    title: '案例一',
     image: case1,
   },
   {
     id: 2,
-    title: '案例二',
     image: case2,
   },
   {
     id: 3,
-    title: '案例三',
     image: case3,
   },
   {
     id: 4,
-    title: '案例四',
     image: case4,
   },
   {
     id: 5,
-    title: '案例五',
     image: case5,
   },
   {
     id: 6,
-    title: '案例六',
     image: case6,
   },
   {
     id: 7,
-    title: '案例七',
     image: case7,
   },
   {
     id: 8,
-    title: '案例八',
     image: case8,
   },
   {
     id: 9,
-    title: '案例九',
     image: case9,
   }
 ];
@@ -150,7 +141,7 @@ const Social: React.FC = () => {
 
       <div className="section-content">
         <div className="section-header">
-          <Title level={2}>案例展示</Title>
+          <Title level={2}>社会服务</Title>
         </div>
         <div className="cases-grid">
           <Row gutter={[24, 24]}>
@@ -158,10 +149,7 @@ const Social: React.FC = () => {
               <Col xs={24} sm={12} md={8} key={case_.id}>
                 <Card className="case-card" bordered={false}>
                   <div className="case-image">
-                    <img src={case_.image} alt={case_.title} />
-                    <div className="case-title">
-                      <h3>{case_.title}</h3>
-                    </div>
+                    <img src={case_.image} alt="img" />
                   </div>
                 </Card>
               </Col>

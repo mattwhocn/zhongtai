@@ -16,6 +16,7 @@ import case2Img4 from '../../../assets/images/business/security/case2-4.jpg';
 import case3Img1 from '../../../assets/images/business/security/case3-1.jpg';
 import case3Img2 from '../../../assets/images/business/security/case3-2.jpg';
 import case3Img3 from '../../../assets/images/business/security/case3-3.jpg';
+import case3Img4 from '../../../assets/images/business/security/case3-4.jpg';
 
 import case4Img1 from '../../../assets/images/business/security/case4-1.jpg';
 import case4Img2 from '../../../assets/images/business/security/case4-2.jpg';
@@ -40,23 +41,23 @@ const securitySection = {
   cases: [
     {
       id: 1,
-      name: '1. 日常安全巡逻',
+      name: '巡逻值守',
       images: [case1Img1, case1Img2, case1Img3, case1Img4],
     },
     {
       id: 2,
-      name: '2. 抗洪抢险项目',
+      name: '抢险救灾',
       images: [case2Img1, case2Img2, case2Img3, case2Img4],
     },
     {
       id: 3,
-      name: '3. 小区值守业务',
-      images: [case3Img1, case3Img2, case3Img3],
+      name: '值守服务',
+      images: [case3Img1, case3Img2, case3Img3, case3Img4],
     },
     {
       id: 4,
-      name: '4. 各类临时勤务',
-      images: [case4Img1, case4Img2, case4Img3, case4Img4, case4Img5, case4Img6, case4Img7, case4Img8],
+      name: '特勤勤务',
+      images: [case4Img2, case4Img4, case4Img6, case4Img3, case4Img1, case4Img5, case4Img7, case4Img8],
     },
   ]
 };
@@ -65,7 +66,11 @@ const SecurityBusiness: React.FC = () => {
   usePageTitle('安防板块');
   
   // 根据图片数量返回合适的列数
-  const getColSpan = (imageCount: number) => {
+  const getColSpan = (case_: any) => {
+    const imageCount = case_.images.length;
+    const imageId = case_.id;
+    
+    if (imageId === 3) return 24;
     if (imageCount < 3) return 8;
     if (imageCount == 3) return 24;
     if (imageCount <= 5) return 12;
@@ -80,41 +85,46 @@ const SecurityBusiness: React.FC = () => {
           <div className="section-text">
             <Title level={2}>安防板块</Title>
           </div>
-          <Row gutter={[48, 48]} align="middle">
-            <Col xs={24} lg={12}>
-              <div className="section-image">
-                <div className="tech-overlay">
-                  <img src={securitySection.image} alt={securitySection.title} />
+          <Card className="case-card" bordered={false}>
+            <Row gutter={[24, 48]} align="middle">
+              <Col xs={24} lg={12}>
+                <div className="section-image">
+                  <div className="tech-overlay">
+                    <img src={securitySection.image} alt={securitySection.title} />
+                  </div>
                 </div>
-              </div>
-            </Col>
-            <Col xs={24} lg={12} className='section-security-text'>
-              <Paragraph>{securitySection.description}</Paragraph>
-              <ul>
-                {securitySection.extra.map((item, index) => (
-                  <li key={index}>{item}</li>
-                ))}
-              </ul>
-            </Col>
-          </Row>
+              </Col>
+              <Col xs={24} lg={12} className='section-security-text'>
+                <Paragraph>{securitySection.description}</Paragraph>
+                <ul>
+                  {securitySection.extra.map((item, index) => (
+                    <li key={index}>{item}</li>
+                  ))}
+                </ul>
+              </Col>
+            </Row>
+          </Card>
         </div>
       </section>
 
+      {/* 项目案例 */}
       <section className="section-cases">
         <div className="section-content">
           <Title level={2}>项目案例</Title>
           <Row gutter={[24, 48]}>
             {securitySection.cases.map(case_ => (
-              <Col xs={24} lg={getColSpan(case_.images.length)} key={case_.id}>
+              <Col xs={24} lg={case_.id <= 2 ? 12 : 24} key={case_.id}>
                 <Card className="case-card">
                   <Title level={4} className="case-title">{case_.name}</Title>
-                  <div className="case-images">
+                  <Row gutter={[0, 0]} className="case-images">
                     {case_.images.map((image, index) => (
-                      <div key={index} className="image-wrapper">
-                        <img src={image} alt={`${case_.name}-${index + 1}`} />
-                      </div>
+                      <Col xs={24} lg={case_.id === 3 || case_.id === 4 ? 6 : 12} key={index} className="image-wrapper">
+                        <div className="image-wrapper-inner">
+                          <img src={image} alt={`${case_.name}-${index + 1}`} />
+                        </div>
+                      </Col>
                     ))}
-                  </div>
+                  </Row>
                 </Card>
               </Col>
             ))}

@@ -9,6 +9,8 @@ export const getNewsTagColor = (category: string) => {
       return 'gold';
     case '培训活动':
       return 'green';
+    case '党群建设':
+        return 'purple';
     default:
       return 'blue';
   }

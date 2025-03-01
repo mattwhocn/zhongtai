@@ -4,7 +4,6 @@ import { usePageTitle } from '../../hooks/usePageTitle';
 import { gradients } from '../../utils/gradients';
 import Elevator from '../../components/Elevator';
 import companyImage from '../../assets/images/about/company.png';
-import globalLayoutImage from '../../assets/images/about/global-layout.png';
 import qualifications1 from '../../assets/images/about/qualifications/图片 1.png';
 import qualifications2 from '../../assets/images/about/qualifications/图片 2.png';
 import qualifications3 from '../../assets/images/about/qualifications/图片 3.png';
@@ -29,7 +28,7 @@ import qualifications21 from '../../assets/images/about/qualifications/图片 21
 import qualifications22 from '../../assets/images/about/qualifications/图片 22.png';
 import qualifications23 from '../../assets/images/about/qualifications/图片 23.png';
 import qualifications24 from '../../assets/images/about/qualifications/图片 24.png';
-import avatar1 from '../../assets/images/about/management/avatar1.jpg';
+import avatar2 from '../../assets/images/about/management/avatar2.png';
 import culture1 from '../../assets/images/about/culture/culture1.png';
 import { useLocation } from 'react-router-dom';
 
@@ -40,7 +39,7 @@ const { Title, Paragraph } = Typography;
 // 公司简介数据
 export const companyProfile = {
   title: '公司简介',
-  content: `中泰民安集团成立于2005年，总部位于北京市大兴区，是一家以安全服务为核心，涵盖科技研发、教育培训、应急救援、物业管理等多领域的综合性企业集群。集团旗下包括多家独立运营的子公司，业务覆盖全国，致力于构建"大安全、大应急"产业生态，服务国家战略与民生需求。多年来积极参与灾害救援与公共安全建设，助力平安中国。`,
+  content: `中泰民安安全服务集团（创立于2005年）是总部位于北京大兴区的综合安防服务商，拥有10家子公司、33家分公司及1所培训学校。依托院士专家团队，企业通过武器装备等多项质量管理体系认证，秉持"合作共赢、百年传承"理念，在科技安防、智慧城市等领域实现突破：自主研发智能安保平台、三维仿真系统及警务通等管理平台；联合国家高分中心成立青岛遥感科技公司，推动遥感技术军民融合应用。作为北京市安防协会副理事长单位，集团2024年入选市级诚信企业名录，并获"党建示范单位"及"守信经营承诺单位"双重荣誉。`,
   background: gradients.techBlue
 };
 
@@ -50,8 +49,22 @@ const managementTeam = [
     id: 1,
     name: '赵性仓',
     title: '董事长',
-    avatar: avatar1,
+    avatar: avatar2,
     description: `赵性仓，男，1968年3月出生，山东梁山人，中共党员，梁山在京流动党员党委副书记，中泰民安安全服务集团有限公司党支部书记、董事长，北京市大兴区中泰民安红十字救援服务中心总负责人。30多年来，他凭着矢志不渝的创业精神和强烈的社会责任感，始终以"有我在、跟我上、看我的"为理念，以"身先士卒、率先垂范"为要求，在平凡的岗位上带领团队创造了诸多不平凡的业绩。现集团旗下10家子公司、1所培训学校，解决就业3万余人次。`,
+    moreDetails: [
+      {
+        title: '创业历程',
+        content: '深耕安全服务领域30年，秉承“以安保为基础、科技为引领、文化传媒树品牌”理念，带领团队创新发展，多次参与首都重大灾害救援（如“7·21”北京特大暴雨、“11·18”重大火灾）及国家级盛事安保（如奥运会、国庆阅兵），助力首都安全稳定。',
+      },
+      {
+        title: '个人荣誉',
+        content: '获“诚信企业家”“北京市人道奖先进个人”“北京榜样·最美义工”等称号，2019年起连续获评“优秀共产党员”“优秀党组织书记”。',
+      },
+      {
+        title: '社会贡献',
+        content: '主导完成北京市红十字会防灾减灾演练、红十字会“5·12”纪念活动等，2024年获评“最美家乡人”“年度影响力人物”等社会公益奖项。',
+      }
+    ]
   },
   // ... 可能有更多管理层成员
 ];
@@ -81,17 +94,9 @@ const culture = {
   ]
 };
 
-// 全球布局数据
-const globalLayout = {
-  title: '全球布局',
-  description: '中泰民安立足国际化大都市北京，以首都雄厚的资源优势、人才储备及政策支持为依托，构建起辐射全球的业务网络。作为战略核心枢纽，北京总部汇聚创新动能与尖端技术，通过高效协同的全球化运营体系，将智慧解决方案与高品质服务延伸至亚洲、欧洲、美洲及非洲市场。',
-  background: gradients.techMix,
-  image: globalLayoutImage,
-};
-
-// 资质与荣誉数据
+// 公司资质数据
 const qualifications = {
-  title: '资质与荣誉',
+  title: '公司资质',
   items: [
     {
       background: gradients.techBlue,
@@ -196,8 +201,7 @@ const elevatorItems = [
   { key: 'profile', title: '公司简介' },
   { key: 'management', title: '管理层' },
   { key: 'culture', title: '企业文化' },
-  { key: 'global', title: '全球布局' },
-  { key: 'qualifications', title: '资质与荣誉' }
+  { key: 'qualifications', title: '公司资质' }
 ];
 
 const About: React.FC = () => {
@@ -322,7 +326,7 @@ const About: React.FC = () => {
                 </div>
                 <div className="highlight-item">
                   <span className="highlight-dot" />
-                  兴泰科技：兴泰启航，科技护疆
+                  兴泰科技：兴泰启航，科技赋能
                 </div>
                 <div className="highlight-item">
                   <span className="highlight-dot" />
@@ -337,7 +341,7 @@ const About: React.FC = () => {
       {/* 管理层介绍 */}
       <section id="management" className="management-team">
         <div className="section-content">
-          <Title level={2}>管理层介绍</Title>
+          {/* <Title level={2}>管理层介绍</Title> */}
           {isSingleManager ? (
             // 单个管理层成员时的布局
             <Row gutter={[48, 48]} align="middle">
@@ -355,6 +359,14 @@ const About: React.FC = () => {
               <Col xs={24} lg={16}>
                 <div className="manager-description">
                   <Paragraph>{managementTeam[0].description}</Paragraph>
+                </div>
+                <div className="manager-more-details">
+                  {managementTeam[0].moreDetails.map((detail, index) => (
+                    <div key={index} className="detail-item">
+                      <h4>{detail.title}</h4>
+                      <p>{detail.content}</p>
+                    </div>
+                  ))}
                 </div>
               </Col>
             </Row>
@@ -402,22 +414,7 @@ const About: React.FC = () => {
         </div>
       </section>
 
-      {/* 全球布局 */}
-      <section id="global" className="section-global">
-        <div className="section-content">
-          <Title level={2}>{globalLayout.title}</Title>
-          <div className="global-map">
-            <div className="map-overlay">
-              <img src={globalLayout.image} alt="globalLayout" />
-            </div>
-          </div>
-          <Paragraph className="global-description">
-            {globalLayout.description}
-          </Paragraph>
-        </div>
-      </section>
-
-      {/* 资质与荣誉 */}
+      {/* 公司资质 */}
       <section id="qualifications" className="section-qualifications">
         <div className="section-content">
           <Title level={2}>{qualifications.title}</Title>
@@ -429,7 +426,7 @@ const About: React.FC = () => {
                   style={{ background: item.background }}
                 >
                   <div className="tech-overlay">
-                    <img src={item.image} alt="资质与荣誉" />
+                    <img src={item.image} alt="公司资质" />
                   </div>
                 </div>
               </Col>

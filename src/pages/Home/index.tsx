@@ -8,17 +8,24 @@ import banner0 from '../../assets/images/banner/banner0.png';
 import banner1 from '../../assets/images/banner/banner1.png';
 import banner2 from '../../assets/images/banner/banner2.png';
 import banner3 from '../../assets/images/banner/banner3.png';
-import business1 from '../../assets/images/business/business1.png';
-import business2 from '../../assets/images/business/business2.jpg';
-import business3 from '../../assets/images/business/business3.png';
-import business4 from '../../assets/images/business/business4.png';
-import business5 from '../../assets/images/business/business5.jpg';
-import business6 from '../../assets/images/business/business6.jpg';
+import banner4 from '../../assets/images/banner/banner4.png';
+import banner5 from '../../assets/images/banner/banner5.png';
 import companyImage from '../../assets/images/about/company.png';
+import partyBuilding from '../../assets/images/home/party-building.png';
+import security1 from '../../assets/images/business/security1.jpg';
+import security2 from '../../assets/images/business/security2.png';
+import security3 from '../../assets/images/business/security3.jpg';
+import tech1 from '../../assets/images/business/tech1.png';
+import tech2 from '../../assets/images/business/tech2.jpg';
+import tech3 from '../../assets/images/business/tech3.png';
+import training1 from '../../assets/images/business/training1.png';
+import training2 from '../../assets/images/business/training2.jpg';
+import training3 from '../../assets/images/business/training3.jpg';
 import { companyProfile } from '../About';
 import { newsContent, NewsItem } from '../../assets';
 import { gradients } from '@/utils/gradients';
 import './style.less';
+import { cultureSections } from '../Career';
 
 const { Content } = Layout;
 const { Title, Paragraph } = Typography;
@@ -30,25 +37,25 @@ const carouselData = [
     title: '',
     desc: '',
     background: gradients.techBlue,
-    image: banner0,
+    image: banner4,
   },
   {
     id: 1,
-    title: '中泰民安',
+    title: '中泰民安·安保',
     desc: '让城市更安全，让文明更韧性',
     image: banner1,
   },
   {
     id: 2,
     title: '兴泰科技',
-    desc: '兴泰启航，科技护疆',
+    desc: '兴泰启航，科技赋能',
     image: banner2,
   },
   {
     id: 3,
     title: '兴宾学校',
     desc: '兴宾育才，安全未来',
-    image: banner3,
+    image: banner5,
   },
 ];
 
@@ -56,39 +63,48 @@ const carouselData = [
 const businessShowcase = [
   {
     id: 1,
-    title: '医院保安项目',
-    desc: '医院保安项目',
-    image: business5,
+    desc: '安保执勤',
+    image: security1,
   },
   {
     id: 2,
-    title: '电子沙盘',
-    desc: '电子沙盘平台',
-    image: business1,
+    desc: '抢险救灾',
+    image: security2,
   },
   {
     id: 3,
-    title: '保安培训',
-    desc: '保安考试培训',
-    image: business3,
+    desc: '红十字会',
+    image: security3,
   },
   {
     id: 4,
-    title: '抗洪救灾项目',
-    desc: '抗洪救灾项目',
-    image: business6,
+    desc: '电子沙盘',
+    image: tech1,
   },
   {
     id: 5,
-    title: '维和平台',
-    desc: '维和指挥控制平台',
-    image: business2,
+    desc: '国际维和指挥控制平台',
+    image: tech2,
   },
   {
     id: 6,
-    title: '消防培训',
-    desc: '泰康消防培训',
-    image: business4,
+    desc: '科技赋能',
+    image: tech3,
+  },
+  {
+    id: 7,
+    desc: '保安考试培训',
+    image: training1,
+  },
+  {
+    id: 8,
+    desc: '学校培训',
+    image: training2,
+  },
+  {
+    id: 8,
+    desc: '特勤护卫',
+    image: training3,
   }
 ];
 
@@ -113,6 +129,9 @@ const Home: React.FC = () => {
 
   // 获取当前显示的新闻
   const displayedNews = hoveredNews || latestNews[0];
+
+  // 集团荣誉数据
+  const groupHonorData = cultureSections.find(section => section.title === '集团荣誉')?.items ?? [];
 
   return (
     <Content className="home-page">
@@ -157,38 +176,29 @@ const Home: React.FC = () => {
         ))}
       </Carousel>
 
-      {/* 业务展示 */}
-      <section className="business-showcase">
+      {/* 党群工作 */}
+      <section className="party-working">
         <div className="section-content">
-          <div className="section-header">
-            <Title level={2}>业务展示</Title>
-            <Link to="/business" className="view-more">
-              查看更多 <RightOutlined />
-            </Link>
+          <Title level={2}>党群工作</Title>
+          <div className="global-map">
+            <div className="map-overlay">
+              <img src={partyBuilding} alt="globalLayout" />
+            </div>
           </div>
-          <Row gutter={[24, 24]}>
-            {businessShowcase.map(item => (
-              <Col xs={24} sm={12} md={8} key={item.id}>
-                <div className="showcase-card">
-                  <div className="tech-overlay">
-                    <img src={item.image} alt={item.title} />
-                  </div>
-                  <div className="card-content">
-                    <h3>{item.title}</h3>
-                    <p>{item.desc}</p>
-                  </div>
-                </div>
-              </Col>
-            ))}
-          </Row>
+          <div className='global-description'>
+            <h2>党建引领，筑牢企业发展根基</h2>  
+            <p>
+              中泰民安安全服务集团有限公司始终将党建工作作为企业发展的核心动力，秉承“党建强，企业才更强”的理念，将党的政治优势转化为企业核心竞争力。自成立以来，公司积极响应国家号召，通过建立规范化党组织、深化党建与业务融合、履行社会责任等举措，推动企业高质量发展。
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* 公司简介 */}
+      {/* 集团简介 */}
       <section className="company-intro">
         <div className="intro-content">
           <div className="section-header">
-            <Title level={2}>公司简介</Title>
+            <Title level={2}>集团简介</Title>
           </div>
           <Row gutter={[48, 48]} align="middle">
             <Col xs={24} lg={12}>
@@ -202,7 +212,7 @@ const Home: React.FC = () => {
                 </div>
                 <div className="highlight-item">
                   <span className="highlight-dot" />
-                  兴泰科技：兴泰启航，科技护疆
+                  兴泰科技：兴泰启航，科技赋能
                 </div>
                 <div className="highlight-item">
                   <span className="highlight-dot" />
@@ -225,6 +235,57 @@ const Home: React.FC = () => {
           </Row>
         </div>
       </section>
+
+      {/* 业务案例 */}
+      <section className="business-showcase">
+        <div className="section-content">
+          <div className="section-header">
+            <Title level={2}>业务案例</Title>
+            <Link to="/business" className="view-more">
+              查看更多 <RightOutlined />
+            </Link>
+          </div>
+          <Row gutter={[24, 24]}>
+            {businessShowcase.map(item => (
+              <Col xs={24} sm={12} md={8} key={item.id}>
+                <div className="showcase-card">
+                  <div className="tech-overlay">
+                    <img src={item.image} alt={item.desc} />
+                  </div>
+                  <div className="card-content">
+                    <p>{item.desc}</p>
+                  </div>
+                </div>
+              </Col>
+            ))}
+          </Row>
+        </div>
+      </section>
+
+      {/* 集团荣誉 */}
+      <section className="group-honor">
+        <div className="section-content">
+          <div className="section-header">
+            <Title level={2}>集团荣誉</Title>
+          </div>
+          <Row gutter={[24, 24]}>
+            {groupHonorData.map((item, itemIndex) => (
+              <Col xs={24} sm={8} lg={8} key={itemIndex}>
+                <Card 
+                  className="culture-card"
+                  style={{ background: '#ffffff' }}
+                >
+                  <div className={`tech-overlay tech-overlay-contain`}>
+                    <img src={item} alt={`culture-${itemIndex}`} />
+                  </div>
+                </Card>
+              </Col>
+            ))}
+          </Row>
+        </div>
+      </section>
+
+
 
       {/* 新闻动态 */}
       <section className="news-section">

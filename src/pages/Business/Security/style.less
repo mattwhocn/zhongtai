@@ -72,43 +72,24 @@
       }
 
       .case-images {
-        display: grid;
-        gap: 16px;
-        
-        // 根据图片数量动态设置网格布局
-        &:has(.image-wrapper:nth-child(3)) {
-          grid-template-columns: repeat(3, 1fr);
-        }
-        
-        &:has(.image-wrapper:nth-child(4)) {
-          grid-template-columns: repeat(2, 1fr);
-        }
-        
-        &:has(.image-wrapper:nth-child(5)) {
-          grid-template-columns: repeat(3, 1fr);
-          .image-wrapper:nth-child(4),
-          .image-wrapper:nth-child(5) {
-            grid-column: span 1.5;
-          }
-        }
-        
-        &:has(.image-wrapper:nth-child(6)) {
-          grid-template-columns: repeat(3, 1fr);
-        }
-        
-        &:has(.image-wrapper:nth-child(7)),
-        &:has(.image-wrapper:nth-child(8)) {
-          grid-template-columns: repeat(4, 1fr);
-        }
+        margin: -8px;
 
         .image-wrapper {
           aspect-ratio: 16/9;
-          overflow: hidden;
-          border-radius: 8px;
+          padding: 8px;
+
+          .image-wrapper-inner {
+            overflow: hidden;
+            border-radius: 8px;
+            width: 100%;
+            height: 100%;
+          }
           
           img {
             width: 100%;
             height: 100%;
+            border-radius: 8px;
+            overflow: hidden;
             object-fit: cover;
             transition: transform 0.3s ease;
             

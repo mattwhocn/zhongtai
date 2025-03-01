@@ -12,42 +12,35 @@ import './style.less';
 
 const { Title, Paragraph } = Typography;
 
-// 环保举措数据
+// 核心竞争力数据
 const strategies = [
   {
     id: 1,
-    title: '节能设备使用',
-    content: '在集团总部及各分支机构办公场所，全面更换为节能型的照明设备，如采用 LED 节能灯，同时，办公电器也优先选用具有高能效标识的产品，像节能型电脑、打印机等，从源头上减少能源使用量，降低因办公产生的碳排放。',
+    title: '数智化安防能力',
+    content: '以“科技领位、防救一体”为核心，通过智能产品研发、物联网整合、AI数据分析及平台化运营，构建了覆盖多场景的智慧安防体系。其技术不仅服务于企业自身业务，还深度融入国家“大应急”战略，助力提升公共安全与灾害应对能力。',
     gradient: gradients.techBlue,
     icon: <ReconciliationOutlined />
   },
   {
     id: 2,
-    title: '绿色采购推行',
-    content: '建立绿色采购制度，在办公用品、物资等采购过程中，优先选择环保、可回收、可降解的产品。例如，采购由再生纸制作的纸张用于日常办公打印，选择可降解的一次性塑料制品替代品，如纸质水杯、竹制餐具等，减少对不可降解材料的依赖，从采购源头助力环保。',
+    title: '专业化人才培养与军事化队伍建设',
+    content: '公司以培养“纪律严明、业专技精”的安全应急救援人才为使命，建立了系统的培训体系：1. 培训机构：设立北京兴宾职业技能培训学校，提供实战化消防技能及灾害救援训练。2. 专业队伍：组建专业救援队伍，承担北京市大兴区民兵应急分队等任务，兼具军事化管理与专业化技能。',
     gradient: gradients.techGold,
     icon: <ThunderboltOutlined />
   },
   {
     id: 3,
-    title: '参与社区环保公益活动',
-    content: '积极组织员工参与周边社区的环保公益活动，如植树造林、公园清洁、垃圾分类宣传等，通过这些活动增强员工的环保意识，同时也提升集团在社会公众中的环保形象，促进与社区的和谐共生，为营造良好的区域生态环境发挥积极作用。',
+    title: '多元化服务与市场拓展能力',
+    content: '业务覆盖传统人力安保、智能安防、危机管理咨询等领域，提供“一站式”安全解决方案，满足政府、企业、跨国客户等多样化需求。借助“一带一路”倡议，探索海外安保市场，与国际企业合作输出服务标准，形成全球化竞争力。',
     gradient: gradients.businessBlue,
     icon: <SafetyCertificateOutlined />
   },
   {
     id: 4,
-    title: '环境管理与监测',
-    content: '按照国际标准（ ISO14001 环境管理体系标准）建立完善的环境管理体系，明确公司各部门和人员在环保工作中的职责和流程，规范环境管理行为，确保公司的各项活动符合环保要求。',
+    title: '市场化运营与成本控制能力',
+    content: '高效运营机制助力服务性价比优势：1. 降本增效：通过智能化手段降低成本，提升服务覆盖范围。2. 精准市场定位：聚焦“大安全、大应急”生态，布局科技安防、物业管理等高增长领域，形成差异化竞争壁垒。',
     gradient: gradients.businessBlue,
     icon: <MonitorOutlined />
-  },
-  {
-    id: 5,
-    title: '员工意识与文化方面',
-    content: '定期组织员工参加环保培训，提高员工的环保意识和技能，使员工了解公司的环保政策和措施，掌握环保知识和操作技能，鼓励员工在工作中积极参与环保行动。在公司内部开展各种环保主题活动，如环保知识竞赛、绿色办公行动、环保志愿者活动等，营造环保文化氛围，激发员工的环保热情，形成全员参与环保的良好局面。',
-    gradient: gradients.techBlue,
-    icon: <UserOutlined />
   }
 ];
 
@@ -56,7 +49,7 @@ const Environment: React.FC = () => {
     <div className="strategy-page">
       <div className="section-content">
         <div className="section-header">
-          <Title level={2}>环保举措</Title>
+          <Title level={2}>核心竞争力</Title>
         </div>
         <div className="strategies-grid">
           <Row gutter={[24, 24]}>

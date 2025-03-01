@@ -1,6 +1,6 @@
 import React from 'react';
 import { Layout, Typography, Row, Col, Card } from 'antd';
-import { EnvironmentOutlined, PhoneOutlined, MailOutlined, FieldTimeOutlined } from '@ant-design/icons';
+import { EnvironmentOutlined, PhoneOutlined, MailOutlined, FieldTimeOutlined, BankOutlined, SafetyCertificateOutlined, GlobalOutlined, SafetyOutlined, CloudOutlined, RocketOutlined, ApartmentOutlined, BuildOutlined } from '@ant-design/icons';
 import { usePageTitle } from '../../hooks/usePageTitle';
 import { gradients } from '../../utils/gradients';
 import './style.less';
@@ -10,7 +10,8 @@ const { Title } = Typography;
 
 // 联系信息数据
 export const contactInfo = {
-  address: '北京市大兴区庞各庄镇庞新路5号',
+  address: '北京市大兴区春和路39号院1号楼3单元906',
+  address2: '北京市大兴区庞各庄镇庞新路5号',
   phone: '010-61288212',
   email: 'contact@example.com',
   workTime: '周一至周五 9:00-18:00'
@@ -18,6 +19,49 @@ export const contactInfo = {
 
 const Contact: React.FC = () => {
   usePageTitle('联系我们');
+
+  const friendlyLinks = [
+    {
+      name: '首都实业投资有限公司',
+      url: 'https://www.cap-ii.com/',
+      icon: <BankOutlined />
+    },
+    {
+      name: '北京市保安服务有限公司',
+      url: 'http://www.baoan.com.cn/begs/',
+      icon: <SafetyCertificateOutlined />
+    },
+    {
+      name: '山东星网分享数产业有限公司',
+      url: 'http://www.starnetgis.com/',
+      icon: <GlobalOutlined />
+    },
+    {
+      name: '北京晨豪科技有限公司',
+      url: 'https://safe360.cn/',
+      icon: <SafetyOutlined />
+    },
+    {
+      name: '中华云智慧科技有限公司',
+      url: 'http://www.zxyiot.cn/',
+      icon: <CloudOutlined />
+    },
+    {
+      name: '北京智力九州科技有限公司',
+      url: 'http://www.ztjsoft.com/home',
+      icon: <RocketOutlined />
+    },
+    {
+      name: '中国电子信息产业集团有限公司',
+      url: 'https://www.cec.com.cn/',
+      icon: <ApartmentOutlined />
+    },
+    {
+      name: '中电大恒（集团）有限公司',
+      url: 'http://www.nci.ac.cn/',
+      icon: <BuildOutlined />
+    }
+  ];
 
   return (
     <Content className="contact-page">
@@ -74,6 +118,28 @@ const Contact: React.FC = () => {
           </div>
         </div>
       </section> */}
+
+      {/* 友情链接 */}
+      <section className="friendly-links-section">
+        <div className="section-content">
+          <h2>友情链接</h2>
+          <div className="links-container">
+            {friendlyLinks.map((link, index) => (
+              <a 
+                key={index}
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="friendly-link"
+              >
+                <span className="link-icon">{link.icon}</span>
+                <span className="link-name">{link.name}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
     </Content>
   );
 };
