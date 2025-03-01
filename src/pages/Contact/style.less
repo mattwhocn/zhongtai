@@ -184,6 +184,92 @@
       }
     }
   }
+
+  // 添加友情链接样式
+  .friendly-links-section {
+    padding: 80px 0;
+    background: #fff;
+    
+    .section-content {
+      max-width: 1248px;
+      margin: 0 auto;
+      padding: 0 24px;
+      
+      h2 {
+        color: @dark-blue;
+        font-size: 32px;
+        font-weight: 600;
+        margin-bottom: 48px;
+        text-align: center;
+        position: relative;
+        
+        &::after {
+          content: '';
+          position: absolute;
+          left: 50%;
+          bottom: -16px;
+          width: 60px;
+          height: 3px;
+          background: @gold;
+          transform: translateX(-50%);
+        }
+      }
+      
+      .links-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px;
+        row-gap: 20px;
+        
+        .friendly-link {
+          color: @gray-6;
+          text-decoration: none;
+          padding: 24px 20px;
+          border: 1px solid @gray-3;
+          border-radius: 8px;
+          transition: all 0.3s ease;
+          text-align: center;
+          background: #fff;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 12px;
+          
+          .link-icon {
+            font-size: 24px;
+            color: @dark-blue;
+            transition: all 0.3s ease;
+            
+            .anticon {
+              transition: transform 0.3s ease;
+            }
+          }
+          
+          .link-name {
+            font-size: 15px;
+            line-height: 1.4;
+          }
+          
+          &:hover {
+            color: @dark-blue;
+            border-color: @dark-blue;
+            background-color: @gray-2;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            
+            .link-icon {
+              color: @gold;
+              
+              .anticon {
+                transform: scale(1.1);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 // 响应式调整
@@ -234,6 +320,33 @@
     .map-section {
       .map-container {
         height: 360px;
+      }
+    }
+    
+    .friendly-links-section {
+      padding: 60px 0;
+      
+      .section-content {
+        h2 {
+          font-size: 28px;
+          margin-bottom: 40px;
+        }
+        
+        .links-container {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 16px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .friendly-links-section {
+    .section-content {
+      .links-container {
+        grid-template-columns: 1fr;
+        gap: 12px;
       }
     }
   }

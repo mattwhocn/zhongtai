@@ -65,9 +65,10 @@ const News: React.FC = () => {
               onChange={setActiveTab}
               className="news-tabs"
             >
-              <TabPane tab="行业新闻" key="industry" />
+              <TabPane tab="党建引领" key="building" />
               <TabPane tab="公司新闻" key="company" />
               <TabPane tab="培训活动" key="training" />
+              <TabPane tab="行业新闻" key="industry" />
             </Tabs>
           </div>
         </Affix>
@@ -76,8 +77,7 @@ const News: React.FC = () => {
       {/* 新闻内容区域 */}
       <div className="news-container">
         <div className="news-content">
-          {activeTab === 'company' && (
-            <Row gutter={[24, 24]}>
+          <Row gutter={[24, 24]}>
               {filteredNews.length ? filteredNews.map(news => (
                 <Col xs={24} sm={12} lg={8} key={news.id}>
                   <Card 
@@ -102,67 +102,6 @@ const News: React.FC = () => {
               </Col>
             )}
             </Row>
-          )}
-          {activeTab === 'industry' && (
-            <Row gutter={[24, 24]}>
-              {filteredNews.length ? filteredNews.map(news => (
-                <Col xs={24} sm={12} lg={8} key={news.id}>
-                  <Card 
-                    className="news-card"
-                    onClick={() => handleNewsClick(news.id)}
-                  >
-                    <div 
-                      className="news-image"
-                      style={{ background: news.metadata.cover }}
-                    >
-                      <div className="image-overlay">
-                        <img src={news.metadata.cover} alt={news.metadata.title} />
-                      </div>
-                    </div>
-                    <div className="news-info">
-                      <Tag color={getNewsTagColor(news.metadata.category)}>{news.metadata.category}</Tag>
-                      <h3>{news.metadata.title}</h3>
-                      <span className="news-date">{news.metadata.date}</span>
-                    </div>
-                  </Card>
-                </Col>
-              )) : (
-                <Col span={24}>
-                  <Empty style={{ margin: '100px' }} description="暂无相关新闻" />
-                </Col>
-              )}
-            </Row>
-          )}
-          {activeTab === 'training' && (
-            <Row gutter={[24, 24]}>
-              {filteredNews.length ? filteredNews.map(news => (
-                <Col xs={24} sm={12} lg={8} key={news.id}>
-                  <Card 
-                    className="news-card"
-                    onClick={() => handleNewsClick(news.id)}
-                  >
-                    <div 
-                      className="news-image"
-                      style={{ background: news.metadata.cover }}
-                    >
-                      <div className="image-overlay">
-                        <img src={news.metadata.cover} alt={news.metadata.title} />
-                      </div>
-                    </div>
-                    <div className="news-info">
-                      <Tag color={getNewsTagColor(news.metadata.category)}>{news.metadata.category}</Tag>
-                      <h3>{news.metadata.title}</h3>
-                      <span className="news-date">{news.metadata.date}</span>
-                    </div>
-                  </Card>
-                </Col>
-              )) : (
-                <Col span={24}>
-                  <Empty style={{ margin: '100px' }} description="暂无相关新闻" />
-                </Col>
-              )}
-            </Row>
-          )}
         </div>
       </div>
     </Content>

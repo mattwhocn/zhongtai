@@ -4,30 +4,48 @@ import { RightOutlined } from '@ant-design/icons';
 import { usePageTitle } from '../../hooks/usePageTitle';
 import { gradients } from '../../utils/gradients';
 import './style.less';
-import career7 from '../../assets/images/career/career7.jpg';
-import career8 from '../../assets/images/career/career8.jpg';
-import career9 from '../../assets/images/career/career9.jpg';
-import career10 from '../../assets/images/career/career10.jpg';
-import career11 from '../../assets/images/career/career11.jpg';
-import career12 from '../../assets/images/career/career12.jpg';
-import career13 from '../../assets/images/career/career13.jpg';
-import career14 from '../../assets/images/career/career14.jpg';
-import career15 from '../../assets/images/career/career15.jpg';
-import career16 from '../../assets/images/career/career16.jpg';
-import career18 from '../../assets/images/career/career18.jpg';
-import career19 from '../../assets/images/career/career19.jpg';
-import career20 from '../../assets/images/career/career20.jpg';
-import career21 from '../../assets/images/career/career21.jpg';
-import career22 from '../../assets/images/career/career22.jpg';
-import career23 from '../../assets/images/career/career23.jpg';
-import career24 from '../../assets/images/career/career24.jpg';
-import career25 from '../../assets/images/career/career25.jpg';
-import career26 from '../../assets/images/career/career26.jpg';
-import career27 from '../../assets/images/career/career27.jpg';
-import career28 from '../../assets/images/career/career28.jpg';
-import career29 from '../../assets/images/career/career29.png';
-import career30 from '../../assets/images/career/career30.png';
+import career8 from '../../assets/images/career/env/career8.jpg';
+import career10 from '../../assets/images/career/env/career10.jpg';
+import career11 from '../../assets/images/career/env/career11.jpg';
+import career13 from '../../assets/images/career/env/career13.jpg';
+import career14 from '../../assets/images/career/env/career14.jpg';
+import career16 from '../../assets/images/career/env/career16.jpg';
+import career18 from '../../assets/images/career/env/career18.jpg';
+import career21 from '../../assets/images/career/env/career21.jpg';
+import career22 from '../../assets/images/career/env/career22.jpg';
+import career31 from '../../assets/images/career/culture/career31.jpg';
+import career32 from '../../assets/images/career/culture/career32.jpg';
+import career33 from '../../assets/images/career/culture/career33.jpg';
+import career34 from '../../assets/images/career/culture/career34.jpg';
+import career35 from '../../assets/images/career/culture/career35.jpg';
+import career36 from '../../assets/images/career/culture/career36.jpg';
+import career37 from '../../assets/images/career/culture/career37.jpg';
+import career38 from '../../assets/images/career/culture/career38.jpg';
+import career41 from '../../assets/images/career/honor/career41.jpg';
+import career42 from '../../assets/images/career/honor/career42.jpg';
+import career43 from '../../assets/images/career/honor/career43.jpg';
+import career44 from '../../assets/images/career/honor/career44.jpg';
+import career45 from '../../assets/images/career/honor/career45.jpg';
+import career46 from '../../assets/images/career/honor/career46.jpg';
+import career47 from '../../assets/images/career/honor/career47.jpg';
+import career48 from '../../assets/images/career/honor/career48.jpg';
 
+import career51 from '../../assets/images/career/honor/career51.jpg';
+import career52 from '../../assets/images/career/honor/career52.jpg';
+import career53 from '../../assets/images/career/honor/career53.jpg';
+import career54 from '../../assets/images/career/honor/career54.jpg';
+import career55 from '../../assets/images/career/honor/career55.jpg';
+import career56 from '../../assets/images/career/honor/career56.jpg';
+import career57 from '../../assets/images/career/honor/career57.jpg';
+import career58 from '../../assets/images/career/honor/career58.jpg';
+import career59 from '../../assets/images/career/honor/career59.jpg';
+import career60 from '../../assets/images/career/honor/career60.jpg';
+import career61 from '../../assets/images/career/honor/career61.jpg';
+import career62 from '../../assets/images/career/honor/career62.jpg';
+import career63 from '../../assets/images/career/honor/career63.jpg';
+import career64 from '../../assets/images/career/honor/career64.jpg';
+import career65 from '../../assets/images/career/honor/career65.jpg';
+import career66 from '../../assets/images/career/honor/career66.jpg';
 
 
 const { Content } = Layout;
@@ -55,18 +73,18 @@ const jobList = [
 ];
 
 // 公司文化数据
-const cultureSections = [
+export const cultureSections = [
   {
     title: '公司环境',
     items: [career8, career10, career11, career13, career14, career16, career18, career21, career22],
   },
   {
-    title: '员工福利',
-    items: [career23, career26, career27, career28],
+    title: '企业文化',
+    items: [career31, career32, career33, career34, career35, career36, career37, career38],
   },
   {
-    title: '职业发展',
-    items: [career29, career30],
+    title: '集团荣誉',
+    items: [career41, career42, career43, career44, career45, career46, career47, career48, career51, career52, career53, career54, career55, career56, career57, career58, career59, career60, career61, career62, career63, career64, career65, career66],
   },
 ];
 
@@ -148,9 +166,9 @@ const Career: React.FC = () => {
                   <Col xs={24} sm={8} lg={8} key={itemIndex}>
                     <Card 
                       className="culture-card"
-                      style={{ background: item }}
+                      style={{ background: '#ffffff' }}
                     >
-                      <div className="tech-overlay">
+                      <div className={`tech-overlay ${section.title === '集团荣誉' ? 'tech-overlay-contain' : ''}`}>
                         <img src={item} alt={`culture-${itemIndex}`} />
                       </div>
                     </Card>

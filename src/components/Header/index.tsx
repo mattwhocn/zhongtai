@@ -31,12 +31,8 @@ const menuItems: MenuProps['items'] = [
         label: <Link to="/about#culture">企业文化</Link>,
       },
       {
-        key: '/about#global',
-        label: <Link to="/about#global">全球布局</Link>,
-      },
-      {
         key: '/about#qualifications',
-        label: <Link to="/about#qualifications">资质与荣誉</Link>,
+        label: <Link to="/about#qualifications">公司资质</Link>,
       },
     ],
   },
@@ -54,7 +50,7 @@ const menuItems: MenuProps['items'] = [
       },
       {
         key: '/business/training',
-        label: <Link to="/business/training">消防培训</Link>,
+        label: <Link to="/business/training">学校培训</Link>,
       },
     ],
   },

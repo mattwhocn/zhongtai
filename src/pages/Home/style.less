@@ -186,6 +186,122 @@
   }
 }
 
+// 党群工作
+.party-working {
+  padding-top: 80px;
+
+  .section-content {
+    max-width: 1248px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .global-map {
+    height: 500px;
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 24px;
+    
+    .map-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+  
+  .global-description {
+    text-align: center;
+    font-size: 18px;
+    color: @gray-6;
+    max-width: 800px;
+    margin: 24px auto 0;
+
+    h2 {
+      font-size: 18px;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.8;
+    }
+  }
+}
+
+.group-honor {
+  padding: 80px 0;
+  background: #fff;
+
+  .section-content {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    &:extend(.section-header all);
+  }
+
+  .culture-card {
+    height: 200px;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    transition: all 0.3s ease;
+    box-shadow: @box-shadow-light;
+    
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: @box-shadow;
+    }
+    
+    h3 {
+      color: #fff;
+      font-size: 20px;
+      margin-bottom: 12px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    p {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 14px;
+      line-height: 1.6;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .tech-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      &.tech-overlay-contain {
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+        }
+      }
+    }
+  }
+}
+
 .news-section {
   padding: 80px 0;
   background: #fff;
@@ -578,20 +694,14 @@
       justify-content: center;
       text-align: center;
       
-      h3 {
-        color: #fff;
-        font-size: 24px;
-        margin-bottom: 12px;
-        font-weight: 500;
-        text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
-      }
-      
       p {
         color: rgba(255, 255, 255, 0.9);
         font-size: 16px;
-        margin: 0;
         line-height: 1.5;
-        text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+        text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+        position: absolute;
+        bottom: 0;
+        right: 24px;
       }
     }
   }
@@ -631,6 +741,12 @@
     }
   }
 
+  .party-working {
+    .global-map {
+      height: 240px;
+    }
+  }
+
   .news-section {
     padding: 40px 0;
     
@@ -651,10 +767,6 @@
         height: 160px;
         
         .card-content {
-          h3 {
-            font-size: 20px;
-          }
-          
           p {
             font-size: 14px;
           }

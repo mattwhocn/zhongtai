@@ -12,6 +12,16 @@ import customCase41 from '../../../assets/images/business/tech/case4-1.jpg';
 import customCase42 from '../../../assets/images/business/tech/case4-2.png';
 import customCase51 from '../../../assets/images/business/tech/case5-1.jpg';
 import customCase52 from '../../../assets/images/business/tech/case5-2.png';
+import customCase61 from '../../../assets/images/business/tech/安消应急一体化平台1.png';
+import customCase62 from '../../../assets/images/business/tech/安消应急一体化平台2.png';
+import customCase71 from '../../../assets/images/business/tech/哨兵系统1.png';
+import customCase72 from '../../../assets/images/business/tech/哨兵系统2.png';
+import customCase81 from '../../../assets/images/business/tech/智慧园区运营管理平台1.png';
+import customCase82 from '../../../assets/images/business/tech/智慧园区运营管理平台2.png';
+import customCase91 from '../../../assets/images/business/tech/智能平安校园平台1.jpg';
+import customCase92 from '../../../assets/images/business/tech/智能平安校园平台2.png';
+import customCase101 from '../../../assets/images/business/tech/水上安全风险预警系统1.png';
+import customCase102 from '../../../assets/images/business/tech/水上安全风险预警系统2.png';
 
 import './style.less';
 
@@ -65,7 +75,36 @@ const customCases = [
     extra: ['精准定位火点，分析附近救火资源、监控点及道路信息，辅助决策；', '结合风向、等高线和数字高程模型，支撑救援、防火及人员撤离决策；', '快速统计过火面积、损失及扑火投入，实现大数据与三维态势可视化展示。'],
     images: [customCase51, customCase52],
   },
-
+  {
+    id: 6,
+    title: "安消应急一体化平台",
+    description: `安消一体化平台是集成安全防范与消防管理的智能化综合管理系统。平台通过物联网、AI、大数据等技术，构建智能物联感知网络，实时采集消防设施、安防设备、环境监测等数据，实现安全监控与消防预警的深度融合。系统具备智能巡检、隐患识别、风险预警、应急指挥等功能模块，支持视频分析烟雾火情、设备故障自动告警、应急预案智能推送等核心应用。通过多系统数据互通与业务协同，有效解决传统安消系统信息孤岛问题，大幅提升隐患响应速度和处置效率。适用于工业园区、商业综合体、智慧社区等场景，助力企业实现"预防-监控-处置"全流程闭环管理，降低安全事故发生率，构建数字化安全防控体系。`,
+    images: [customCase61, customCase62],
+  },
+  {
+    id: 7,
+    title: "哨兵系统",
+    description: `哨兵系统包括“设备运维中心”“三维动态监测中心”“人员管理中心”“预警中心”以及“安全知识库”，涵盖安全、消防等各职能部门监管需求。`,
+    images: [customCase71, customCase72],
+  },
+  {
+    id: 8,
+    title: "智慧园区运营管理平台",
+    description: `平台集成基础数据、模型数据、园区信息化数据、运行数据等，本设计方案为智慧园区的物联基础设施部分，为智慧园区运行提供物联设备数据，为园区运行提供支撑。`,
+    images: [customCase81, customCase82],
+  },
+  {
+    id: 9,
+    title: "智能平安校园平台",
+    description: `智能平安校园平台是基于AIoT技术构建的智慧安防管理系统，集成视频监控、人脸识别、电子围栏、应急报警等子系统，通过人工智能算法实现异常行为识别、危险区域闯入预警及消防隐患智能研判。平台打通校园门禁考勤、宿舍管理、周界防护等场景数据，支持一键报警、人员轨迹追踪、应急预案联动等功能，结合移动端实现家校安全信息共享。借助大数据分析能力，可动态评估校园安全态势，为管理者提供决策支持，全面提升校园风险防控能力与应急响应效率，构建覆盖"人-车-物-环境"的全方位防护体系。`,
+    images: [customCase91, customCase92],
+  },
+  {
+    id: 10,
+    title: "水上安全风险预警系统",
+    description: `水上交通风险预警与仿真系统是以智能船舶为理论依据，依托电子海图、空间数据库、仿真模拟以及二维可视化技术，以港口数据、通航要素数据、交流数据、预警信息数据和船舶数据为基础，模拟仿真下一代智能航运管控平台，实现水上交通一张图、风险预警管理和智能船舶监控管理等仿真功能。`,
+    images: [customCase101, customCase102],
+  },
 ];
 
 const TechBusiness: React.FC = () => {
@@ -77,32 +116,38 @@ const TechBusiness: React.FC = () => {
       <section className="core-product">
         <div className="section-content">
           <Title level={2}>核心产品</Title>
-          {coreProductsData.map((product) => (
-            <Row 
-              key={product.id} 
-              gutter={[48, 48]} 
-              align="middle" 
-              className="product-row"
-            >
-              <Col xs={24} lg={12}>
-                <div className="product-image">
-                  <div className="tech-overlay">
-                    <img src={product.image} alt={product.title} />
-                  </div>
-                </div>
+          <Row gutter={[24, 24]}>
+            {coreProductsData.map((product) => (
+              <Col xs={24} sm={24} lg={24} key={product.id}>
+                <Card className="case-card" bordered={false}>
+                  <Row 
+                    key={product.id} 
+                    gutter={[12, 12]}
+                    align="middle" 
+                    className="product-row"
+                  >
+                    <Col xs={24} lg={12}>
+                      <div className="product-image">
+                        <div className="tech-overlay">
+                          <img src={product.image} alt={product.title} />
+                        </div>
+                      </div>
+                    </Col>
+                    <Col xs={24} lg={12}>
+                      <div className="product-info">
+                        <Title level={3} className="product-info-title">
+                          {product.title}
+                        </Title>
+                        <Paragraph className="product-info-description">
+                          {product.description}
+                        </Paragraph>
+                      </div>
+                    </Col>
+                  </Row>
+                </Card>
               </Col>
-              <Col xs={24} lg={12}>
-                <div className="product-info">
-                  <Title level={3} className="product-info-title">
-                    {product.title}
-                  </Title>
-                  <Paragraph className="product-info-description">
-                    {product.description}
-                  </Paragraph>
-                </div>
-              </Col>
-            </Row>
-          ))}
+            ))}
+          </Row>
         </div>
       </section>
 

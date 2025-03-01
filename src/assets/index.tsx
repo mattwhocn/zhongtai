@@ -8,6 +8,7 @@ import news6Content from './news-md/news6.md';
 import news7Content from './news-md/news7.md';
 import news8Content from './news-md/news8.md';
 import news9Content from './news-md/news9.md';
+import news10Content from './news-md/news10.md';
 import news1Cover from './news-cover/news1-1.png';
 import news2Cover from './news-cover/news2-1.png';
 import news3Cover from './news-cover/news3-1.png';
@@ -17,8 +18,9 @@ import news6Cover from './news-cover/news6-1.png';
 import news7Cover from './news-cover/news7-1.png';
 import news8Cover from './news-cover/news8-1.png';
 import news9Cover from './news-cover/news9-1.jpg';
-export type NewsCategory = '公司新闻' | '行业新闻' | '培训活动';
-export type NewsCategoryKey = 'company' | 'industry' | 'training';
+import news10Cover from './news-cover/news10-1.png';
+export type NewsCategory = '公司新闻' | '行业新闻' | '培训活动' | '党建引领';
+export type NewsCategoryKey = 'company' | 'industry' | 'training' | 'building';
 
 export interface NewsItem {
   id: string;
@@ -105,7 +107,7 @@ export const newsContent: NewsItem[] = [
     id: '7',
     metadata: {
       title: "《集团董事长赵性仓当选第十届“北京榜样·最美义工”榜样人物》",
-      date: "2025-01-04",
+      date: "2025-03-01",
       category: "公司新闻",
       categoryKey: "company",
       cover: news7Cover,
@@ -133,6 +135,17 @@ export const newsContent: NewsItem[] = [
       cover: news9Cover,
     },
     content: news9Content,
+  },
+  {
+    id: '10',
+    metadata: {
+      title: "北京中泰民安保安服务有限公司经营管理工作会议",
+      date: "2025-03-01",
+      category: '党建引领',
+      categoryKey: 'building',
+      cover: news10Cover,
+    },
+    content: news10Content,
   }
 ];
 
