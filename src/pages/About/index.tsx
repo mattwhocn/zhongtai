@@ -50,7 +50,7 @@ const managementTeam = [
     name: '赵性仓',
     title: '董事长',
     avatar: avatar2,
-    description: `赵性仓，男，1968年3月出生，山东梁山人，中共党员，梁山在京流动党员党委副书记，中泰民安安全服务集团有限公司党支部书记、董事长，北京市大兴区中泰民安红十字救援服务中心总负责人。30多年来，他凭着矢志不渝的创业精神和强烈的社会责任感，始终以"有我在、跟我上、看我的"为理念，以"身先士卒、率先垂范"为要求，在平凡的岗位上带领团队创造了诸多不平凡的业绩。现集团旗下10家子公司、1所培训学校，解决就业3万余人次。`,
+    description: `赵性仓，男，山东梁山人，中共党员，梁山在京流动党员党委副书记，中泰民安安全服务集团有限公司党支部书记、董事长，北京市大兴区中泰民安红十字救援服务中心总负责人。30多年来，他凭着矢志不渝的创业精神和强烈的社会责任感，始终以"有我在、跟我上、看我的"为理念，以"身先士卒、率先垂范"为要求，在平凡的岗位上带领团队创造了诸多不平凡的业绩。现集团旗下10家子公司、1所培训学校，解决就业3万余人次。`,
     moreDetails: [
       {
         title: '创业历程',
@@ -110,10 +110,10 @@ const qualifications = {
       background: gradients.techGold,
       image: qualifications3,
     },
-    {
-      background: gradients.techMix,
-      image: qualifications4,
-    },
+    // {
+    //   background: gradients.techMix,
+    //   image: qualifications4,
+    // },
     {
       background: gradients.businessBlue,
       image: qualifications5,
@@ -126,10 +126,10 @@ const qualifications = {
       background: gradients.businessBlue,
       image: qualifications7,
     },
-    {
-      background: gradients.techMix,
-      image: qualifications8,
-    },
+    // {
+    //   background: gradients.techMix,
+    //   image: qualifications8,
+    // },
     {
       background: gradients.businessBlue,
       image: qualifications9,
@@ -142,10 +142,10 @@ const qualifications = {
       background: gradients.businessBlue,
       image: qualifications11,
     },
-    {
-      background: gradients.techMix,
-      image: qualifications12,
-    },
+    // {
+    //   background: gradients.techMix,
+    //   image: qualifications12,
+    // },
     {
       background: gradients.businessBlue,
       image: qualifications13,
@@ -158,22 +158,22 @@ const qualifications = {
       background: gradients.businessBlue,
       image: qualifications15,
     },
-    {
-      background: gradients.techMix,
-      image: qualifications16,
-    },
-    {
-      background: gradients.businessBlue,
-      image: qualifications17,
-    },
+    // {
+    //   background: gradients.techMix,
+    //   image: qualifications16,
+    // },
+    // {
+    //   background: gradients.businessBlue,
+    //   image: qualifications17,
+    // },
     {
       background: gradients.techMix,
       image: qualifications18,
     },
-    {
-      background: gradients.businessBlue,
-      image: qualifications19,
-    },
+    // {
+    //   background: gradients.businessBlue,
+    //   image: qualifications19,
+    // },
     {
       background: gradients.techMix,
       image: qualifications20,
@@ -182,18 +182,18 @@ const qualifications = {
       background: gradients.businessBlue,
       image: qualifications21,
     },
-    {
-      background: gradients.techMix,
-      image: qualifications22,
-    },
+    // {
+    //   background: gradients.techMix,
+    //   image: qualifications22,
+    // },
     {
       background: gradients.businessBlue,
       image: qualifications23,
     },
-    {
-      background: gradients.techMix,
-      image: qualifications24,
-    },
+    // {
+    //   background: gradients.techMix,
+    //   image: qualifications24,
+    // },
   ]
 };
 

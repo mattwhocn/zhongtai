@@ -19,7 +19,7 @@ const sortedNews = newsContent.sort((a, b) =>
 const News: React.FC = () => {
   usePageTitle('新闻中心');
   const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState('industry');
+  const [activeTab, setActiveTab] = useState('building');
   const [showAffix, setShowAffix] = useState(false);
   
   // 根据当前 tab 筛选新闻

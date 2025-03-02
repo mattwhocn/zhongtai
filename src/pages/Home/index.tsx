@@ -98,7 +98,7 @@ const businessShowcase = [
   },
   {
     id: 8,
-    desc: '学校培训',
+    desc: '消防培训',
     image: training2,
   },
   {
@@ -111,7 +111,6 @@ const businessShowcase = [
 const Home: React.FC = () => {
   usePageTitle('首页');
   const navigate = useNavigate();
-  // 添加悬停状态
   const [hoveredNews, setHoveredNews] = React.useState<NewsItem | null>(null);
 
   useEffect(() => {
@@ -122,10 +121,30 @@ const Home: React.FC = () => {
     }
   }, []);
 
-  // 获取最新的3条新闻
-  const latestNews = newsContent
-    .sort((a, b) => new Date(b.metadata.date).getTime() - new Date(a.metadata.date).getTime())
-    .slice(0, 3);
+  // 获取每个分类最新的一条新闻
+  const latestNews = React.useMemo(() => {
+    // 按分类对新闻进行分组
+    const newsByCategory = newsContent.reduce((acc, news) => {
+      const category = news.metadata.categoryKey;
+      if (!acc[category]) {
+        acc[category] = [];
+      }
+      acc[category].push(news);
+      return acc;
+    }, {} as Record<string, NewsItem[]>);
+
+    const categaryOrder = ['building', 'company' , 'training' , 'industry']
+    console.log(newsByCategory);
+    // 对每个分类的新闻按日期排序，并取最新的一条
+    return categaryOrder
+      .map(category => {
+        const categoryNews = newsByCategory[category];
+        return categoryNews.sort((a, b) => 
+          new Date(b.metadata.date).getTime() - new Date(a.metadata.date).getTime()
+        )[0];
+      })
+      .slice(0, 3); // 只取前3个分类的最新新闻
+  }, []);
 
   // 获取当前显示的新闻
   const displayedNews = hoveredNews || latestNews[0];
@@ -188,7 +207,7 @@ const Home: React.FC = () => {
           <div className='global-description'>
             <h2>党建引领，筑牢企业发展根基</h2>  
             <p>
-              中泰民安安全服务集团有限公司始终将党建工作作为企业发展的核心动力，秉承“党建强，企业才更强”的理念，将党的政治优势转化为企业核心竞争力。自成立以来，公司积极响应国家号召，通过建立规范化党组织、深化党建与业务融合、履行社会责任等举措，推动企业高质量发展。
+              中泰民安安全服务集团有限公司始终将党建工作作为企业发展的核心动力，秉承"党建强，企业才更强"的理念，将党的政治优势转化为企业核心竞争力。自成立以来，公司积极响应国家号召，通过建立规范化党组织、深化党建与业务融合、履行社会责任等举措，推动企业高质量发展。
             </p>
           </div>
         </div>
@@ -284,8 +303,6 @@ const Home: React.FC = () => {
           </Row>
         </div>
       </section>
-
-
 
       {/* 新闻动态 */}
       <section className="news-section">

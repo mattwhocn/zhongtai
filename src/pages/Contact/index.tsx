@@ -13,7 +13,7 @@ export const contactInfo = {
   address: '北京市大兴区春和路39号院1号楼3单元906',
   address2: '北京市大兴区庞各庄镇庞新路5号',
   phone: '010-61288212',
-  email: 'contact@example.com',
+  email: '9315704675@qq.com',
   workTime: '周一至周五 9:00-18:00'
 };
 
@@ -28,11 +28,11 @@ const Contact: React.FC = () => {
     },
     {
       name: '北京市保安服务有限公司',
-      url: 'http://www.baoan.com.cn/begs/',
+      url: 'http://www.baoan.com.cn/',
       icon: <SafetyCertificateOutlined />
     },
     {
-      name: '山东星网分享数产业有限公司',
+      name: '山东星网数据产业有限公司',
       url: 'http://www.starnetgis.com/',
       icon: <GlobalOutlined />
     },
@@ -47,8 +47,8 @@ const Contact: React.FC = () => {
       icon: <CloudOutlined />
     },
     {
-      name: '北京智力九州科技有限公司',
-      url: 'http://www.ztjsoft.com/home',
+      name: '北京智图九州科技有限公司',
+      url: 'https://www.ztjzsoft.com/',
       icon: <RocketOutlined />
     },
     {
@@ -57,7 +57,7 @@ const Contact: React.FC = () => {
       icon: <ApartmentOutlined />
     },
     {
-      name: '中电大恒（集团）有限公司',
+      name: '中电太极（集团）有限公司',
       url: 'http://www.nci.ac.cn/',
       icon: <BuildOutlined />
     }

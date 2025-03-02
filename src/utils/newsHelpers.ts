@@ -9,8 +9,8 @@ export const getNewsTagColor = (category: string) => {
       return 'gold';
     case '培训活动':
       return 'green';
-    case '党群建设':
-        return 'purple';
+    case '党建引领':
+      return 'purple';
     default:
       return 'blue';
   }
@@ -25,6 +25,8 @@ export const getNewsBackground = (index: number) => {
       return gradients.businessBlue;
     case 2:
       return gradients.techMix;
+    case 3:
+      return gradients.businessBlue;
     default:
       return gradients.techGold;
   }
