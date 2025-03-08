@@ -18,6 +18,29 @@ const NewsDetail: React.FC = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [newsData, setNewsData] = useState<NewsItem | null>(null);
+
+  // useEffect(() => {
+  //   const markdownUrl = 'http://static.ztmagroup.com/data/markdown/1741189420328_news.md';
+
+  //   fetch(markdownUrl, {
+  //     method: 'GET',
+  //     mode: 'cors'
+  //   })
+  //    .then(response => {
+  //       if (!response.ok) {
+  //         throw new Error(`HTTP error! status: ${response.status}`);
+  //       }
+  //       return response.text();
+  //     })
+  //    .then(markdownContent => {
+  //       // markdownContent 就是读取到的 Markdown 文件内容，作为字符串处理
+  //       console.log(markdownContent);
+  //       // 可以在这里进行进一步的操作，比如渲染到页面上或者传递给其他函数
+  //     })
+  //    .catch(error => {
+  //       console.error('There has been a problem with your fetch operation:', error);
+  //     });
+  // }, []);
   
   useEffect(() => {
     const news = findNewsById(id || '');

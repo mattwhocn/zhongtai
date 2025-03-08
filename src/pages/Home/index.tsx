@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import { Layout, Row, Col, Typography, Card, Button, Carousel, Tag } from 'antd';
 import { RightOutlined } from '@ant-design/icons';
 import { Link, useNavigate } from 'react-router-dom';
@@ -31,30 +32,25 @@ const { Content } = Layout;
 const { Title, Paragraph } = Typography;
 
 // 轮播图数据
-const carouselData = [
+const defaultBannerData = [
   {
-    id: 0,
     title: '',
-    desc: '',
-    background: gradients.techBlue,
+    description: '',
     image: banner4,
   },
   {
-    id: 1,
     title: '中泰民安·安保',
-    desc: '让城市更安全，让文明更韧性',
+    description: '让城市更安全，让文明更韧性',
     image: banner1,
   },
   {
-    id: 2,
     title: '兴泰科技',
-    desc: '兴泰启航，科技赋能',
+    description: '兴泰启航，科技赋能',
     image: banner2,
   },
   {
-    id: 3,
     title: '兴宾学校',
-    desc: '兴宾育才，安全未来',
+    description: '兴宾育才，安全未来',
     image: banner5,
   },
 ];
@@ -112,6 +108,7 @@ const Home: React.FC = () => {
   usePageTitle('首页');
   const navigate = useNavigate();
   const [hoveredNews, setHoveredNews] = React.useState<NewsItem | null>(null);
+  const [bannerData, setBannerData] = useState<any[]>(defaultBannerData);
 
   useEffect(() => {
     // 初始化时为第一个 slide 添加 active 类
@@ -119,6 +116,16 @@ const Home: React.FC = () => {
     if (firstSlide) {
       firstSlide.classList.add('active');
     }
+    const fetchBannerConfig = async () => {
+      try {
+        const response = await axios.get('http://static.ztmagroup.com/data/json/banner/banner.json');
+        console.log(response.data)
+        setBannerData(response.data);
+      } catch (error) {
+        console.error('获取banner配置失败:', error);
+      }
+    };
+    fetchBannerConfig();
   }, []);
 
   // 获取每个分类最新的一条新闻
@@ -134,7 +141,6 @@ const Home: React.FC = () => {
     }, {} as Record<string, NewsItem[]>);
 
     const categaryOrder = ['building', 'company' , 'training' , 'industry']
-    console.log(newsByCategory);
     // 对每个分类的新闻按日期排序，并取最新的一条
     return categaryOrder
       .map(category => {
@@ -165,7 +171,7 @@ const Home: React.FC = () => {
             currentSlide.classList.remove('active');
           }
           // 计算实际的下一个索引
-          const nextIndex = next % carouselData.length;
+          const nextIndex = next % bannerData.length;
           // 为下一个 slide 添加 active 类
           const nextSlideList = document.querySelectorAll(`.carousel-item-${nextIndex}`);
           // 这个Carousel为了循环轮播，最后一张轮播图会显示两次，所以需要遍历所有的节点
@@ -176,10 +182,10 @@ const Home: React.FC = () => {
           }
         }}
       >
-        {carouselData.map((item, index) => (
-          <div key={item.id}>
+        {bannerData.map((item, index) => (
+          <div key={item.title}>
             <div className={`carousel-item carousel-item-${index}`}>
-              <div className="carousel-content" style={{ background: item.background }}>
+              <div className="carousel-content" style={{ background: gradients.techBlue }}>
                 {item?.image && <img 
                   src={item?.image} 
                   alt={item.title}
@@ -187,7 +193,7 @@ const Home: React.FC = () => {
                 />}
                 <div className="carousel-text">
                   <p>{item.title}</p>
-                  <h2>{item.desc}</h2>
+                  <h2>{item.description}</h2>
                 </div>
               </div>
             </div>
