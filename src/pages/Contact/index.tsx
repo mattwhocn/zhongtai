@@ -1,6 +1,12 @@
 import React from 'react';
 import { Layout, Typography, Row, Col, Card } from 'antd';
-import { EnvironmentOutlined, PhoneOutlined, MailOutlined, FieldTimeOutlined, BankOutlined, SafetyCertificateOutlined, GlobalOutlined, SafetyOutlined, CloudOutlined, RocketOutlined, ApartmentOutlined, BuildOutlined } from '@ant-design/icons';
+import { 
+  EnvironmentOutlined, PhoneOutlined, MailOutlined, FieldTimeOutlined, 
+  BankOutlined, SafetyCertificateOutlined, GlobalOutlined, SafetyOutlined, 
+  CloudOutlined, RocketOutlined, ApartmentOutlined, BuildOutlined, 
+  SecurityScanOutlined, CompassOutlined, FireOutlined, HeartOutlined,
+  MedicineBoxOutlined 
+} from '@ant-design/icons';
 import { usePageTitle } from '../../hooks/usePageTitle';
 import { gradients } from '../../utils/gradients';
 import './style.less';
@@ -62,29 +68,29 @@ const Contact: React.FC = () => {
       icon: <BuildOutlined />
     },
     {
-      name: '北京保安协会',
+      name: '北京保安协会', 
       url: 'http://www.bjbaw.cn/',
-      icon: <BuildOutlined />
+      icon: <SecurityScanOutlined />
     },
     {
       name: '北京消防协会',
       url: 'http://www.beijingfire.com/home/index.php',
-      icon: <BuildOutlined />
+      icon: <FireOutlined />
     },
     {
       name: '北京安全防范行业协会',
       url: 'https://www.bspia.com.cn/',
-      icon: <BuildOutlined />
+      icon: <SafetyCertificateOutlined />
     },
     {
       name: '中国红十字会',
       url: 'https://www.redcross.org.cn/',
-      icon: <BuildOutlined />
+      icon: <HeartOutlined />
     },
     {
       name: '北京市大兴区红十字会',
       url: 'https://daxing.bjredcross.org.cn/',
-      icon: <BuildOutlined />
+      icon: <MedicineBoxOutlined />
     }
   ];
 
