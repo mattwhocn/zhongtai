@@ -15,7 +15,7 @@ const __dirname = path.dirname(__filename);
 const config: Configuration = {
   entry: './src/index.tsx',
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'build'),
     filename: 'bundle.js',
     publicPath: '/'
   },
