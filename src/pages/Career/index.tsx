@@ -4,6 +4,9 @@ import { RightOutlined } from '@ant-design/icons';
 import { usePageTitle } from '../../hooks/usePageTitle';
 import { gradients } from '../../utils/gradients';
 import './style.less';
+import career1 from '../../assets/images/career/env/1.png';
+import career2 from '../../assets/images/career/env/2.jpg';
+import career3 from '../../assets/images/career/env/3.jpg';
 import career8 from '../../assets/images/career/env/career8.jpg';
 import career10 from '../../assets/images/career/env/career10.jpg';
 import career11 from '../../assets/images/career/env/career11.jpg';
@@ -13,6 +16,7 @@ import career16 from '../../assets/images/career/env/career16.jpg';
 import career18 from '../../assets/images/career/env/career18.jpg';
 import career21 from '../../assets/images/career/env/career21.jpg';
 import career22 from '../../assets/images/career/env/career22.jpg';
+
 import career31 from '../../assets/images/career/culture/career31.jpg';
 import career32 from '../../assets/images/career/culture/career32.jpg';
 import career33 from '../../assets/images/career/culture/career33.jpg';
@@ -21,6 +25,7 @@ import career35 from '../../assets/images/career/culture/career35.jpg';
 import career36 from '../../assets/images/career/culture/career36.jpg';
 import career37 from '../../assets/images/career/culture/career37.jpg';
 import career38 from '../../assets/images/career/culture/career38.jpg';
+import career39 from '../../assets/images/career/culture/career39.jpg';
 
 import careerHonor11 from '../../assets/images/career/honor/1 1.jpg';
 import careerHonor12 from '../../assets/images/career/honor/2 1.jpg';
@@ -71,11 +76,11 @@ const jobList = [
 export const cultureSections = [
   {
     title: '公司环境',
-    items: [career8, career10, career11, career13, career14, career16, career18, career21, career22],
+    items: [career1, career2, career3, career8, career10, career11, career13, career14, career16, career18, career21, career22],
   },
   {
     title: '企业文化',
-    items: [career31, career32, career33, career34, career35, career36, career37, career38],
+    items: [career31, career32, career33, career34, career35, career36, career37, career38, career39],
   },
   {
     title: '集团荣誉',

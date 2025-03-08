@@ -11,7 +11,7 @@ import { gradients } from '../../../utils/gradients';
 import case1 from '../../../assets/images/sustainability/social/case1.jpg';
 import case2 from '../../../assets/images/sustainability/social/case2.jpg';
 import case3 from '../../../assets/images/sustainability/social/case3.jpg';
-import case4 from '../../../assets/images/sustainability/social/case4.png';
+import case4 from '../../../assets/images/sustainability/social/case4.jpg';
 import case5 from '../../../assets/images/sustainability/social/case5.jpg';
 import case6 from '../../../assets/images/sustainability/social/case6.jpg';
 import case7 from '../../../assets/images/sustainability/social/case7.jpg';

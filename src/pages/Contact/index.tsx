@@ -13,7 +13,7 @@ export const contactInfo = {
   address: '北京市大兴区春和路39号院1号楼3单元906',
   address2: '北京市大兴区庞各庄镇庞新路5号',
   phone: '010-61288212',
-  email: '9315704675@qq.com',
+  email: 'bjztma@163.com',
   workTime: '周一至周五 9:00-18:00'
 };
 
@@ -42,7 +42,7 @@ const Contact: React.FC = () => {
       icon: <SafetyOutlined />
     },
     {
-      name: '中华云智慧科技有限公司',
+      name: '中祥云智慧科技有限公司',
       url: 'http://www.zxyiot.cn/',
       icon: <CloudOutlined />
     },
@@ -59,6 +59,31 @@ const Contact: React.FC = () => {
     {
       name: '中电太极（集团）有限公司',
       url: 'http://www.nci.ac.cn/',
+      icon: <BuildOutlined />
+    },
+    {
+      name: '北京保安协会',
+      url: 'http://www.bjbaw.cn/',
+      icon: <BuildOutlined />
+    },
+    {
+      name: '北京消防协会',
+      url: 'http://www.beijingfire.com/home/index.php',
+      icon: <BuildOutlined />
+    },
+    {
+      name: '北京安全防范行业协会',
+      url: 'https://www.bspia.com.cn/',
+      icon: <BuildOutlined />
+    },
+    {
+      name: '中国红十字会',
+      url: 'https://www.redcross.org.cn/',
+      icon: <BuildOutlined />
+    },
+    {
+      name: '北京市大兴区红十字会',
+      url: 'https://daxing.bjredcross.org.cn/',
       icon: <BuildOutlined />
     }
   ];
