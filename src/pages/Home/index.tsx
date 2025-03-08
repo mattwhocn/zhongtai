@@ -27,6 +27,7 @@ import { newsContent, NewsItem } from '../News/helper';
 import { gradients } from '@/utils/gradients';
 import { cultureSections } from '../Career';
 import './style.less';
+import { formatExcelDate } from '../News/Detail';
 
 const { Content } = Layout;
 const { Title, Paragraph } = Typography;
@@ -109,6 +110,7 @@ const Home: React.FC = () => {
   const navigate = useNavigate();
   const [hoveredNews, setHoveredNews] = useState<NewsItem | null>(null);
   const [bannerData, setBannerData] = useState<any[]>(defaultBannerData);
+  const [newsList, setNewsList] = useState<NewsItem[]>(newsContent);
 
   useEffect(() => {
     // 初始化时为第一个 slide 添加 active 类
@@ -116,16 +118,33 @@ const Home: React.FC = () => {
     if (firstSlide) {
       firstSlide.classList.add('active');
     }
-    const fetchBannerConfig = async () => {
-      try {
-        const response = await axios.get('http://static.ztmagroup.com/data/json/banner/banner.json');
-        setBannerData(response.data);
-      } catch (error) {
-        console.error('获取banner配置失败:', error);
-      }
-    };
+    // 接口请求
     fetchBannerConfig();
+    fetchNewsList();
   }, []);
+
+  const fetchBannerConfig = async () => {
+    try {
+      const response = await axios.get('http://static.ztmagroup.com/data/json/banner/banner.json');
+      setBannerData(response.data);
+    } catch (error) {
+      console.error('获取banner配置失败:', error);
+    }
+  };
+
+  const fetchNewsList = async () => {
+    try {
+      const response = await axios.get('http://static.ztmagroup.com/data/json/news/news.json');
+      const newsList = response.data?.map((item: any) => ({
+        ...item,
+        date: formatExcelDate(item.date),
+        category: item.type,
+      }))
+      setNewsList(newsList);
+    } catch (error) {
+      console.error('获取news配置失败:', error);
+    }
+  };
 
   // 获取每个分类最新的一条新闻
   const latestNews = useMemo(() => {
@@ -149,10 +168,12 @@ const Home: React.FC = () => {
         )[0];
       })
       .slice(0, 3); // 只取前3个分类的最新新闻
-  }, []);
+  }, [newsList]);
 
   // 获取当前显示的新闻
-  const displayedNews = hoveredNews || latestNews[0];
+  const displayedNews = useMemo(() => {
+    return hoveredNews || latestNews[0];
+  }, [hoveredNews, latestNews]);
 
   // 集团荣誉数据
   const groupHonorData = cultureSections.find(section => section.title === '集团荣誉')?.items ?? [];
