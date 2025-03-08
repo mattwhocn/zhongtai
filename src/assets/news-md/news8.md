@@ -26,10 +26,10 @@
 
 让我们共同期待 2025 年 3 月 1 日中泰民安集团在各平台的精彩亮相！
 
-![新闻图片](/illustation/news8-1.png)
-![新闻图片](/illustation/news8-2.png)
-![新闻图片](/illustation/news8-3.jpg)
-![新闻图片](/illustation/news8-4.png)
+![新闻图片](http://static.ztmagroup.com/data/images/1741443412885.png)
+![新闻图片](http://static.ztmagroup.com/data/images/1741443420637.png)
+![新闻图片](http://static.ztmagroup.com/data/images/1741443425953.jpg)
+![新闻图片](http://static.ztmagroup.com/data/images/1741443432243.png)
 
 
 

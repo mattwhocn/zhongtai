@@ -53,15 +53,13 @@ const NewsDetail: React.FC = () => {
     setLoading(false);
   }, [id, navigate]);
 
-  usePageTitle(newsData?.metadata.title ? `${newsData.metadata.title} - 新闻中心` : '新闻中心');
+  usePageTitle(newsData?.title ? `${newsData.title} - 新闻中心` : '新闻中心');
 
   if (loading) {
     return <div className="loading-container"><Spin size="large" /></div>;
   }
 
   if (!newsData) return null;
-
-  const { metadata, content } = newsData;
 
   return (
     <Content className="news-detail-page">
@@ -71,7 +69,7 @@ const NewsDetail: React.FC = () => {
         style={{ background: gradients.techBlue }}
       >
         <div className="banner-content">
-          <h1>{metadata.title}</h1>
+          <h1>{newsData.title}</h1>
         </div>
         <div className="tech-overlay" />
       </div>
@@ -85,7 +83,7 @@ const NewsDetail: React.FC = () => {
           <Breadcrumb.Item>
             <Link to="/news">新闻中心</Link>
           </Breadcrumb.Item>
-          <Breadcrumb.Item>{metadata.category}</Breadcrumb.Item>
+          <Breadcrumb.Item>{newsData.category}</Breadcrumb.Item>
         </Breadcrumb>
 
         {/* 返回按钮 */}
@@ -96,9 +94,9 @@ const NewsDetail: React.FC = () => {
         {/* 新闻内容 */}
         <div className="news-content">
           <Space className="news-meta" size={16}>
-            <Tag color={getNewsTagColor(metadata.category)}>{metadata.category}</Tag>
+            <Tag color={getNewsTagColor(newsData.category)}>{newsData.category}</Tag>
             <span className="news-date">
-              <CalendarOutlined /> {metadata.date}
+              <CalendarOutlined /> {newsData.date}
             </span>
           </Space>
           
@@ -117,7 +115,7 @@ const NewsDetail: React.FC = () => {
                 blockquote: ({ node, ...props }) => <blockquote className="md-blockquote" {...props} />,
               }}
             >
-              {content}
+              {newsData.content}
             </ReactMarkdown>
           </div>
         </div>

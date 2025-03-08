@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import axios from 'axios';
 import { Layout, Row, Col, Typography, Card, Button, Carousel, Tag } from 'antd';
 import { RightOutlined } from '@ant-design/icons';
@@ -25,8 +25,8 @@ import training3 from '../../assets/images/business/training3.jpg';
 import { companyProfile } from '../About';
 import { newsContent, NewsItem } from '../../assets';
 import { gradients } from '@/utils/gradients';
-import './style.less';
 import { cultureSections } from '../Career';
+import './style.less';
 
 const { Content } = Layout;
 const { Title, Paragraph } = Typography;
@@ -107,7 +107,7 @@ const businessShowcase = [
 const Home: React.FC = () => {
   usePageTitle('首页');
   const navigate = useNavigate();
-  const [hoveredNews, setHoveredNews] = React.useState<NewsItem | null>(null);
+  const [hoveredNews, setHoveredNews] = useState<NewsItem | null>(null);
   const [bannerData, setBannerData] = useState<any[]>(defaultBannerData);
 
   useEffect(() => {
@@ -129,10 +129,10 @@ const Home: React.FC = () => {
   }, []);
 
   // 获取每个分类最新的一条新闻
-  const latestNews = React.useMemo(() => {
+  const latestNews = useMemo(() => {
     // 按分类对新闻进行分组
     const newsByCategory = newsContent.reduce((acc, news) => {
-      const category = news.metadata.categoryKey;
+      const category = news.category;
       if (!acc[category]) {
         acc[category] = [];
       }
@@ -140,13 +140,13 @@ const Home: React.FC = () => {
       return acc;
     }, {} as Record<string, NewsItem[]>);
 
-    const categaryOrder = ['building', 'company' , 'training' , 'industry']
+    const categaryOrder = ['党建引领', '公司新闻' , '培训活动' , '行业新闻']
     // 对每个分类的新闻按日期排序，并取最新的一条
     return categaryOrder
       .map(category => {
         const categoryNews = newsByCategory[category];
-        return categoryNews.sort((a, b) => 
-          new Date(b.metadata.date).getTime() - new Date(a.metadata.date).getTime()
+        return categoryNews?.sort((a, b) => 
+          new Date(b.date).getTime() - new Date(a.date).getTime()
         )[0];
       })
       .slice(0, 3); // 只取前3个分类的最新新闻
@@ -327,11 +327,11 @@ const Home: React.FC = () => {
               >
                 <div className="news-image">
                   <div className="image-overlay">
-                    <img src={displayedNews.metadata.cover} alt={displayedNews.metadata.title} />
+                    <img src={displayedNews?.cover} alt={displayedNews.title} />
                   </div>  
                 </div>
                 <div className="news-content">
-                  <h3>{displayedNews.metadata.title}</h3>
+                  <h3>{displayedNews.title}</h3>
                 </div>
               </div>
             </Col>
@@ -347,18 +347,17 @@ const Home: React.FC = () => {
                     <div className="news-card-content">
                       <div className="news-info">
                         <div className="news-header">
-                          <h3>{news.metadata.title}</h3>
+                          <h3>{news?.title}</h3>
                           <Link to={`/news/${news.id}`} className="view-detail">
                             查看详情 <RightOutlined />
                           </Link>
                         </div>
                         <div className="news-meta">
-                          <Tag color={getNewsTagColor(news.metadata.category)} bordered={false}>
-                            {news.metadata.category}
+                          <Tag color={getNewsTagColor(news.category)} bordered={false}>
+                            {news.category}
                           </Tag>
-                          <span className="news-date">{news.metadata.date}</span>
+                          <span className="news-date">{news.date}</span>
                         </div>
-                        <p className="news-summary">{news.metadata.description}</p>
                       </div>
                     </div>
                   </Card>

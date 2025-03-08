@@ -1,14 +1,14 @@
 # 《集团董事长赵性仓当选第十届“北京榜样·最美义工”榜样人物》
 
-![新闻图片](/illustation/news7-1.png)
+![新闻图片](http://static.ztmagroup.com/data/images/1741443388575.png)
 
 2025年1月4日，由北京市慈善义工联合会举办的第十届“北京榜样·最美义工”致敬典礼暨第十二届慈善义工风采展示会隆重举行。
 
-![新闻图片](/illustation/news7-2.png)
+![新闻图片](http://static.ztmagroup.com/data/images/1741443396908.png)
 
 “北京榜样・最美义工”作为“北京榜样”的重要子品牌，坚持每年推选一批优秀个人和团队作为榜样、形成示范，激励更多的人投身公益慈善和志愿服务事业中。来自北京市大兴区中泰民安红十字救援服务中心的赵性仓当选：“北京榜样·最美义工”榜样人物。
 
-![新闻图片](/illustation/news7-3.png)
+![新闻图片](http://static.ztmagroup.com/data/images/1741443403398.png)
 
 
 

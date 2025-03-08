@@ -13,18 +13,18 @@ const { TabPane } = Tabs;
 // 在列表页可以直接使用 newsContent 数组
 // 可以进行排序、过滤等操作
 const sortedNews = newsContent.sort((a, b) => 
-  new Date(b.metadata.date).getTime() - new Date(a.metadata.date).getTime()
+  new Date(b.date).getTime() - new Date(a.date).getTime()
 );
 
 const News: React.FC = () => {
   usePageTitle('新闻中心');
   const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState('building');
+  const [activeTab, setActiveTab] = useState('党建引领');
   const [showAffix, setShowAffix] = useState(false);
   
   // 根据当前 tab 筛选新闻
   const filteredNews = sortedNews.filter(
-    news => news.metadata.categoryKey === activeTab
+    news => news.category === activeTab
   );
 
   useEffect(() => {
@@ -65,10 +65,10 @@ const News: React.FC = () => {
               onChange={setActiveTab}
               className="news-tabs"
             >
-              <TabPane tab="党建引领" key="building" />
-              <TabPane tab="公司新闻" key="company" />
-              <TabPane tab="培训活动" key="training" />
-              <TabPane tab="行业新闻" key="industry" />
+              <TabPane tab="党建引领" key="党建引领" />
+              <TabPane tab="公司新闻" key="公司新闻" />
+              <TabPane tab="培训活动" key="培训活动" />
+              <TabPane tab="行业新闻" key="行业新闻" />
             </Tabs>
           </div>
         </Affix>
@@ -86,13 +86,13 @@ const News: React.FC = () => {
                   >
                     <div className="news-image">
                       <div className="image-overlay">
-                        <img src={news.metadata.cover} alt={news.metadata.title} />
+                        <img src={news.cover} alt={news.title} />
                       </div>
                     </div>
                     <div className="news-info">
-                      <Tag color={getNewsTagColor(news.metadata.category)}>{news.metadata.category}</Tag>
-                      <h3>{news.metadata.title}</h3>
-                      <span className="news-date">{news.metadata.date}</span>
+                      <Tag color={getNewsTagColor(news.category)}>{news.category}</Tag>
+                      <h3>{news.title}</h3>
+                      <span className="news-date">{news.date}</span>
                     </div>
                   </Card>
                 </Col>

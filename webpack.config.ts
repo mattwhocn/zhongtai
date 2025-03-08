@@ -72,10 +72,6 @@ const config: Configuration = {
           to: 'assets',
         },
         {
-          from: 'public/illustation',
-          to: 'illustation',
-        },
-        {
           from: 'public/favicon.ico',
           to: 'favicon.ico',
         },
