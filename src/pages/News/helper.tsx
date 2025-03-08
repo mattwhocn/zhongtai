@@ -1,14 +1,14 @@
 // 直接导入 markdown 文件
-import news1Content from './news-md/news1.md';
-import news2Content from './news-md/news2.md';
-import news3Content from './news-md/news3.md';
-import news4Content from './news-md/news4.md';
-import news5Content from './news-md/news5.md';
-import news6Content from './news-md/news6.md';
-import news7Content from './news-md/news7.md';
-import news8Content from './news-md/news8.md';
-import news9Content from './news-md/news9.md';
-import news10Content from './news-md/news10.md';
+import news1Content from '../../assets/news-md/news1.md';
+import news2Content from '../../assets/news-md/news2.md';
+import news3Content from '../../assets/news-md/news3.md';
+import news4Content from '../../assets/news-md/news4.md';
+import news5Content from '../../assets/news-md/news5.md';
+import news6Content from '../../assets/news-md/news6.md';
+import news7Content from '../../assets/news-md/news7.md';
+import news8Content from '../../assets/news-md/news8.md';
+import news9Content from '../../assets/news-md/news9.md';
+import news10Content from '../../assets/news-md/news10.md';
 export type NewsCategory = '公司新闻' | '行业新闻' | '培训活动' | '党建引领';
 
 export interface NewsItem {

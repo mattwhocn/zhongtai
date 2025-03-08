@@ -6,7 +6,7 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { usePageTitle } from '../../../hooks/usePageTitle';
 import { getNewsTagColor } from '../../../utils/newsHelpers';
-import { findNewsById, NewsItem } from '../../../assets';
+import { findNewsById, NewsItem } from '../helper';
 import { gradients } from '@/utils/gradients';
 import './style.less';
 

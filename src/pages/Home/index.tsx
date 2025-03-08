@@ -23,7 +23,7 @@ import training1 from '../../assets/images/business/training1.png';
 import training2 from '../../assets/images/business/training2.jpg';
 import training3 from '../../assets/images/business/training3.jpg';
 import { companyProfile } from '../About';
-import { newsContent, NewsItem } from '../../assets';
+import { newsContent, NewsItem } from '../News/helper';
 import { gradients } from '@/utils/gradients';
 import { cultureSections } from '../Career';
 import './style.less';

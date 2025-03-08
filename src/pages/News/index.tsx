@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { usePageTitle } from '../../hooks/usePageTitle';
 import { gradients } from '../../utils/gradients';
 import { getNewsTagColor } from '../../utils/newsHelpers';
-import { newsContent } from '../../assets';
+import { newsContent } from './helper';
 import './style.less';
 
 const { Content } = Layout;
