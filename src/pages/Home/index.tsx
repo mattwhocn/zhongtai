@@ -119,7 +119,6 @@ const Home: React.FC = () => {
     const fetchBannerConfig = async () => {
       try {
         const response = await axios.get('http://static.ztmagroup.com/data/json/banner/banner.json');
-        console.log(response.data)
         setBannerData(response.data);
       } catch (error) {
         console.error('获取banner配置失败:', error);
@@ -187,7 +186,7 @@ const Home: React.FC = () => {
             <div className={`carousel-item carousel-item-${index}`}>
               <div className="carousel-content" style={{ background: gradients.techBlue }}>
                 {item?.image && <img 
-                  src={item?.image} 
+                  src={item?.image}
                   alt={item.title}
                   className="carousel-image"
                 />}

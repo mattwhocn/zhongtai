@@ -1,75 +1,137 @@
 import React, { useEffect, useState } from 'react';
-import { Layout, Typography, Breadcrumb, Space, Tag, Spin, message } from 'antd';
+import { Layout, Typography, Breadcrumb, Space, Tag, Spin, message, Empty } from 'antd';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import { LeftOutlined, CalendarOutlined } from '@ant-design/icons';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { usePageTitle } from '../../../hooks/usePageTitle';
 import { getNewsTagColor } from '../../../utils/newsHelpers';
-import { findNewsById, NewsItem } from '../helper';
+import { newsContent, NewsItem } from '../helper';
 import { gradients } from '@/utils/gradients';
 import './style.less';
+import axios from 'axios';
 
 const { Content } = Layout;
 const { Title } = Typography;
 
+export const isValidUrl = (str: string): boolean => {
+  try {
+    // 使用 URL 构造函数验证
+    new URL(str);
+    // 额外验证是否包含常见的协议
+    const protocols = ['http:', 'https:', 'ftp:'];
+    const url = new URL(str);
+    if (!protocols.includes(url.protocol)) {
+      return false;
+    }
+    return true;
+  } catch (err) {
+    return false;
+  }
+};
+
+/**
+ * 将Excel数字日期转换为可读的日期字符串
+ * @param excelDate Excel数字日期（例如：42735）
+ * @param format 输出格式，默认 'YYYY-MM-DD'
+ * @returns 格式化后的日期字符串
+ */
+export const formatExcelDate = (excelDate: number, format: string = 'YYYY-MM-DD'): string => {
+  // Excel日期起始点是1900年1月1日
+  // 需要减去2因为Excel错误地将1900年认为是闰年
+  const EXCEL_START_DATE = new Date(1899, 11, 30);
+  
+  // 将Excel数字转换为毫秒数
+  const millisecondsPerDay = 24 * 60 * 60 * 1000;
+  const dateObj = new Date(EXCEL_START_DATE.getTime() + (excelDate - 1) * millisecondsPerDay);
+  
+  // 格式化日期
+  const year = dateObj.getFullYear();
+  const month = String(dateObj.getMonth() + 1).padStart(2, '0');
+  const day = String(dateObj.getDate()).padStart(2, '0');
+  
+  // 根据format参数返回不同格式
+  switch (format) {
+    case 'YYYY年MM月DD日':
+      return `${year}年${month}月${day}日`;
+    case 'MM/DD/YYYY':
+      return `${month}/${day}/${year}`;
+    case 'DD/MM/YYYY':
+      return `${day}/${month}/${year}`;
+    default:
+      return `${year}-${month}-${day}`;
+  }
+};
+
 const NewsDetail: React.FC = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [loading, setLoading] = useState(true);
-  const [newsData, setNewsData] = useState<NewsItem | null>(null);
-
-  // useEffect(() => {
-  //   const markdownUrl = 'http://static.ztmagroup.com/data/markdown/1741189420328_news.md';
-
-  //   fetch(markdownUrl, {
-  //     method: 'GET',
-  //     mode: 'cors'
-  //   })
-  //    .then(response => {
-  //       if (!response.ok) {
-  //         throw new Error(`HTTP error! status: ${response.status}`);
-  //       }
-  //       return response.text();
-  //     })
-  //    .then(markdownContent => {
-  //       // markdownContent 就是读取到的 Markdown 文件内容，作为字符串处理
-  //       console.log(markdownContent);
-  //       // 可以在这里进行进一步的操作，比如渲染到页面上或者传递给其他函数
-  //     })
-  //    .catch(error => {
-  //       console.error('There has been a problem with your fetch operation:', error);
-  //     });
-  // }, []);
-  
-  useEffect(() => {
-    const news = findNewsById(id || '');
-    if (news) {
-      setNewsData(news);
-    } else {
-      message.error('新闻内容获取失败，3秒后返回新闻列表');
-      setTimeout(() => navigate('/news'), 3000);
+  const [loading, setLoading] = useState(false);
+  const [newsList, setNewsList] = useState<NewsItem[]>(newsContent);
+  const [newsData, setNewsData] = useState<NewsItem | null>(() => {
+    if (id) {
+      return newsList.find(news => news.id === id) ?? null;
     }
+    return null;
+  });
+  const [content, setContent] = useState<string>('');
+
+  // 接口请求
+  useEffect(() => {
+    setLoading(true);
+    const fetchNewsList = async () => {
+      try {
+        const response = await axios.get('http://static.ztmagroup.com/data/json/news/news.json');
+        const newsList = response.data?.map((item: any) => ({
+          ...item,
+          date: formatExcelDate(item.date),
+          category: item.type,
+        }))
+        const newsData = newsList.find((news: any) => news.id === Number(id));
+        setNewsList(newsList);
+        setNewsData(newsData);
+      } catch (error) {
+        console.error('获取news配置失败:', error);
+      }
+    };
+    fetchNewsList();
     setLoading(false);
-  }, [id, navigate]);
+  }, []);
 
+  // 获取news content
+  useEffect(() => {
+    if (newsData && newsData.content) {
+      if (isValidUrl(newsData.content)) {
+        fetch(newsData.content, {
+          method: 'GET',
+          mode: 'cors'
+        })
+        .then(response => {
+            if (!response.ok) {
+              throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.text();
+          })
+        .then(markdownContent => {
+            setContent(markdownContent);
+          })
+        .catch(error => {
+            console.error('There has been a problem with your fetch operation:', error);
+          });
+      } else {
+        setContent(newsData.content);
+      }
+    } 
+  }, [newsData]);
+  
   usePageTitle(newsData?.title ? `${newsData.title} - 新闻中心` : '新闻中心');
-
-  if (loading) {
-    return <div className="loading-container"><Spin size="large" /></div>;
-  }
-
-  if (!newsData) return null;
 
   return (
     <Content className="news-detail-page">
       {/* 顶部配图 */}
-      <div 
-        className="page-banner"
-        style={{ background: gradients.techBlue }}
-      >
+      <div className="page-banner" style={{ background: gradients.techBlue }}>
         <div className="banner-content">
-          <h1>{newsData.title}</h1>
+          <h1>{newsData?.title}</h1>
         </div>
         <div className="tech-overlay" />
       </div>
@@ -83,7 +145,7 @@ const NewsDetail: React.FC = () => {
           <Breadcrumb.Item>
             <Link to="/news">新闻中心</Link>
           </Breadcrumb.Item>
-          <Breadcrumb.Item>{newsData.category}</Breadcrumb.Item>
+          <Breadcrumb.Item>{newsData?.category}</Breadcrumb.Item>
         </Breadcrumb>
 
         {/* 返回按钮 */}
@@ -92,33 +154,41 @@ const NewsDetail: React.FC = () => {
         </div>
 
         {/* 新闻内容 */}
-        <div className="news-content">
-          <Space className="news-meta" size={16}>
-            <Tag color={getNewsTagColor(newsData.category)}>{newsData.category}</Tag>
-            <span className="news-date">
-              <CalendarOutlined /> {newsData.date}
-            </span>
-          </Space>
-          
-          <div className="news-body markdown-content">
-            <ReactMarkdown 
-              remarkPlugins={[remarkGfm]}
-              components={{
-                // 自定义渲染组件
-                h1: ({ node, ...props }) => <h1 className="md-h1" {...props} />,
-                h2: ({ node, ...props }) => <h2 className="md-h2" {...props} />,
-                p: ({ node, ...props }) => <p className="md-p" {...props} />,
-                ul: ({ node, ...props }) => <ul className="md-ul" {...props} />,
-                ol: ({ node, ...props }) => <ol className="md-ol" {...props} />,
-                li: ({ node, ...props }) => <li className="md-li" {...props} />,
-                img: ({ node, ...props }) => <img className="md-img" {...props} />,
-                blockquote: ({ node, ...props }) => <blockquote className="md-blockquote" {...props} />,
-              }}
-            >
-              {newsData.content}
-            </ReactMarkdown>
-          </div>
-        </div>
+        <Spin size="large" spinning={loading}>
+          {newsData && (
+            <div className="news-content">
+              <Space className="news-meta" size={16}>
+                <Tag color={getNewsTagColor(newsData.category)}>{newsData.category}</Tag>
+                <span className="news-date">
+                  <CalendarOutlined /> {newsData.date}
+                </span>
+              </Space>
+              
+              <div className="news-body markdown-content">
+                {content ? (
+                  <ReactMarkdown 
+                    remarkPlugins={[remarkGfm]}
+                    components={{
+                      // 自定义渲染组件
+                      h1: ({ node, ...props }) => <h1 className="md-h1" {...props} />,
+                      h2: ({ node, ...props }) => <h2 className="md-h2" {...props} />,
+                      p: ({ node, ...props }) => <p className="md-p" {...props} />,
+                      ul: ({ node, ...props }) => <ul className="md-ul" {...props} />,
+                      ol: ({ node, ...props }) => <ol className="md-ol" {...props} />,
+                      li: ({ node, ...props }) => <li className="md-li" {...props} />,
+                      img: ({ node, ...props }) => <img className="md-img" {...props} />,
+                      blockquote: ({ node, ...props }) => <blockquote className="md-blockquote" {...props} />,
+                    }}
+                  >
+                    {content}
+                  </ReactMarkdown>  
+                ) : (
+                  <Empty description="加载中..." />
+                )}
+              </div>
+            </div>
+          )}
+        </Spin>
       </div>
     </Content>
   );

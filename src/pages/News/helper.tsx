@@ -20,11 +20,6 @@ export interface NewsItem {
   content: string;
 }
 
-// 辅助函数：通过ID查找新闻
-export const findNewsById = (id: string): NewsItem | undefined => {
-  return newsContent.find(news => news.id === id);
-};
-
 /**
  * 从 Markdown 内容中提取第一个图片链接
  * @param content Markdown格式的文章内容

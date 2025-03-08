@@ -1,31 +1,54 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { Layout, Tabs, Row, Col, Card, Affix, Tag, Empty } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { usePageTitle } from '../../hooks/usePageTitle';
 import { gradients } from '../../utils/gradients';
 import { getNewsTagColor } from '../../utils/newsHelpers';
-import { newsContent } from './helper';
+import { newsContent, NewsItem } from './helper';
 import './style.less';
+import axios from 'axios';
+import { formatExcelDate } from './Detail';
 
 const { Content } = Layout;
 const { TabPane } = Tabs;
-
-// 在列表页可以直接使用 newsContent 数组
-// 可以进行排序、过滤等操作
-const sortedNews = newsContent.sort((a, b) => 
-  new Date(b.date).getTime() - new Date(a.date).getTime()
-);
 
 const News: React.FC = () => {
   usePageTitle('新闻中心');
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('党建引领');
   const [showAffix, setShowAffix] = useState(false);
-  
-  // 根据当前 tab 筛选新闻
-  const filteredNews = sortedNews.filter(
-    news => news.category === activeTab
-  );
+  const [newsList, setNewsList] = useState<NewsItem[]>(newsContent);
+
+  const [sortedNews, filteredNews] = useMemo(() => {
+    // 可以进行排序、过滤等操作
+    const sortedNews = newsList.sort((a, b) => 
+      new Date(b.date).getTime() - new Date(a.date).getTime()
+    );
+    // 根据当前 tab 筛选新闻
+    const filteredNews = sortedNews.filter(
+      news => news.category === activeTab
+    );
+    return [sortedNews, filteredNews];
+  }, [newsList, activeTab]);
+
+  // 接口请求
+  useEffect(() => {
+    const fetchNewsList = async () => {
+      try {
+        const response = await axios.get('http://static.ztmagroup.com/data/json/news/news.json');
+        const newsList = response.data?.map((item: any) => ({
+          ...item,
+          date: formatExcelDate(item.date),
+          category: item.type,
+        }))
+        console.log(newsList);
+        setNewsList(newsList);
+      } catch (error) {
+        console.error('获取news配置失败:', error);
+      }
+    };
+    fetchNewsList();
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
