@@ -5,7 +5,7 @@ import { gradients } from '../../utils/gradients';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 
 import strategieBanner from '../../assets/images/sustainability/strategie.png';
-import environmentBanner from '../../assets/images/sustainability/environment.png';
+import competentBanner from '../../assets/images/sustainability/competent.png';
 import socialBanner from '../../assets/images/sustainability/social.png';
 import './style.less';
 
@@ -21,10 +21,10 @@ const tabItems = [
     image: strategieBanner,
   },
   {
-    key: 'environment',
+    key: 'competent',
     title: '核心竞争力',
-    label: <Link to="/sustainability/environment">核心竞争力</Link>,
-    image: environmentBanner,
+    label: <Link to="/sustainability/competent">核心竞争力</Link>,
+    image: competentBanner,
   },
   {
     key: 'social',

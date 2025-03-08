@@ -21,7 +21,7 @@ import AdminUpload from './pages/Admin/Upload';
 import AdminAuth from './components/AdminAuth';
 
 import SustainabilityStrategy from './pages/Sustainability/Strategy';
-import SustainabilityEnvironment from './pages/Sustainability/Environment';
+import SustainabilityCompetent from './pages/Sustainability/Competent';
 import SustainabilitySocial from './pages/Sustainability/Social';
 import './styles/app.less';
 
@@ -48,7 +48,7 @@ export const App: React.FC = () => {
             <Route path="/sustainability" element={<Sustainability />}>
               <Route index element={<Navigate to="strategy" replace />} />
               <Route path="strategy" element={<SustainabilityStrategy />} />
-              <Route path="environment" element={<SustainabilityEnvironment />} />
+              <Route path="competent" element={<SustainabilityCompetent />} />
               <Route path="social" element={<SustainabilitySocial />} />
             </Route>
             <Route path="/career" element={<Career />} />

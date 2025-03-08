@@ -4,30 +4,76 @@ import { usePageTitle } from '../../hooks/usePageTitle';
 import { gradients } from '../../utils/gradients';
 import Elevator from '../../components/Elevator';
 import companyImage from '../../assets/images/about/company.png';
-import qualifications1 from '../../assets/images/about/qualifications/图片 1.png';
-import qualifications2 from '../../assets/images/about/qualifications/图片 2.png';
-import qualifications3 from '../../assets/images/about/qualifications/图片 3.png';
-import qualifications4 from '../../assets/images/about/qualifications/图片 4.png';
-import qualifications5 from '../../assets/images/about/qualifications/图片 5.png';
-import qualifications6 from '../../assets/images/about/qualifications/图片 6.png';
-import qualifications7 from '../../assets/images/about/qualifications/图片 7.png';
-import qualifications8 from '../../assets/images/about/qualifications/图片 8.png';
-import qualifications9 from '../../assets/images/about/qualifications/图片 9.png';
-import qualifications10 from '../../assets/images/about/qualifications/图片 10.png';
-import qualifications11 from '../../assets/images/about/qualifications/图片 11.png';
-import qualifications12 from '../../assets/images/about/qualifications/图片 12.png';
-import qualifications13 from '../../assets/images/about/qualifications/图片 13.png';
-import qualifications14 from '../../assets/images/about/qualifications/图片 14.jpg';
-import qualifications15 from '../../assets/images/about/qualifications/图片 15.png';
-import qualifications16 from '../../assets/images/about/qualifications/图片 16.png';
-import qualifications17 from '../../assets/images/about/qualifications/图片 17.png';
-import qualifications18 from '../../assets/images/about/qualifications/图片 18.png';
-import qualifications19 from '../../assets/images/about/qualifications/图片 19.png';
-import qualifications20 from '../../assets/images/about/qualifications/图片 20.png';
-import qualifications21 from '../../assets/images/about/qualifications/图片 21.png';
-import qualifications22 from '../../assets/images/about/qualifications/图片 22.png';
-import qualifications23 from '../../assets/images/about/qualifications/图片 23.png';
-import qualifications24 from '../../assets/images/about/qualifications/图片 24.png';
+import qualifications11 from '../../assets/images/about/qualifications/1 1.jpg';
+import qualifications12 from '../../assets/images/about/qualifications/2 1.jpg';
+import qualifications13 from '../../assets/images/about/qualifications/3 1.jpg';
+import qualifications14 from '../../assets/images/about/qualifications/4 1.jpg';
+
+import qualifications21 from '../../assets/images/about/qualifications/1 2.jpg';
+import qualifications22 from '../../assets/images/about/qualifications/2 2.jpg';
+import qualifications23 from '../../assets/images/about/qualifications/3 2.jpg';
+import qualifications24 from '../../assets/images/about/qualifications/4 2.jpg';
+
+import qualifications31 from '../../assets/images/about/qualifications/1 3.jpg';
+import qualifications32 from '../../assets/images/about/qualifications/2 3.jpg';
+import qualifications33 from '../../assets/images/about/qualifications/3 3.jpg';
+import qualifications34 from '../../assets/images/about/qualifications/4 3.jpg';
+
+import qualifications41 from '../../assets/images/about/qualifications/1 4.jpg';
+import qualifications42 from '../../assets/images/about/qualifications/2 4.jpg';
+import qualifications43 from '../../assets/images/about/qualifications/3 4.jpg';
+import qualifications44 from '../../assets/images/about/qualifications/4 4.jpg';
+
+import qualifications51 from '../../assets/images/about/qualifications/1 5.jpg';
+import qualifications52 from '../../assets/images/about/qualifications/2 5.jpg';
+import qualifications53 from '../../assets/images/about/qualifications/3 5.jpg';
+import qualifications54 from '../../assets/images/about/qualifications/4 5.jpg';
+
+import qualifications61 from '../../assets/images/about/qualifications/1 6.jpg';
+import qualifications62 from '../../assets/images/about/qualifications/2 6.jpg';
+import qualifications63 from '../../assets/images/about/qualifications/3 6.jpg';
+import qualifications64 from '../../assets/images/about/qualifications/4 6.jpg';
+
+import qualifications71 from '../../assets/images/about/qualifications/1 7.jpg';
+import qualifications72 from '../../assets/images/about/qualifications/2 7.jpg';
+import qualifications73 from '../../assets/images/about/qualifications/3 7.jpg';
+import qualifications74 from '../../assets/images/about/qualifications/4 7.jpg';
+
+import qualifications81 from '../../assets/images/about/qualifications/1 8.jpg';
+import qualifications82 from '../../assets/images/about/qualifications/2 8.jpg';
+import qualifications83 from '../../assets/images/about/qualifications/3 8.jpg';
+import qualifications84 from '../../assets/images/about/qualifications/4 8.jpg';
+
+import qualifications91 from '../../assets/images/about/qualifications/1 9.jpg';
+import qualifications92 from '../../assets/images/about/qualifications/2 9.jpg';
+import qualifications93 from '../../assets/images/about/qualifications/3 9.jpg';
+import qualifications94 from '../../assets/images/about/qualifications/4 9.jpg';
+
+import qualifications101 from '../../assets/images/about/qualifications/1 10.jpg';
+import qualifications102 from '../../assets/images/about/qualifications/2 10.jpg';
+import qualifications103 from '../../assets/images/about/qualifications/3 10.jpg';
+import qualifications104 from '../../assets/images/about/qualifications/4 10.jpg';
+
+import qualifications111 from '../../assets/images/about/qualifications/1 11.jpg';
+import qualifications112 from '../../assets/images/about/qualifications/2 11.jpg';
+import qualifications113 from '../../assets/images/about/qualifications/3 11.jpg';
+import qualifications114 from '../../assets/images/about/qualifications/4 11.jpg';
+
+import qualifications121 from '../../assets/images/about/qualifications/1 12.jpg';
+import qualifications122 from '../../assets/images/about/qualifications/2 12.jpg';
+import qualifications123 from '../../assets/images/about/qualifications/3 12.jpg';
+import qualifications124 from '../../assets/images/about/qualifications/4 12.jpg';
+
+import qualifications131 from '../../assets/images/about/qualifications/1 13.jpg';
+import qualifications132 from '../../assets/images/about/qualifications/2 13.jpg';
+import qualifications133 from '../../assets/images/about/qualifications/3 13.jpg';
+import qualifications134 from '../../assets/images/about/qualifications/4 13.jpg';
+
+import qualifications141 from '../../assets/images/about/qualifications/1 14.jpg';
+import qualifications142 from '../../assets/images/about/qualifications/2 14.jpg';
+import qualifications143 from '../../assets/images/about/qualifications/3 14.jpg';
+import qualifications144 from '../../assets/images/about/qualifications/4 14.jpg';
+
 import avatar2 from '../../assets/images/about/management/avatar2.png';
 import culture1 from '../../assets/images/about/culture/culture1.png';
 import { useLocation } from 'react-router-dom';
@@ -98,103 +144,21 @@ const culture = {
 const qualifications = {
   title: '公司资质',
   items: [
-    {
-      background: gradients.techBlue,
-      image: qualifications1,
-    },
-    {
-      background: gradients.businessBlue,
-      image: qualifications2,
-    },
-    {
-      background: gradients.techGold,
-      image: qualifications3,
-    },
-    // {
-    //   background: gradients.techMix,
-    //   image: qualifications4,
-    // },
-    {
-      background: gradients.businessBlue,
-      image: qualifications5,
-    },
-    {
-      background: gradients.techMix,
-      image: qualifications6,
-    },
-    {
-      background: gradients.businessBlue,
-      image: qualifications7,
-    },
-    // {
-    //   background: gradients.techMix,
-    //   image: qualifications8,
-    // },
-    {
-      background: gradients.businessBlue,
-      image: qualifications9,
-    },
-    {
-      background: gradients.techMix,
-      image: qualifications10,
-    },
-    {
-      background: gradients.businessBlue,
-      image: qualifications11,
-    },
-    // {
-    //   background: gradients.techMix,
-    //   image: qualifications12,
-    // },
-    {
-      background: gradients.businessBlue,
-      image: qualifications13,
-    },
-    {
-      background: gradients.techMix,
-      image: qualifications14,
-    },
-    {
-      background: gradients.businessBlue,
-      image: qualifications15,
-    },
-    // {
-    //   background: gradients.techMix,
-    //   image: qualifications16,
-    // },
-    // {
-    //   background: gradients.businessBlue,
-    //   image: qualifications17,
-    // },
-    {
-      background: gradients.techMix,
-      image: qualifications18,
-    },
-    // {
-    //   background: gradients.businessBlue,
-    //   image: qualifications19,
-    // },
-    {
-      background: gradients.techMix,
-      image: qualifications20,
-    },
-    {
-      background: gradients.businessBlue,
-      image: qualifications21,
-    },
-    // {
-    //   background: gradients.techMix,
-    //   image: qualifications22,
-    // },
-    {
-      background: gradients.businessBlue,
-      image: qualifications23,
-    },
-    // {
-    //   background: gradients.techMix,
-    //   image: qualifications24,
-    // },
-  ]
+    qualifications11, qualifications12, qualifications13, qualifications14,
+    qualifications21, qualifications22, qualifications23, qualifications24,
+    qualifications31, qualifications32, qualifications33, qualifications34,
+    qualifications41, qualifications42, qualifications43, qualifications44,
+    qualifications51, qualifications52, qualifications53, qualifications54,
+    qualifications61, qualifications62, qualifications63, qualifications64,
+    qualifications71, qualifications72, qualifications73, qualifications74,
+    qualifications81, qualifications82, qualifications83, qualifications84,
+    qualifications91, qualifications92, qualifications93, qualifications94,
+    qualifications101, qualifications102, qualifications103, qualifications104,
+    qualifications111, qualifications112, qualifications113, qualifications114,
+    qualifications121, qualifications122, qualifications123, qualifications124,
+    qualifications131, qualifications132, qualifications133, qualifications134,
+    qualifications141, qualifications142, qualifications143, qualifications144,
+  ],
 };
 
 const elevatorItems = [
@@ -423,10 +387,10 @@ const About: React.FC = () => {
               <Col xs={24} sm={12} md={6} key={index}>
                 <div 
                   className="qualification-item"
-                  style={{ background: item.background }}
+                  style={{ background: '#ffffff' }}
                 >
                   <div className="tech-overlay">
-                    <img src={item.image} alt="公司资质" />
+                    <img src={item} alt="公司资质" />
                   </div>
                 </div>
               </Col>

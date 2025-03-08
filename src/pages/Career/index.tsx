@@ -21,31 +21,26 @@ import career35 from '../../assets/images/career/culture/career35.jpg';
 import career36 from '../../assets/images/career/culture/career36.jpg';
 import career37 from '../../assets/images/career/culture/career37.jpg';
 import career38 from '../../assets/images/career/culture/career38.jpg';
-import career41 from '../../assets/images/career/honor/career41.jpg';
-import career42 from '../../assets/images/career/honor/career42.jpg';
-import career43 from '../../assets/images/career/honor/career43.jpg';
-import career44 from '../../assets/images/career/honor/career44.jpg';
-import career45 from '../../assets/images/career/honor/career45.jpg';
-import career46 from '../../assets/images/career/honor/career46.jpg';
-import career47 from '../../assets/images/career/honor/career47.jpg';
-import career48 from '../../assets/images/career/honor/career48.jpg';
 
-import career51 from '../../assets/images/career/honor/career51.jpg';
-import career52 from '../../assets/images/career/honor/career52.jpg';
-import career53 from '../../assets/images/career/honor/career53.jpg';
-import career54 from '../../assets/images/career/honor/career54.jpg';
-import career55 from '../../assets/images/career/honor/career55.jpg';
-import career56 from '../../assets/images/career/honor/career56.jpg';
-import career57 from '../../assets/images/career/honor/career57.jpg';
-import career58 from '../../assets/images/career/honor/career58.jpg';
-import career59 from '../../assets/images/career/honor/career59.jpg';
-import career60 from '../../assets/images/career/honor/career60.jpg';
-import career61 from '../../assets/images/career/honor/career61.jpg';
-import career62 from '../../assets/images/career/honor/career62.jpg';
-import career63 from '../../assets/images/career/honor/career63.jpg';
-import career64 from '../../assets/images/career/honor/career64.jpg';
-import career65 from '../../assets/images/career/honor/career65.jpg';
-import career66 from '../../assets/images/career/honor/career66.jpg';
+import careerHonor11 from '../../assets/images/career/honor/1 1.jpg';
+import careerHonor12 from '../../assets/images/career/honor/2 1.jpg';
+import careerHonor13 from '../../assets/images/career/honor/3 1.jpg';
+
+import careerHonor21 from '../../assets/images/career/honor/1 2.jpg';
+import careerHonor22 from '../../assets/images/career/honor/2 2.jpg';
+import careerHonor23 from '../../assets/images/career/honor/3 2.jpg';
+
+import careerHonor31 from '../../assets/images/career/honor/1 3.jpg';
+import careerHonor32 from '../../assets/images/career/honor/2 3.jpg';
+import careerHonor33 from '../../assets/images/career/honor/3 3.jpg';
+
+import careerHonor41 from '../../assets/images/career/honor/1 4.jpg';
+import careerHonor42 from '../../assets/images/career/honor/2 4.jpg';
+import careerHonor43 from '../../assets/images/career/honor/3 4.jpg';
+
+import careerHonor51 from '../../assets/images/career/honor/1 5.jpg';
+import careerHonor52 from '../../assets/images/career/honor/2 5.jpg';
+import careerHonor53 from '../../assets/images/career/honor/3 5.jpg';
 
 
 const { Content } = Layout;
@@ -84,7 +79,13 @@ export const cultureSections = [
   },
   {
     title: '集团荣誉',
-    items: [career41, career42, career43, career44, career45, career46, career47, career48, career51, career52, career53, career54, career55, career56, career57, career58, career59, career60, career61, career62, career63, career64, career65, career66],
+    items: [
+      careerHonor11, careerHonor12, careerHonor13,
+      careerHonor21, careerHonor22, careerHonor23,
+      careerHonor31, careerHonor32, careerHonor33,
+      careerHonor41, careerHonor42, careerHonor43,
+      careerHonor51, careerHonor52, careerHonor53,
+    ],
   },
 ];
 
@@ -165,7 +166,7 @@ const Career: React.FC = () => {
                 {section.items.map((item, itemIndex) => (
                   <Col xs={24} sm={8} lg={8} key={itemIndex}>
                     <Card 
-                      className="culture-card"
+                      className={`culture-card ${section.title === '集团荣誉' ? 'culture-honor-card' : ''}`}
                       style={{ background: '#ffffff' }}
                     >
                       <div className={`tech-overlay ${section.title === '集团荣誉' ? 'tech-overlay-contain' : ''}`}>

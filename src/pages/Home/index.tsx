@@ -14,7 +14,7 @@ import banner5 from '../../assets/images/banner/banner5.png';
 import companyImage from '../../assets/images/about/company.png';
 import partyBuilding from '../../assets/images/home/party-building.png';
 import security1 from '../../assets/images/business/security1.jpg';
-import security2 from '../../assets/images/business/security2.png';
+import security2 from '../../assets/images/business/security2.jpg';
 import security3 from '../../assets/images/business/security3.jpg';
 import tech1 from '../../assets/images/business/tech1.png';
 import tech2 from '../../assets/images/business/tech2.jpg';
@@ -295,7 +295,7 @@ const Home: React.FC = () => {
           </div>
           <Row gutter={[24, 24]}>
             {groupHonorData.map((item, itemIndex) => (
-              <Col xs={24} sm={8} lg={8} key={itemIndex}>
+              <Col xs={24} sm={6} lg={6} key={itemIndex}>
                 <Card 
                   className="culture-card"
                   style={{ background: '#ffffff' }}
