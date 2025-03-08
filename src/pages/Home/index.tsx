@@ -295,7 +295,7 @@ const Home: React.FC = () => {
           </div>
           <Row gutter={[24, 24]}>
             {groupHonorData.map((item, itemIndex) => (
-              <Col xs={24} sm={6} lg={6} key={itemIndex}>
+              <Col xs={24} sm={8} lg={8} key={itemIndex}>
                 <Card 
                   className="culture-card"
                   style={{ background: '#ffffff' }}

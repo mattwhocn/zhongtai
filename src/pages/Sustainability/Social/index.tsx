@@ -147,7 +147,7 @@ const Social: React.FC = () => {
           <Row gutter={[24, 24]}>
             {socialCases.map(case_ => (
               <Col xs={24} sm={12} md={8} key={case_.id}>
-                <Card className="case-card" bordered={false}>
+                <Card className="case-card" variant="borderless">
                   <div className="case-image">
                     <img src={case_.image} alt="img" />
                   </div>

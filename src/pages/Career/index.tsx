@@ -46,6 +46,7 @@ import careerHonor43 from '../../assets/images/career/honor/3 4.jpg';
 import careerHonor51 from '../../assets/images/career/honor/1 5.jpg';
 import careerHonor52 from '../../assets/images/career/honor/2 5.jpg';
 import careerHonor53 from '../../assets/images/career/honor/3 5.jpg';
+import axios from 'axios';
 
 
 const { Content } = Layout;
@@ -53,12 +54,12 @@ const { Title, Paragraph } = Typography;
 const { Panel } = Collapse;
 
 // 职位数据
-const jobList = [
+const defaultJobList: JobMeta[] = [
   {
     id: 1,
     title: '保安（男性）',
-    tags: ['18—50周岁', '初中及以上', '保安'],
-    description: `
+    tags: ['18—50周岁', '初中及以上'],
+    detail: `
       招工条件：
       1. 18—50周岁，有正式户口。
       2. 初中以上文化程度，会说普通话。
@@ -71,6 +72,13 @@ const jobList = [
     `,
   }
 ];
+
+interface JobMeta {
+  id: number;
+  title: string;
+  tags: string[];
+  detail: string;
+}
 
 // 公司文化数据
 export const cultureSections = [
@@ -97,6 +105,31 @@ export const cultureSections = [
 const Career: React.FC = () => {
   usePageTitle('职业发展');
   const [activeKey, setActiveKey] = useState<string[]>([]);
+  const [jobList, setJobList] = useState<JobMeta[]>(defaultJobList);
+
+  useEffect(() => {
+    // 初始化时为第一个 slide 添加 active 类
+    const firstSlide = document.querySelector('.carousel-item-0');
+    if (firstSlide) {
+      firstSlide.classList.add('active');
+    }
+    const fetchJobList = async () => {
+      try {
+        const response = await axios.get('http://static.ztmagroup.com/data/json/jobs/jobs.json');
+        // 将带有 \r\n 的字符串分割成数组
+        const jobList = response.data?.map((item: any) => ({
+          ...item,
+          id: Math.random(),
+           // 使用正则表达式匹配 \r\n 或 \n
+          tags: item.tags?.split(/\r\n|\n/)?.filter((item: any) => item)
+        }));
+        setJobList(jobList); // 设置处理后的数据
+      } catch (error) {
+        console.error('获取Job配置失败:', error);
+      }
+    };
+    fetchJobList();
+  }, []);
 
   useEffect(() => {
     if (jobList.length === 1) {
@@ -151,7 +184,7 @@ const Career: React.FC = () => {
                 >
                   <div className="job-detail">
                     <Paragraph className="job-description" style={{ whiteSpace: 'pre-line' }}>
-                      {job.description}
+                      {job.detail}
                     </Paragraph>
                   </div>
                 </Panel>

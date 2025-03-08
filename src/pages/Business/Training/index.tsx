@@ -117,7 +117,7 @@ const TrainingBusiness: React.FC = () => {
       <section className="school-intro">
         <div className="section-content">
           <Title level={2}>{trainingData.introduction.title}</Title>
-          <Card className="case-card" bordered={false}>
+          <Card className="case-card" variant="borderless">
             <Row gutter={[48, 48]} align="middle">
               <Col xs={24} lg={12}>
                 <div className="section-image">
@@ -140,7 +140,7 @@ const TrainingBusiness: React.FC = () => {
       <section className="business-scope">
         <div className="section-content">
           <Title level={2}>{trainingData.businessScope.title}</Title>
-          <Card className="case-card" bordered={false}>
+          <Card className="case-card" variant="borderless">
             <Row gutter={[48, 48]} align="middle">
               <Col xs={24} lg={12}>
                 <div className="section-text business-scope-text">

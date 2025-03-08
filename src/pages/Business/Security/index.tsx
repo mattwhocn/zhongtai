@@ -85,7 +85,7 @@ const SecurityBusiness: React.FC = () => {
           <div className="section-text">
             <Title level={2}>安防板块</Title>
           </div>
-          <Card className="case-card" bordered={false}>
+          <Card className="case-card" variant="borderless">
             <Row gutter={[24, 48]} align="middle">
               <Col xs={24} lg={12}>
                 <div className="section-image">
