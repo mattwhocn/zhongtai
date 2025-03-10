@@ -155,9 +155,8 @@ const qualifications = {
     qualifications91, qualifications92, qualifications93, qualifications94,
     qualifications101, qualifications102, qualifications103, qualifications104,
     qualifications111, qualifications112, qualifications113, qualifications114,
-    qualifications121, qualifications122, qualifications123, qualifications124,
-    qualifications131, qualifications132, qualifications133, qualifications134,
-    qualifications141, qualifications142, qualifications143, qualifications144,
+    qualifications121, qualifications122, qualifications141, qualifications142,
+    qualifications131, qualifications132, qualifications133,
   ],
 };
 

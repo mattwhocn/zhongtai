@@ -84,7 +84,7 @@ interface JobMeta {
 export const cultureSections = [
   {
     title: '公司环境',
-    items: [career1, career2, career3, career8, career10, career11, career13, career14, career16, career18, career21, career22],
+    items: [career1, career2, career3],
   },
   {
     title: '企业文化',

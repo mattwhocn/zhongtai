@@ -5,7 +5,8 @@ import {
   BankOutlined, SafetyCertificateOutlined, GlobalOutlined, SafetyOutlined, 
   CloudOutlined, RocketOutlined, ApartmentOutlined, BuildOutlined, 
   SecurityScanOutlined, CompassOutlined, FireOutlined, HeartOutlined,
-  MedicineBoxOutlined 
+  MedicineBoxOutlined, 
+  TeamOutlined
 } from '@ant-design/icons';
 import { usePageTitle } from '../../hooks/usePageTitle';
 import { gradients } from '../../utils/gradients';
@@ -16,7 +17,7 @@ const { Title } = Typography;
 
 // 联系信息数据
 export const contactInfo = {
-  address: '北京市大兴区春和路39号院1号楼3单元906',
+  address: '北京市大兴区春和路39号院1号楼c座906',
   address2: '北京市大兴区庞各庄镇庞新路5号',
   phone: '010-61288212',
   email: 'bjztma@163.com',
@@ -91,7 +92,22 @@ const Contact: React.FC = () => {
       name: '北京市大兴区红十字会',
       url: 'https://daxing.bjredcross.org.cn/',
       icon: <MedicineBoxOutlined />
-    }
+    },
+    {
+      name: '中羚泰和科技有限公司',
+      url: 'http://www.zlthkj.cn/',
+      icon: <GlobalOutlined />
+    },
+    {
+      name: '北京济宁企业商会',
+      url: 'https://www.rushangjining.cn/sy',
+      icon: <TeamOutlined />
+    },
+    {
+      name: '中科星图股份有限公司',
+      url: 'https://www.geovis.com.cn',
+      icon: <CompassOutlined />
+    },
   ];
 
   return (

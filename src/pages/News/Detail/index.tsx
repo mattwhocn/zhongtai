@@ -8,8 +8,8 @@ import { usePageTitle } from '../../../hooks/usePageTitle';
 import { getNewsTagColor } from '../../../utils/newsHelpers';
 import { newsContent, NewsItem } from '../helper';
 import { gradients } from '@/utils/gradients';
-import './style.less';
 import axios from 'axios';
+import './style.less';
 
 const { Content } = Layout;
 const { Title } = Typography;
@@ -36,19 +36,30 @@ export const isValidUrl = (str: string): boolean => {
  * @param format 输出格式，默认 'YYYY-MM-DD'
  * @returns 格式化后的日期字符串
  */
-export const formatExcelDate = (excelDate: number, format: string = 'YYYY-MM-DD'): string => {
+export const formatExcelDate = (excelDate: number | string, format: string = 'YYYY-MM-DD'): string => {
+  // 如果输入是字符串格式的日期,直接返回
+  if (typeof excelDate === 'string') {
+    return excelDate;
+  }
+
   // Excel日期起始点是1900年1月1日
   // 需要减去2因为Excel错误地将1900年认为是闰年
-  const EXCEL_START_DATE = new Date(1899, 11, 30);
+  const EXCEL_START_DATE = new Date(Date.UTC(1899, 11, 30));
   
   // 将Excel数字转换为毫秒数
   const millisecondsPerDay = 24 * 60 * 60 * 1000;
   const dateObj = new Date(EXCEL_START_DATE.getTime() + (excelDate - 1) * millisecondsPerDay);
+
+  // 检查日期是否有效
+  if (isNaN(dateObj.getTime())) {
+    console.error('无效的Excel日期:', excelDate);
+    return '';
+  }
   
   // 格式化日期
-  const year = dateObj.getFullYear();
-  const month = String(dateObj.getMonth() + 1).padStart(2, '0');
-  const day = String(dateObj.getDate()).padStart(2, '0');
+  const year = dateObj.getUTCFullYear();
+  const month = String(dateObj.getUTCMonth() + 1).padStart(2, '0');
+  const day = String(dateObj.getUTCDate()).padStart(2, '0');
   
   // 根据format参数返回不同格式
   switch (format) {
