@@ -47,6 +47,7 @@ import careerHonor51 from '../../assets/images/career/honor/1 5.jpg';
 import careerHonor52 from '../../assets/images/career/honor/2 5.jpg';
 import careerHonor53 from '../../assets/images/career/honor/3 5.jpg';
 import axios from 'axios';
+import { withErrorBoundary } from '@/components/ErrorBoundary';
 
 
 const { Content } = Layout;
@@ -222,4 +223,4 @@ const Career: React.FC = () => {
   );
 };
 
-export default Career; 
+export default withErrorBoundary(Career); 

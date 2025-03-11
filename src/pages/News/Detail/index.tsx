@@ -10,6 +10,7 @@ import { newsContent, NewsItem } from '../helper';
 import { gradients } from '@/utils/gradients';
 import axios from 'axios';
 import './style.less';
+import { withErrorBoundary } from '@/components/ErrorBoundary';
 
 const { Content } = Layout;
 const { Title } = Typography;
@@ -205,4 +206,4 @@ const NewsDetail: React.FC = () => {
   );
 };
 
-export default NewsDetail; 
+export default withErrorBoundary(NewsDetail); 

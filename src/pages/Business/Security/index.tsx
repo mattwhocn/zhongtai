@@ -29,6 +29,7 @@ import case4Img8 from '../../../assets/images/business/security/case4-8.jpg';
 
 
 import './style.less';
+import { withErrorBoundary } from '@/components/ErrorBoundary';
 
 const { Title, Paragraph } = Typography;
 
@@ -136,4 +137,4 @@ const SecurityBusiness: React.FC = () => {
   );
 };
 
-export default SecurityBusiness; 
+export default withErrorBoundary(SecurityBusiness); 

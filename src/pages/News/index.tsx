@@ -8,6 +8,7 @@ import { newsContent, NewsItem } from './helper';
 import './style.less';
 import axios from 'axios';
 import { formatExcelDate } from './Detail';
+import { withErrorBoundary } from '@/components/ErrorBoundary';
 
 const { Content } = Layout;
 const { TabPane } = Tabs;
@@ -131,4 +132,4 @@ const News: React.FC = () => {
   );
 };
 
-export default News; 
+export default withErrorBoundary(News); 

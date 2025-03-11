@@ -25,6 +25,7 @@ import customCase102 from '../../../assets/images/business/tech/水上安全风�
 
 import './style.less';
 import axios from 'axios';
+import { withErrorBoundary } from '@/components/ErrorBoundary';
 
 const { Content } = Layout;
 const { Title, Paragraph } = Typography;
@@ -230,4 +231,4 @@ const TechBusiness: React.FC = () => {
   );
 };
 
-export default TechBusiness; 
+export default withErrorBoundary(TechBusiness); 

@@ -9,6 +9,7 @@ import {
 } from '@ant-design/icons';
 import { gradients } from '../../../utils/gradients';
 import './style.less';
+import { withErrorBoundary } from '@/components/ErrorBoundary';
 
 const { Title, Paragraph } = Typography;
 
@@ -85,4 +86,4 @@ const Strategy: React.FC = () => {
   );
 };
 
-export default Strategy; 
+export default withErrorBoundary(Strategy); 

@@ -8,6 +8,7 @@ import strategieBanner from '../../assets/images/sustainability/strategie.png';
 import competentBanner from '../../assets/images/sustainability/competent.png';
 import socialBanner from '../../assets/images/sustainability/social.png';
 import './style.less';
+import { withErrorBoundary } from '@/components/ErrorBoundary';
 
 const { Content } = Layout;
 
@@ -108,4 +109,4 @@ const Sustainability: React.FC = () => {
   );
 };
 
-export default Sustainability; 
+export default withErrorBoundary(Sustainability); 

@@ -1,3 +1,4 @@
+import { withErrorBoundary } from '@/components/ErrorBoundary';
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 
@@ -10,4 +11,4 @@ const Business: React.FC = () => {
   );
 };
 
-export default Business; 
+export default withErrorBoundary(Business); 

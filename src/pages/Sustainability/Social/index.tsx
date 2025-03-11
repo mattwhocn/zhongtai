@@ -18,6 +18,7 @@ import case7 from '../../../assets/images/sustainability/social/case7.jpg';
 import case8 from '../../../assets/images/sustainability/social/case8.jpg';
 import case9 from '../../../assets/images/sustainability/social/case9.jpg';
 import './style.less';
+import { withErrorBoundary } from '@/components/ErrorBoundary';
 
 const { Title, Paragraph } = Typography;
 
@@ -161,4 +162,4 @@ const Social: React.FC = () => {
   );
 };
 
-export default Social; 
+export default withErrorBoundary(Social); 

@@ -78,6 +78,7 @@ import avatar2 from '../../assets/images/about/management/avatar2.png';
 import culture1 from '../../assets/images/about/culture/culture1.png';
 import { useLocation } from 'react-router-dom';
 
+import { withErrorBoundary } from '@/components/ErrorBoundary';
 import './style.less';
 const { Content } = Layout;
 const { Title, Paragraph } = Typography;
@@ -401,4 +402,4 @@ const About: React.FC = () => {
   );
 };
 
-export default About; 
+export default withErrorBoundary(About); 

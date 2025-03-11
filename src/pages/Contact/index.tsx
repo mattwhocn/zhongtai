@@ -11,6 +11,7 @@ import {
 import { usePageTitle } from '../../hooks/usePageTitle';
 import { gradients } from '../../utils/gradients';
 import './style.less';
+import { withErrorBoundary } from '@/components/ErrorBoundary';
 
 const { Content } = Layout;
 const { Title } = Typography;
@@ -191,4 +192,4 @@ const Contact: React.FC = () => {
   );
 };
 
-export default Contact; 
+export default withErrorBoundary(Contact); 

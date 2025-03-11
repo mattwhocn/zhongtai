@@ -28,6 +28,7 @@ import { gradients } from '@/utils/gradients';
 import { cultureSections } from '../Career';
 import './style.less';
 import { formatExcelDate } from '../News/Detail';
+import { withErrorBoundary } from '@/components/ErrorBoundary';
 
 const { Content } = Layout;
 const { Title, Paragraph } = Typography;
@@ -391,4 +392,4 @@ const Home: React.FC = () => {
   );
 };
 
-export default Home; 
+export default withErrorBoundary(Home); 

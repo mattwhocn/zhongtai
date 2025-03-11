@@ -13,6 +13,7 @@ import {
 } from '@ant-design/icons';
 import { gradients } from '../../../utils/gradients';
 import './style.less';
+import { withErrorBoundary } from '@/components/ErrorBoundary';
 
 const { Title, Paragraph } = Typography;
 
@@ -82,4 +83,4 @@ const Competent: React.FC = () => {
   );
 };
 
-export default Competent; 
+export default withErrorBoundary(Competent); 

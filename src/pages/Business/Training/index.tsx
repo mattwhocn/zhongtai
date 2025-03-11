@@ -30,6 +30,7 @@ import case6Img4 from '../../../assets/images/business/training/case6-4.png';
 
 
 import './style.less';
+import { withErrorBoundary } from '@/components/ErrorBoundary';
 
 const { Content } = Layout;
 const { Title, Paragraph } = Typography;
@@ -185,4 +186,4 @@ const TrainingBusiness: React.FC = () => {
   );
 };
 
-export default TrainingBusiness; 
+export default withErrorBoundary(TrainingBusiness); 
