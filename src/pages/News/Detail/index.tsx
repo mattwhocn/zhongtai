@@ -48,7 +48,7 @@ export const formatExcelDate = (excelDate: number | string, format: string = 'YY
   
   // 将Excel数字转换为毫秒数
   const millisecondsPerDay = 24 * 60 * 60 * 1000;
-  const dateObj = new Date(EXCEL_START_DATE.getTime() + (excelDate - 1) * millisecondsPerDay);
+  const dateObj = new Date(EXCEL_START_DATE.getTime() + excelDate * millisecondsPerDay);
 
   // 检查日期是否有效
   if (isNaN(dateObj.getTime())) {
