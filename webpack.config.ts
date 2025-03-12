@@ -67,10 +67,6 @@ const config: Configuration = {
     }),
     new CopyPlugin({
       patterns: [
-        { 
-          from: 'src/assets',
-          to: 'assets',
-        },
         {
           from: 'public/favicon.ico',
           to: 'favicon.ico',
@@ -78,6 +74,10 @@ const config: Configuration = {
         {
           from: 'public/favicon.png',
           to: 'favicon.png',
+        },
+        {
+          from: 'public/baidu_verify_codeva-lV9Nr5wALE.html',
+          to: 'baidu_verify_codeva-lV9Nr5wALE.html',
         }
       ]
     })
