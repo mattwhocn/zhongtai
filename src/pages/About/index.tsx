@@ -91,30 +91,26 @@ export const companyProfile = {
 };
 
 // 管理层数据
-const managementTeam = [
-  {
-    id: 1,
-    name: '赵性仓',
-    title: '董事长',
-    avatar: avatar2,
-    description: `赵性仓，男，山东梁山人，中共党员，中泰民安安全服务集团有限公司党支部书记，董事长，济宁市商会常务副会长，党委副书记，梁山县在京企业商会会长，党委副书记，北京安防协会、消防协会副会长，北京市大兴区中泰民安红十字救援服务中心总负责人。三十多年来，他凭着矢志不渝的创业精神和强烈的社会责任感，始终以“有我在、跟我上、看我的”为理念，“身先士卒、率先垂范”。在平凡的岗位上带领团队创造了诸多不平凡的业绩。现集团旗下十家子公司、一所培训学校，解决就业四万余人。`,
-    moreDetails: [
-      {
-        title: '创业历程',
-        content: '深耕安全服务领域30年，秉承“以安保为基础、科技为引领、文化传媒树品牌”理念，带领团队创新发展，多次参与首都重大灾害救援（如“7·21”北京特大暴雨、“11·18”重大火灾）及国家级盛事安保（如奥运会、国庆阅兵），助力首都安全稳定。',
-      },
-      {
-        title: '个人荣誉',
-        content: '获“诚信企业家”“北京市人道奖先进个人”“北京榜样·最美义工”等称号，2004年以来多次荣获“优秀共产党员”“优秀党组织书记”。',
-      },
-      {
-        title: '社会贡献',
-        content: '主导完成北京市红十字会防灾减灾演练、红十字会“5·12”纪念活动等，荣获“鹰翔计划爱心奖”“最美家乡人”“年度影响力人物”等社会公益奖项。',
-      }
-    ]
-  },
-  // ... 可能有更多管理层成员
-];
+const managementTeam = {
+  name: '赵性仓',
+  title: '董事长',
+  avatar: avatar2,
+  description: `赵性仓，男，山东梁山人，中共党员，中泰民安安全服务集团有限公司党支部书记，董事长，济宁市商会常务副会长，党委副书记，梁山县在京企业商会会长，党委副书记，北京安防协会、消防协会副会长，北京市大兴区中泰民安红十字救援服务中心总负责人。三十多年来，他凭着矢志不渝的创业精神和强烈的社会责任感，始终以“有我在、跟我上、看我的”为理念，“身先士卒、率先垂范”。在平凡的岗位上带领团队创造了诸多不平凡的业绩。现集团旗下十家子公司、一所培训学校，解决就业四万余人。`,
+  moreDetails: [
+    {
+      title: '创业历程',
+      content: '深耕安全服务领域30年，秉承“以安保为基础、科技为引领、文化传媒树品牌”理念，带领团队创新发展，多次参与首都重大灾害救援（如“7·21”北京特大暴雨、“11·18”重大火灾）及国家级盛事安保（如奥运会、国庆阅兵），助力首都安全稳定。',
+    },
+    {
+      title: '个人荣誉',
+      content: '获“诚信企业家”“北京市人道奖先进个人”“北京榜样·最美义工”等称号，2004年以来多次荣获“优秀共产党员”“优秀党组织书记”。',
+    },
+    {
+      title: '社会贡献',
+      content: '主导完成北京市红十字会防灾减灾演练、红十字会“5·12”纪念活动等，荣获“鹰翔计划爱心奖”“最美家乡人”“年度影响力人物”等社会公益奖项。',
+    }
+  ]
+};
 
 // 企业文化数据
 const culture = {
@@ -256,9 +252,6 @@ const About: React.FC = () => {
     }, 100);
   };
 
-  // 判断是否为单个管理层成员
-  const isSingleManager = managementTeam.length === 1;
-
   return (
     <Content className="about-page">
       <Elevator 
@@ -305,56 +298,37 @@ const About: React.FC = () => {
       {/* 管理层介绍 */}
       <section id="management" className="management-team">
         <div className="section-content">
-          {/* <Title level={2}>管理层介绍</Title> */}
-          {isSingleManager ? (
-            // 单个管理层成员时的布局
-            <Row gutter={[48, 48]} align="middle">
-              <Col xs={24} lg={8}>
-                <Card className="manager-card single">
-                  <div className="avatar-wrapper">
-                    <img src={managementTeam[0].avatar} alt={managementTeam[0].name} />
-                  </div>
-                  <div className="info">
-                    <h3>{managementTeam[0].name}</h3>
-                    <p>{managementTeam[0].title}</p>
-                  </div>
-                </Card>
-              </Col>
-              <Col xs={24} lg={16}>
-                <div className="manager-description">
-                  <Paragraph>{managementTeam[0].description}</Paragraph>
+          <Row gutter={[48, 12]} align="top">
+            <Col xs={24} lg={12}>
+              <div className="manager-description">
+                <h3>管理层</h3>
+                <Paragraph>{managementTeam.description}</Paragraph>
+              </div>
+            </Col>
+            <Col xs={24} lg={12}>
+              <Card className="manager-card single">
+                <div className="avatar-wrapper">
+                  <img src={managementTeam.avatar} alt={managementTeam.name} />
                 </div>
-                <div className="manager-more-details">
-                  {managementTeam[0].moreDetails.map((detail, index) => (
-                    <div key={index} className="detail-item">
-                      <h4>{detail.title}</h4>
-                      <p>{detail.content}</p>
-                    </div>
-                  ))}
-                </div>
-              </Col>
-            </Row>
-          ) : (
-            // 多个管理层成员时的布局
-            <Row gutter={[24, 48]}>
-              {managementTeam.map(manager => (
-                <Col xs={24} sm={12} lg={8} key={manager.id}>
-                  <Card className="manager-card">
-                    <div className="avatar-wrapper">
-                      <img src={manager.avatar} alt={manager.name} />
-                    </div>
-                    <div className="info">
-                      <h3>{manager.name}</h3>
-                      <p>{manager.title}</p>
-                    </div>
-                    <div className="description">
-                      <Paragraph>{manager.description}</Paragraph>
-                    </div>
-                  </Card>
-                </Col>
-              ))}
-            </Row>
-          )}
+                <Space className="manager-info" split="/">
+                  <h3>{managementTeam.name}</h3>
+                  <p>{managementTeam.title}</p>
+                </Space>
+              </Card>
+            </Col>
+          </Row>
+          <Row gutter={[48, 12]} align="middle">
+            <Col xs={24} lg={24}>
+              <div className="manager-more-details">
+                {managementTeam.moreDetails.map((detail, index) => (
+                  <div key={index} className="detail-item">
+                    <h4>{detail.title}</h4>
+                    <p>{detail.content}</p>
+                  </div>
+                ))}
+              </div>
+            </Col>
+          </Row>
         </div>
       </section>
 
